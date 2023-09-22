@@ -9,4 +9,6 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="msg_offline">You are currently offline</string>
+    <string name="error_msg_unknown_error">Error!! Something went wrong.</string>
 </resources>
