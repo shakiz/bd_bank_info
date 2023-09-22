@@ -17,7 +17,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setSupportActionBar(binding.toolbar)
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
