@@ -1,6 +1,6 @@
 package com.reader.bd_bank_info.service
 
-import com.reader.bd_bank_info.data.model.Movie
+import com.reader.bd_bank_info.data.model.NavigationRail
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -9,7 +9,7 @@ import retrofit2.http.GET
 interface RetrofitService {
 
     @GET("movielist.json")
-    suspend fun fetchAllMovie() : Response<List<Movie>>
+    suspend fun fetchAllMovie() : Response<List<NavigationRail>>
 
     companion object{
         var retrofitService : RetrofitService? = null
