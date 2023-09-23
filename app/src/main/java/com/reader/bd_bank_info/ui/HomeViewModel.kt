@@ -24,4 +24,8 @@ class HomeViewModel: ViewModel(){
             navigationRailList.postValue(response)
         }
     }
+
+    fun fetchBankList(){
+
+    }
 }
