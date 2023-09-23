@@ -27,7 +27,7 @@ class HomeActivity : AppCompatActivity() {
         initListeners()
         initObservers()
 
-        viewModel.getNavigationRailItems()
+        viewModel.fetchNavigationRailItems()
     }
 
     private fun initView(){
