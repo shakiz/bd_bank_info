@@ -35,6 +35,7 @@ class HomeActivity : AppCompatActivity() {
         initObservers()
 
         viewModel.fetchNavigationRailItems()
+        viewModel.fetchBankList()
     }
 
     private fun initView(){
