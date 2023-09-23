@@ -27,4 +27,12 @@
         <item name="android:textSize">@dimen/_12ssp</item>
     </style>
 
+    <style name="roundedImageViewGenericSliderStyle" parent="">
+        <item name="cornerSizeTopRight">@dimen/_12sdp</item>
+        <item name="cornerSizeTopLeft">@dimen/_12sdp</item>
+        <item name="cornerSizeBottomLeft">@dimen/_12sdp</item>
+        <item name="cornerSizeBottomRight">@dimen/_12sdp</item>
+        <item name="cornerFamily">rounded</item>
+    </style>
+
 </resources>
