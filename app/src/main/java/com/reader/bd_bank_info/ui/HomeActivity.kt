@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.reader.bd_bank_info.R
 import com.reader.bd_bank_info.databinding.ActivityMainBinding
+import com.reader.bd_bank_info.ui.adapters.BankItemAdapter
 import com.reader.bd_bank_info.ui.adapters.NavRailAdapter
 import com.reader.bd_bank_info.utils.SpaceItemDecoration
 import com.reader.bd_bank_info.utils.dimenSize
@@ -19,6 +20,7 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var viewModel: HomeViewModel
 
     private val navRailAdapter = NavRailAdapter()
+    private val bankItemAdapter = BankItemAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +42,7 @@ class HomeActivity : AppCompatActivity() {
 
     private fun initView(){
         setUpNavRailListView()
+        setUpBankListView()
     }
 
     private fun initListeners(){
@@ -52,12 +55,24 @@ class HomeActivity : AppCompatActivity() {
                 navRailAdapter.addItems(it)
             }
         }
+
+        viewModel.onBankListFetched().observe(this){bankList ->
+            bankList?.let {
+                bankItemAdapter.addItems(it)
+            }
+        }
     }
 
     private fun setUpNavRailListView(){
         binding.rvNavRail.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
         binding.rvNavRail.addItemDecoration(SpaceItemDecoration(this.dimenSize(com.intuit.sdp.R.dimen._8sdp)))
         binding.rvNavRail.adapter = navRailAdapter
+    }
+
+    private fun setUpBankListView(){
+        binding.layoutBankList.rvBankList.layoutManager = PartiallyVisibleHorizontalLayoutManager(this, .5f)
+        binding.layoutBankList.rvBankList.addItemDecoration(SpaceItemDecoration(this.dimenSize(com.intuit.sdp.R.dimen._8sdp)))
+        binding.layoutBankList.rvBankList.adapter = bankItemAdapter
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
