@@ -66,7 +66,7 @@ class NavRailAdapter : RecyclerView.Adapter<NavRailAdapter.NavigationRailViewHol
                 binding.tvTitle.setTextColor(context.compatColor(R.color.raisin_black))
             }
 
-            binding.tvTitle.text = getLocalizedText(context.isBanglaLocale(), navRail.titleEn, navRail.titleBn)
+            binding.tvTitle.text = navRail.titleEn
         }
     }
 }

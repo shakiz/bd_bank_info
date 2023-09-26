@@ -13,18 +13,19 @@
             android:id="@+id/tvHeadingBankList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:layout_marginEnd="@dimen/_8sdp"
             android:paddingHorizontal="@dimen/_4sdp"
             android:text="@string/bank_list"/>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvNavigationRail"
+            android:id="@+id/rvBankList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clipToPadding="false"
             android:orientation="horizontal"
             android:overScrollMode="never"
             android:paddingHorizontal="@dimen/_4sdp"
-            android:layout_marginTop="@dimen/_4sdp"
             tools:itemCount="3"
             tools:listitem="@layout/recycler_item_bank_list" />
     </LinearLayout>

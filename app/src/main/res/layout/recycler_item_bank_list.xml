@@ -14,7 +14,7 @@
             android:scaleType="centerCrop"
             app:shapeAppearanceOverlay="@style/roundedImageViewGenericSliderStyle"
             app:layout_constraintDimensionRatio="3:2"
-            tools:src="@drawable/ic_placeholder"
+            android:src="@drawable/ic_placeholder"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
