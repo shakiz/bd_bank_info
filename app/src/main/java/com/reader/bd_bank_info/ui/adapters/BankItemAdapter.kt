@@ -2,6 +2,7 @@ package com.reader.bd_bank_info.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.reader.bd_bank_info.data.model.Bank
@@ -50,11 +51,15 @@ class BankItemAdapter : RecyclerView.Adapter<BankItemAdapter.BankViewHolder>() {
         diffResult.dispatchUpdatesTo(this)
     }
 
-    class BankViewHolder(val binding: RecyclerItemBankListBinding) : RecyclerView.ViewHolder(binding.root) {
+    class BankViewHolder(val binding: RecyclerItemBankListBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun bindItem(bank: Bank) {
             binding.tvTitle.text = bank.bankName
             binding.tvSubTitle.text = bank.bankType
+            bank.bankIconRes?.let {
+                binding.ivSlider.background = ContextCompat.getDrawable(itemView.context, it)
+            }
         }
     }
 }

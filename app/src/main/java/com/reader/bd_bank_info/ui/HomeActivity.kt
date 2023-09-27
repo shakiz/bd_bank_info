@@ -70,7 +70,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun setUpBankListView(){
-        binding.layoutBankList.rvBankList.layoutManager = PartiallyVisibleHorizontalLayoutManager(this, .5f)
+        binding.layoutBankList.rvBankList.layoutManager = PartiallyVisibleHorizontalLayoutManager(this, .4f)
         binding.layoutBankList.rvBankList.addItemDecoration(SpaceItemDecoration(this.dimenSize(com.intuit.sdp.R.dimen._8sdp)))
         binding.layoutBankList.rvBankList.adapter = bankItemAdapter
     }

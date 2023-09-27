@@ -1,5 +1,6 @@
 package com.reader.bd_bank_info.data.repository
 
+import com.reader.bd_bank_info.R
 import com.reader.bd_bank_info.data.datasource.HomeApi
 import com.reader.bd_bank_info.data.model.Bank
 import com.reader.bd_bank_info.data.model.NavigationRail
@@ -36,7 +37,7 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
             Bank(
                 bankId = 1,
                 bankName = "AB Bank",
-                bankIconRes = 0,
+                bankIconRes = R.drawable.ab_bank,
                 legalStatus = "Public Limited Company",
                 establishedDate = 1982,
                 bankType = "Private Bank",
@@ -53,7 +54,7 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
             Bank(
                 bankId = 2,
                 bankName = "Agrani Bank Limited",
-                bankIconRes = 0,
+                bankIconRes = R.drawable.agrani_bank,
                 legalStatus = "Public Limited Company",
                 establishedDate = 1972,
                 bankType = "Public Bank",
@@ -69,7 +70,7 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
             Bank(
                 bankId = 3,
                 bankName = "Al-Arafah Islami Bank Limited",
-                bankIconRes = 0,
+                bankIconRes = R.drawable.al_arafah_islami_bank,
                 legalStatus = "Public Limited Company",
                 establishedDate = 1995,
                 bankType = "Private Bank",
@@ -86,7 +87,7 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
             Bank(
                 bankId = 4,
                 bankName = "Bangladesh Development Bank",
-                bankIconRes = 0,
+                bankIconRes = R.drawable.bdbl,
                 legalStatus = "Public Limited Company",
                 establishedDate = 2009,
                 bankType = "Public Bank",
@@ -101,7 +102,7 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
             Bank(
                 bankId = 5,
                 bankName = "Bangladesh Krishi Bank",
-                bankIconRes = 0,
+                bankIconRes = R.drawable.krishi_bank,
                 legalStatus = "Public Limited Company",
                 establishedDate = 1995,
                 bankType = "Public Bank",
@@ -117,7 +118,7 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
             Bank(
                 bankId = 6,
                 bankName = "Bank Alfalah Limited",
-                bankIconRes = 0,
+                bankIconRes = R.drawable.bank_alfalah,
                 legalStatus = "Public Limited Company",
                 establishedDate = 1997,
                 bankType = "Private Bank",
@@ -133,7 +134,7 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
             Bank(
                 bankId = 7,
                 bankName = "Bank Asia Limited",
-                bankIconRes = 0,
+                bankIconRes = R.drawable.bank_asia,
                 legalStatus = "Public Limited Company",
                 establishedDate = 1999,
                 bankType = "Private Bank",
@@ -150,7 +151,7 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
             Bank(
                 bankId = 8,
                 bankName = "BASIC Bank Limited",
-                bankIconRes = 0,
+                bankIconRes = R.drawable.basic_bank,
                 legalStatus = "Public Limited Company",
                 establishedDate = 1988,
                 bankType = "Private Bank",
@@ -165,7 +166,7 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
             Bank(
                 bankId = 9,
                 bankName = "BRAC Bank Limited",
-                bankIconRes = 0,
+                bankIconRes = R.drawable.brac_bank,
                 legalStatus = "Public Limited Company",
                 establishedDate = 2001,
                 bankType = "Private Bank",
@@ -182,7 +183,7 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
             Bank(
                 bankId = 10,
                 bankName = "Citibank",
-                bankIconRes = 0,
+                bankIconRes = R.drawable.citi_bank,
                 legalStatus = "Public Limited Company",
                 establishedDate = 1812,
                 bankType = "Private Bank",
@@ -197,7 +198,7 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
             Bank(
                 bankId = 11,
                 bankName = "The City Bank Limited",
-                bankIconRes = 0,
+                bankIconRes = R.drawable.the_city_bank,
                 legalStatus = "Public Limited Company",
                 establishedDate = 1983,
                 bankType = "Private Bank",
@@ -214,7 +215,7 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
             Bank(
                 bankId = 12,
                 bankName = "Commercial Bank of Ceylon",
-                bankIconRes = 0,
+                bankIconRes = R.drawable.commercial_bank,
                 legalStatus = "Public Limited Company",
                 establishedDate = 1920,
                 bankType = "Private Bank",
@@ -229,7 +230,7 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
             Bank(
                 bankId = 13,
                 bankName = "Community Bank",
-                bankIconRes = 0,
+                bankIconRes = R.drawable.community_bank,
                 legalStatus = "Public Limited Company",
                 establishedDate = 2019,
                 bankType = "Private Bank",
@@ -245,7 +246,7 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
             Bank(
                 bankId = 14,
                 bankName = "Dhaka Bank Limited",
-                bankIconRes = 0,
+                bankIconRes = R.drawable.dhaka_bank,
                 legalStatus = "Public Limited Company",
                 establishedDate = 1995,
                 bankType = "Private Bank",
@@ -262,7 +263,7 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
             Bank(
                 bankId = 15,
                 bankName = "Dutch-Bangla Bank Limited",
-                bankIconRes = 0,
+                bankIconRes = R.drawable.dbbl,
                 legalStatus = "Public Limited Company",
                 establishedDate = 1995,
                 bankType = "Private Bank",
@@ -278,7 +279,7 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
             Bank(
                 bankId = 16,
                 bankName = "Eastern Bank Limited",
-                bankIconRes = 0,
+                bankIconRes = R.drawable.ebl,
                 legalStatus = "Public Limited Company",
                 establishedDate = 1992,
                 bankType = "Private Bank",
@@ -294,7 +295,7 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
             Bank(
                 bankId = 17,
                 bankName = "EXIM Bank",
-                bankIconRes = 0,
+                bankIconRes = R.drawable.exim_bank,
                 legalStatus = "Public Limited Company",
                 establishedDate = 1999,
                 bankType = "Private Bank",
@@ -311,7 +312,7 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
             Bank(
                 bankId = 18,
                 bankName = "First Security Islami Bank Limited",
-                bankIconRes = 0,
+                bankIconRes = R.drawable.fsib,
                 legalStatus = "Public Limited Company",
                 establishedDate = 1999,
                 bankType = "Private Bank",
@@ -328,7 +329,7 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
             Bank(
                 bankId = 19,
                 bankName = "Global Islami Bank Limited",
-                bankIconRes = 0,
+                bankIconRes = R.drawable.gib,
                 legalStatus = "Public Limited Company",
                 establishedDate = 2013,
                 bankType = "Private Bank",
@@ -345,7 +346,7 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
             Bank(
                 bankId = 20,
                 bankName = "HSBC Bank",
-                bankIconRes = 0,
+                bankIconRes = R.drawable.hsbc,
                 legalStatus = "Public Limited Company",
                 establishedDate = 1836,
                 bankType = "Private Bank",
@@ -360,7 +361,7 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
             Bank(
                 bankId = 21,
                 bankName = "IFIC Bank",
-                bankIconRes = 0,
+                bankIconRes = R.drawable.ific,
                 legalStatus = "Public Limited Company",
                 establishedDate = 1976,
                 bankType = "Private Bank",
@@ -377,7 +378,7 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
             Bank(
                 bankId = 22,
                 bankName = "Islami Bank Bangladesh Limited",
-                bankIconRes = 0,
+                bankIconRes = R.drawable.islami_bank,
                 legalStatus = "Public Limited Company",
                 establishedDate = 1983,
                 bankType = "Private Bank",
@@ -394,7 +395,7 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
             Bank(
                 bankId = 23,
                 bankName = "Jamuna Bank",
-                bankIconRes = 0,
+                bankIconRes = R.drawable.jamuna_bank,
                 legalStatus = "Public Limited Company",
                 establishedDate = 2001,
                 bankType = "Private Bank",
@@ -410,7 +411,7 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
             Bank(
                 bankId = 24,
                 bankName = "Janata Bank",
-                bankIconRes = 0,
+                bankIconRes = R.drawable.janata_bank,
                 legalStatus = "Public Limited Company",
                 establishedDate = 1971,
                 bankType = "Private Bank",
@@ -425,7 +426,7 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
             Bank(
                 bankId = 25,
                 bankName = "Meghna Bank Limited",
-                bankIconRes = 0,
+                bankIconRes = R.drawable.meghna_bank,
                 legalStatus = "Public Limited Company",
                 establishedDate = 2013,
                 bankType = "Private Bank",
@@ -441,7 +442,7 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
             Bank(
                 bankId = 26,
                 bankName = "Mercantile Bank Limited",
-                bankIconRes = 0,
+                bankIconRes = R.drawable.mercentile_bank,
                 legalStatus = "Public Limited Company",
                 establishedDate = 1999,
                 bankType = "Private Bank",
@@ -458,7 +459,7 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
             Bank(
                 bankId = 27,
                 bankName = "Midland Bank Limited",
-                bankIconRes = 0,
+                bankIconRes = R.drawable.midland_bank,
                 legalStatus = "Public Limited Company",
                 establishedDate = 2013,
                 bankType = "Private Bank",
@@ -474,7 +475,7 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
             Bank(
                 bankId = 28,
                 bankName = "Modhumoti Bank Limited",
-                bankIconRes = 0,
+                bankIconRes = R.drawable.modhumati_bank,
                 legalStatus = "Public Limited Company",
                 establishedDate = 2013,
                 bankType = "Private Bank",
@@ -490,7 +491,7 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
             Bank(
                 bankId = 29,
                 bankName = "Mutual Trust Bank",
-                bankIconRes = 0,
+                bankIconRes = R.drawable.mtb,
                 legalStatus = "Public Limited Company",
                 establishedDate = 1999,
                 bankType = "Private Bank",
@@ -507,7 +508,7 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
             Bank(
                 bankId = 30,
                 bankName = "National Bank Limited",
-                bankIconRes = 0,
+                bankIconRes = R.drawable.national_bank,
                 legalStatus = "Public Limited Company",
                 establishedDate = 1983,
                 bankType = "Private Bank",
@@ -523,7 +524,7 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
             Bank(
                 bankId = 31,
                 bankName = "NCC (National Credit & Commerce Bank Limited)",
-                bankIconRes = 0,
+                bankIconRes = R.drawable.ncc_bank,
                 legalStatus = "Public Limited Company",
                 establishedDate = 1985,
                 bankType = "Private Bank",
@@ -540,7 +541,7 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
             Bank(
                 bankId = 32,
                 bankName = "NRB Bank Limited",
-                bankIconRes = 0,
+                bankIconRes = R.drawable.nrb_bank,
                 legalStatus = "Public Limited Company",
                 establishedDate = 2013,
                 bankType = "Private Bank",
@@ -556,7 +557,7 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
             Bank(
                 bankId = 33,
                 bankName = "One Bank Limited",
-                bankIconRes = 0,
+                bankIconRes = R.drawable.one_bank,
                 legalStatus = "Public Limited Company",
                 establishedDate = 1999,
                 bankType = "Private Bank",
@@ -573,7 +574,7 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
             Bank(
                 bankId = 34,
                 bankName = "Padma Bank Limited",
-                bankIconRes = 0,
+                bankIconRes = R.drawable.padma_bank,
                 legalStatus = "Public Limited Company",
                 establishedDate = 2019,
                 bankType = "Private Bank",
@@ -589,7 +590,7 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
             Bank(
                 bankId = 35,
                 bankName = "The Premier Bank Limited",
-                bankIconRes = 0,
+                bankIconRes = R.drawable.premiere_bank,
                 legalStatus = "Public Limited Company",
                 establishedDate = 1999,
                 bankType = "Private Bank",
@@ -605,7 +606,7 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
             Bank(
                 bankId = 36,
                 bankName = "Prime Bank Limited",
-                bankIconRes = 0,
+                bankIconRes = R.drawable.prime,
                 legalStatus = "Public Limited Company",
                 establishedDate = 1971,
                 bankType = "Private Bank",
@@ -622,7 +623,7 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
             Bank(
                 bankId = 37,
                 bankName = "Probashi Kallyan Bank",
-                bankIconRes = 0,
+                bankIconRes = R.drawable.probashi,
                 legalStatus = "Public Limited Company",
                 establishedDate = 2010,
                 bankType = "Private Bank",
@@ -634,7 +635,7 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
             Bank(
                 bankId = 38,
                 bankName = "Pubali Bank Limited",
-                bankIconRes = 0,
+                bankIconRes = R.drawable.pubali,
                 legalStatus = "Public Limited Company",
                 establishedDate = 1972,
                 bankType = "Private Bank",
@@ -651,7 +652,7 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
             Bank(
                 bankId = 39,
                 bankName = "Rupali Bank Limited",
-                bankIconRes = 0,
+                bankIconRes = R.drawable.rupali,
                 legalStatus = "Public Limited Company",
                 establishedDate = 1986,
                 bankType = "Private Bank",
@@ -667,7 +668,7 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
             Bank(
                 bankId = 40,
                 bankName = "Shahjalal Islami Bank Limited",
-                bankIconRes = 0,
+                bankIconRes = R.drawable.shahjalal_bank,
                 legalStatus = "Public Limited Company",
                 establishedDate = 2001,
                 bankType = "Private Bank",
@@ -684,7 +685,7 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
             Bank(
                 bankId = 41,
                 bankName = "Shimanto Bank Limited",
-                bankIconRes = 0,
+                bankIconRes = R.drawable.shimanto_bank,
                 legalStatus = "Public Limited Company",
                 establishedDate = 2016,
                 bankType = "Private Bank",
@@ -700,7 +701,7 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
             Bank(
                 bankId = 42,
                 bankName = "Social Islami Bank Limited",
-                bankIconRes = 0,
+                bankIconRes = R.drawable.sibl,
                 legalStatus = "Public Limited Company",
                 establishedDate = 1995,
                 bankType = "Private Bank",
@@ -717,7 +718,7 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
             Bank(
                 bankId = 43,
                 bankName = "Sonali Bank Limited",
-                bankIconRes = 0,
+                bankIconRes = R.drawable.sbl,
                 legalStatus = "Public Limited Company",
                 establishedDate = 1972,
                 bankType = "Private Bank",
@@ -733,7 +734,7 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
             Bank(
                 bankId = 44,
                 bankName = "Southeast Bank Limited",
-                bankIconRes = 0,
+                bankIconRes = R.drawable.southeast,
                 legalStatus = "Public Limited Company",
                 establishedDate = 1995,
                 bankType = "Private Bank",
@@ -750,7 +751,7 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
             Bank(
                 bankId = 45,
                 bankName = "Standard Chartered Bank",
-                bankIconRes = 0,
+                bankIconRes = R.drawable.standard_bank,
                 legalStatus = "Public Limited Company",
                 establishedDate = 1948,
                 bankType = "Private Bank",
@@ -766,7 +767,7 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
             Bank(
                 bankId = 46,
                 bankName = "Trust Bank Limited",
-                bankIconRes = 0,
+                bankIconRes = R.drawable.trust_bank,
                 legalStatus = "Public Limited Company",
                 establishedDate = 1999,
                 bankType = "Private Bank",
@@ -783,7 +784,7 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
             Bank(
                 bankId = 47,
                 bankName = "Union Bank Limited",
-                bankIconRes = 0,
+                bankIconRes = R.drawable.union_bank,
                 legalStatus = "Public Limited Company",
                 establishedDate = 2013,
                 bankType = "Private Bank",
@@ -798,7 +799,7 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
             Bank(
                 bankId = 48,
                 bankName = "United Commercial Bank Limited",
-                bankIconRes = 0,
+                bankIconRes = R.drawable.ucb,
                 legalStatus = "Public Limited Company",
                 establishedDate = 1983,
                 bankType = "Private Bank",
@@ -815,7 +816,7 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
             Bank(
                 bankId = 49,
                 bankName = "Uttara Bank Limited",
-                bankIconRes = 0,
+                bankIconRes = R.drawable.uttara,
                 legalStatus = "Public Limited Company",
                 establishedDate = 1965,
                 bankType = "Private Bank",
