@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -11,6 +11,7 @@
         <androidx.appcompat.widget.AppCompatTextView
             style="@style/BoldTextStyle"
             android:id="@+id/tvHeadingBankList"
+            app:layout_constraintTop_toTopOf="parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_8sdp"
@@ -18,16 +19,31 @@
             android:paddingHorizontal="@dimen/_4sdp"
             android:text="@string/bank_list"/>
 
+        <TextView
+            style="@style/SemiBoldTextStyle"
+            android:id="@+id/tvSeeAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textColor="@color/raisin_black"
+            android:layout_marginEnd="@dimen/_8sdp"
+            android:gravity="center"
+            android:textSize="@dimen/_10ssp"
+            android:text="@string/see_all"
+            app:drawableEndCompat="@drawable/ic_arrow_forward" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvBankList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tvHeadingBankList"
             android:clipToPadding="false"
             android:orientation="horizontal"
             android:overScrollMode="never"
             android:paddingHorizontal="@dimen/_4sdp"
             tools:itemCount="3"
             tools:listitem="@layout/recycler_item_bank_list" />
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

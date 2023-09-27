@@ -46,7 +46,9 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun initListeners(){
+        binding.layoutBankList.tvSeeAll.setOnClickListener {
 
+        }
     }
 
     private fun initObservers(){

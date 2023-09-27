@@ -33,7 +33,7 @@ class HomeViewModel: ViewModel(){
 
     fun fetchBankList(){
         viewModelScope.launch {
-            val response = homeRepository.fetchBankList()
+            val response = homeRepository.fetchBankList().take(5)
             bankList.postValue(response)
         }
     }
