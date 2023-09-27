@@ -1,11 +1,11 @@
-package com.reader.bd_bank_info.data.repository
+package com.reader.bd_bank_info.data.repository.bank
 
 import com.reader.bd_bank_info.R
 import com.reader.bd_bank_info.data.datasource.HomeApi
 import com.reader.bd_bank_info.data.model.Bank
 import com.reader.bd_bank_info.data.model.NavigationRail
 
-class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
+class BankRepositoryImpl(private val homeApi: HomeApi) : BankRepository {
     override suspend fun fetchNavigationRailItems(): List<NavigationRail> {
         return fetchLocalNavigationRailData()
     }

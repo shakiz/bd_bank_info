@@ -1,4 +1,4 @@
-package com.reader.bd_bank_info.ui
+package com.reader.bd_bank_info.ui.bank
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -11,7 +11,7 @@ import com.reader.bd_bank_info.data.model.NavigationRail
 import com.reader.bd_bank_info.data.repository.home.HomeRepositoryImpl
 import kotlinx.coroutines.launch
 
-class HomeViewModel: ViewModel(){
+class BankViewModel: ViewModel(){
     private var homeRepository = HomeRepositoryImpl(HomeApi(AppInjector.getRestApiClient("http://data.fixer.io/api/")))
     private var navigationRailList = MutableLiveData<List<NavigationRail>>()
     private var bankList = MutableLiveData<List<Bank>>()

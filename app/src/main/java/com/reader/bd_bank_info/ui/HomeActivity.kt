@@ -1,5 +1,6 @@
 package com.reader.bd_bank_info.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -11,6 +12,7 @@ import com.reader.bd_bank_info.R
 import com.reader.bd_bank_info.databinding.ActivityMainBinding
 import com.reader.bd_bank_info.ui.adapters.BankItemAdapter
 import com.reader.bd_bank_info.ui.adapters.NavRailAdapter
+import com.reader.bd_bank_info.ui.bank.BankListActivity
 import com.reader.bd_bank_info.utils.SpaceItemDecoration
 import com.reader.bd_bank_info.utils.dimenSize
 
@@ -47,7 +49,7 @@ class HomeActivity : AppCompatActivity() {
 
     private fun initListeners(){
         binding.layoutBankList.tvSeeAll.setOnClickListener {
-
+            startActivity(Intent(this, BankListActivity::class.java))
         }
     }
 
