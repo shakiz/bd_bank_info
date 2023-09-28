@@ -3,33 +3,11 @@ package com.reader.bd_bank_info.data.repository.bank
 import com.reader.bd_bank_info.R
 import com.reader.bd_bank_info.data.datasource.HomeApi
 import com.reader.bd_bank_info.data.model.Bank
-import com.reader.bd_bank_info.data.model.NavigationRail
 
 class BankRepositoryImpl(private val homeApi: HomeApi) : BankRepository {
-    override suspend fun fetchNavigationRailItems(): List<NavigationRail> {
-        return fetchLocalNavigationRailData()
-    }
 
     override suspend fun fetchBankList(): List<Bank> {
         return fetchLocalBankList()
-    }
-
-    private fun fetchLocalNavigationRailData(): List<NavigationRail> {
-        return listOf(
-            NavigationRail(titleEn = "Home", titleBn = "Home", identifier = "home"),
-            NavigationRail(
-                titleEn = "Currency Rates",
-                titleBn = "Currency Rates",
-                identifier = "currency-rates"
-            ),
-            NavigationRail(titleEn = "Loan", titleBn = "Loan", identifier = "loan"),
-            NavigationRail(
-                titleEn = "Swift Codes",
-                titleBn = "Swift Codes",
-                identifier = "swift-codes"
-            ),
-            NavigationRail(titleEn = "Support", titleBn = "Support", identifier = "Support")
-        )
     }
 
     private fun fetchLocalBankList(): List<Bank> {

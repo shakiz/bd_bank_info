@@ -8,11 +8,13 @@ import com.reader.bd_bank_info.AppInjector
 import com.reader.bd_bank_info.data.datasource.HomeApi
 import com.reader.bd_bank_info.data.model.Bank
 import com.reader.bd_bank_info.data.model.NavigationRail
+import com.reader.bd_bank_info.data.repository.bank.BankRepositoryImpl
 import com.reader.bd_bank_info.data.repository.home.HomeRepositoryImpl
 import kotlinx.coroutines.launch
 
 class HomeViewModel: ViewModel(){
     private var homeRepository = HomeRepositoryImpl(HomeApi(AppInjector.getRestApiClient("http://data.fixer.io/api/")))
+    private var bankRepository = BankRepositoryImpl(HomeApi(AppInjector.getRestApiClient("http://data.fixer.io/api/")))
     private var navigationRailList = MutableLiveData<List<NavigationRail>>()
     private var bankList = MutableLiveData<List<Bank>>()
 
@@ -33,7 +35,7 @@ class HomeViewModel: ViewModel(){
 
     fun fetchBankList(){
         viewModelScope.launch {
-            val response = homeRepository.fetchBankList().take(5)
+            val response = bankRepository.fetchBankList().take(5)
             bankList.postValue(response)
         }
     }
