@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rectangle_white_generic_layout"
+        android:orientation="vertical">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cvIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            app:cardCornerRadius="@dimen/_12sdp"
+            app:cardBackgroundColor="@color/md_grey_50"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ivSlider"
+                android:layout_width="@dimen/_48sdp"
+                android:layout_height="@dimen/_48sdp"
+                android:scaleType="centerCrop"
+                android:padding="@dimen/_1sdp"
+                app:shapeAppearanceOverlay="@style/roundedImageViewGenericSliderStyle"
+                tools:src="@drawable/ic_placeholder"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTitle"
+            style="@style/BoldTextStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/cvIcon"
+            app:layout_constraintTop_toTopOf="@id/cvIcon"
+            app:layout_constraintEnd_toStartOf="@id/ibSearchButton"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            android:ellipsize="end"
+            android:fontFamily="@font/roboto_bold"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:padding="0dp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_10sdp"
+            android:textStyle="bold"
+            app:fontFamily="@font/roboto_bold"
+            tools:text="AB Bank" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvEstablishedAtAndCategory"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle"
+            app:layout_constraintStart_toEndOf="@id/cvIcon"
+            app:layout_constraintBottom_toTopOf="@id/tvType"
+            app:layout_constraintEnd_toStartOf="@id/ibSearchButton"
+            android:ellipsize="end"
+            android:fontFamily="@font/roboto_regular"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:padding="0dp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_9ssp"
+            tools:text="Commercial Bank, Established at 1989" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvType"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            app:layout_constraintTop_toBottomOf="@id/tvEstablishedAtAndCategory"
+            app:layout_constraintStart_toEndOf="@id/cvIcon"
+            app:layout_constraintBottom_toBottomOf="@id/cvIcon"
+            app:layout_constraintEnd_toStartOf="@id/ibSearchButton"
+            android:ellipsize="end"
+            android:fontFamily="@font/roboto_regular"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:padding="0dp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_9ssp"
+            tools:text="Private  Bank"/>
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ibSearchButton"
+            android:layout_width="@dimen/_24sdp"
+            android:layout_height="@dimen/_24sdp"
+            android:layout_margin="4dp"
+            android:padding="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@color/md_grey_100"
+            android:src="@drawable/ic_search_black"
+            app:shapeAppearanceOverlay="@style/roundedImageViewGenericSliderStyle"
+            app:tint="@color/raisin_black"
+            android:layout_gravity="center"/>
+
+        <ImageButton
+            android:id="@+id/ibRefreshButton"
+            android:layout_width="@dimen/_24sdp"
+            android:layout_height="@dimen/_24sdp"
+            app:layout_constraintTop_toBottomOf="@id/ibSearchButton"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_margin="4dp"
+            android:padding="8dp"
+            android:background="@color/transparent"
+            app:tint="@color/raisin_black"
+            android:src="@drawable/ic_refresh_black"
+            android:layout_gravity="center"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
