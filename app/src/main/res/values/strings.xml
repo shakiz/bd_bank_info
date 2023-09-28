@@ -5,4 +5,5 @@
     <string name="error_msg_unknown_error">Error!! Something went wrong.</string>
     <string name="bank_list">Bank List</string>
     <string name="see_all">See All</string>
+    <string name="name_search">Search Bank List</string>
 </resources>
