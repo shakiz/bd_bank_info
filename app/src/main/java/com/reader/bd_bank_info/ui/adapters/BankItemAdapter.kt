@@ -6,14 +6,14 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.reader.bd_bank_info.data.model.Bank
-import com.reader.bd_bank_info.databinding.RecyclerItemBankListBinding
+import com.reader.bd_bank_info.databinding.RecyclerItemHorizontalBankListBinding
 import com.reader.bd_bank_info.utils.*
 
 class BankItemAdapter : RecyclerView.Adapter<BankItemAdapter.BankViewHolder>() {
     private val items = ArrayList<Bank>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BankViewHolder {
-        val binding = RecyclerItemBankListBinding.inflate(
+        val binding = RecyclerItemHorizontalBankListBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
@@ -51,7 +51,7 @@ class BankItemAdapter : RecyclerView.Adapter<BankItemAdapter.BankViewHolder>() {
         diffResult.dispatchUpdatesTo(this)
     }
 
-    class BankViewHolder(val binding: RecyclerItemBankListBinding) :
+    class BankViewHolder(val binding: RecyclerItemHorizontalBankListBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bindItem(bank: Bank) {

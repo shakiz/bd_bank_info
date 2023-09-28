@@ -20,7 +20,7 @@ class BankViewModel: ViewModel(){
 
     fun fetchBankList(){
         viewModelScope.launch {
-            val response = bankRepository.fetchBankList().take(5)
+            val response = bankRepository.fetchBankList()
             bankList.postValue(response)
         }
     }
