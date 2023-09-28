@@ -37,6 +37,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvBankList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_4sdp"
+            app:layout_constraintTop_toBottomOf="@id/search_layout"
+            android:clipToPadding="false"
+            android:orientation="horizontal"
+            android:overScrollMode="never"
+            android:paddingHorizontal="@dimen/_4sdp"
+            tools:itemCount="3"
+            tools:listitem="@layout/recycler_item_vertical_bank_list" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

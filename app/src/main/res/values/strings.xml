@@ -6,4 +6,5 @@
     <string name="bank_list">Bank List</string>
     <string name="see_all">See All</string>
     <string name="name_search">Search Bank List</string>
+    <string name="x_s_established_x_s">%s, Established at %s</string>
 </resources>
