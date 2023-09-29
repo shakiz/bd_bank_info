@@ -17,8 +17,8 @@
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             app:navigationIcon="?attr/homeAsUpIndicator"
-            app:title="@string/bank_list"
-            app:popupTheme="@style/Theme.Bd_bank_info.PopupOverlay" />
+            app:popupTheme="@style/Theme.Bd_bank_info.PopupOverlay"
+            app:title="@string/bank_list" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -28,25 +28,25 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <include
-            android:id="@+id/search_layout"
-            android:layout_marginEnd="@dimen/_12sdp"
-            android:layout_marginStart="@dimen/_12sdp"
-            android:layout_marginTop="@dimen/_12sdp"
-            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/searchLayout"
             layout="@layout/custom_search_panel_name"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvBankList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_4sdp"
-            app:layout_constraintTop_toBottomOf="@id/search_layout"
             android:clipToPadding="false"
             android:orientation="horizontal"
             android:overScrollMode="never"
             android:paddingHorizontal="@dimen/_4sdp"
+            app:layout_constraintTop_toBottomOf="@id/searchLayout"
             tools:itemCount="3"
             tools:listitem="@layout/recycler_item_vertical_bank_list" />
 

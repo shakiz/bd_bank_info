@@ -100,13 +100,12 @@
             android:layout_width="@dimen/_24sdp"
             android:layout_height="@dimen/_24sdp"
             android:layout_margin="4dp"
-            android:padding="4dp"
+            android:padding="2dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:background="@color/md_grey_100"
-            android:src="@drawable/ic_search_black"
+            android:src="@drawable/ic_call"
             app:shapeAppearanceOverlay="@style/roundedImageViewGenericSliderStyle"
-            app:tint="@color/raisin_black"
             android:layout_gravity="center"/>
 
         <ImageButton
@@ -117,10 +116,9 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_margin="4dp"
-            android:padding="8dp"
+            android:padding="4dp"
             android:background="@color/transparent"
-            app:tint="@color/raisin_black"
-            android:src="@drawable/ic_refresh_black"
+            android:src="@drawable/ic_email"
             android:layout_gravity="center"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

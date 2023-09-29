@@ -39,6 +39,14 @@ class BankListActivity : AppCompatActivity() {
 
     private fun initListeners() {
         binding.toolbar.setNavigationOnClickListener { onBackPressed() }
+
+        binding.searchLayout.ibSearchButton.setOnClickListener {
+            viewModel.searchBankItem(binding.searchLayout.etSearchName.text.toString())
+        }
+
+        binding.searchLayout.ibRefreshButton.setOnClickListener {
+            viewModel.fetchBankList()
+        }
     }
 
     private fun initObservers() {

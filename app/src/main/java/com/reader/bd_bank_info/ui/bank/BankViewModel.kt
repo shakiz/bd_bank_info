@@ -12,16 +12,26 @@ import kotlinx.coroutines.launch
 
 class BankViewModel: ViewModel(){
     private var bankRepository = BankRepositoryImpl(HomeApi(AppInjector.getRestApiClient("http://data.fixer.io/api/")))
-    private var bankList = MutableLiveData<List<Bank>>()
+    private var bankList = ArrayList<Bank>()
+    private var filteredBankList = MutableLiveData<List<Bank>>()
 
     fun onBankListFetched() : LiveData<List<Bank>?>{
-        return bankList
+        return filteredBankList
     }
 
     fun fetchBankList(){
         viewModelScope.launch {
             val response = bankRepository.fetchBankList()
-            bankList.postValue(response)
+            bankList.addAll(response)
+            filteredBankList.postValue(response)
         }
+    }
+
+    fun searchBankItem(bankName: String){
+        if(bankName.isEmpty()){
+            return
+        }
+        val newList = bankList.filter { bank: Bank -> bank.bankName?.lowercase() == bankName.lowercase() }
+        filteredBankList.postValue(newList)
     }
 }
