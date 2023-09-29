@@ -8,6 +8,7 @@ import com.reader.bd_bank_info.AppInjector
 import com.reader.bd_bank_info.data.datasource.HomeApi
 import com.reader.bd_bank_info.data.model.Bank
 import com.reader.bd_bank_info.data.repository.bank.BankRepositoryImpl
+import com.reader.bd_bank_info.utils.orFalse
 import kotlinx.coroutines.launch
 
 class BankViewModel: ViewModel(){
@@ -31,7 +32,7 @@ class BankViewModel: ViewModel(){
         if(bankName.isEmpty()){
             return
         }
-        val newList = bankList.filter { bank: Bank -> bank.bankName?.lowercase() == bankName.lowercase() }
+        val newList = bankList.filter { bank: Bank -> bank.bankName?.lowercase()?.contains(bankName.lowercase()).orFalse() }
         filteredBankList.postValue(newList)
     }
 }
