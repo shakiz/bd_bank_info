@@ -7,10 +7,12 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.reader.bd_bank_info.data.model.Bank
 import com.reader.bd_bank_info.databinding.RecyclerItemHorizontalBankListBinding
+import com.reader.bd_bank_info.ui.bank.BankItemClickListener
 import com.reader.bd_bank_info.utils.*
 
 class BankItemAdapter : RecyclerView.Adapter<BankItemAdapter.BankViewHolder>() {
     private val items = ArrayList<Bank>()
+    private var bankItemClickListener: BankItemClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BankViewHolder {
         val binding = RecyclerItemHorizontalBankListBinding.inflate(
@@ -20,9 +22,13 @@ class BankItemAdapter : RecyclerView.Adapter<BankItemAdapter.BankViewHolder>() {
         )
         return BankViewHolder(binding).apply {
             itemView.setOnClickListener {
-                //callback?.onNavRailItemClick(items[bindingAdapterPosition])
+                bankItemClickListener?.onItemClick(items[adapterPosition])
             }
         }
+    }
+
+    fun setOnItemClickListener(bankItemClickListener: BankItemClickListener){
+        this.bankItemClickListener = bankItemClickListener
     }
 
     override fun onBindViewHolder(holder: BankViewHolder, position: Int) {

@@ -12,6 +12,11 @@
         android:theme="@style/Theme.Bd_bank_info"
         tools:targetApi="31" >
         <activity
+            android:name=".ui.bank.BankDetailsActivity"
+            android:exported="false"
+            android:label="@string/details"
+            android:theme="@style/Theme.Bd_bank_info.NoActionBar" />
+        <activity
             android:name=".ui.bank.BankListActivity"
             android:exported="false"
             android:label="@string/bank_list"

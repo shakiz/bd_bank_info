@@ -8,10 +8,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.reader.bd_bank_info.R
 import com.reader.bd_bank_info.data.model.Bank
 import com.reader.bd_bank_info.databinding.RecyclerItemVerticalBankListBinding
+import com.reader.bd_bank_info.ui.bank.BankItemClickListener
 import com.reader.bd_bank_info.utils.*
 
 class BankVerticalItemAdapter : RecyclerView.Adapter<BankVerticalItemAdapter.BankVerticalViewHolder>() {
     private val items = ArrayList<Bank>()
+    private var bankItemClickListener: BankItemClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BankVerticalViewHolder {
         val binding = RecyclerItemVerticalBankListBinding.inflate(
@@ -21,7 +23,7 @@ class BankVerticalItemAdapter : RecyclerView.Adapter<BankVerticalItemAdapter.Ban
         )
         return BankVerticalViewHolder(binding).apply {
             itemView.setOnClickListener {
-                //callback?.onNavRailItemClick(items[bindingAdapterPosition])
+                bankItemClickListener?.onItemClick(items[adapterPosition])
             }
         }
     }
@@ -31,6 +33,10 @@ class BankVerticalItemAdapter : RecyclerView.Adapter<BankVerticalItemAdapter.Ban
     }
 
     override fun getItemCount() = items.size
+
+    fun setItemClickListener(bankItemClickListener: BankItemClickListener){
+        this.bankItemClickListener = bankItemClickListener
+    }
 
     fun addItems(navRails: List<Bank>) {
         val oldData = ArrayList(items)
