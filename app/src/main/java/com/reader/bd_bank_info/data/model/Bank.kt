@@ -1,5 +1,9 @@
 package com.reader.bd_bank_info.data.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class Bank(
     val bankId: Int? = null,
     val bankName: String? = null,
@@ -16,4 +20,4 @@ data class Bank(
     val address: String? = null,
     val swiftCode: String? = null,
     val stockCode: String? = null
-)
+) : Parcelable

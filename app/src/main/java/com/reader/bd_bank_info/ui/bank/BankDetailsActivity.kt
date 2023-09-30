@@ -1,21 +1,30 @@
 package com.reader.bd_bank_info.ui.bank
 
+import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.reader.bd_bank_info.data.model.Bank
 import com.reader.bd_bank_info.databinding.ActivityBankDetailsBinding
-import com.reader.bd_bank_info.ui.adapters.BankVerticalItemAdapter
+import com.reader.bd_bank_info.utils.ITEM_BANK
 
 class BankDetailsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityBankDetailsBinding
     private lateinit var viewModel: BankViewModel
-    private val bankItemAdapter = BankVerticalItemAdapter()
+    private var bank: Bank? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBankDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        bank =
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                intent.getParcelableExtra(ITEM_BANK, Bank::class.java)
+            } else {
+                intent.getParcelableExtra(ITEM_BANK)
+            }
 
         viewModel =
             ViewModelProvider(this)[BankViewModel::class.java]
@@ -36,10 +45,6 @@ class BankDetailsActivity : AppCompatActivity() {
     }
 
     private fun initObservers() {
-        viewModel.onBankListFetched().observe(this) { bankList ->
-            bankList?.let {
-                bankItemAdapter.addItems(bankList)
-            }
-        }
+
     }
 }

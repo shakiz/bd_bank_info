@@ -16,6 +16,7 @@ import com.reader.bd_bank_info.ui.adapters.NavRailAdapter
 import com.reader.bd_bank_info.ui.bank.BankDetailsActivity
 import com.reader.bd_bank_info.ui.bank.BankItemClickListener
 import com.reader.bd_bank_info.ui.bank.BankListActivity
+import com.reader.bd_bank_info.utils.ITEM_BANK
 import com.reader.bd_bank_info.utils.SpaceItemDecoration
 import com.reader.bd_bank_info.utils.dimenSize
 
@@ -96,6 +97,6 @@ class HomeActivity : AppCompatActivity(), BankItemClickListener {
     }
 
     override fun onItemClick(bank: Bank) {
-        startActivity(Intent(this, BankDetailsActivity::class.java))
+        startActivity(Intent(this, BankDetailsActivity::class.java).putExtra(ITEM_BANK, bank))
     }
 }

@@ -12,6 +12,7 @@ import com.intuit.sdp.R
 import com.reader.bd_bank_info.data.model.Bank
 import com.reader.bd_bank_info.databinding.ActivityBankListBinding
 import com.reader.bd_bank_info.ui.adapters.BankVerticalItemAdapter
+import com.reader.bd_bank_info.utils.ITEM_BANK
 import com.reader.bd_bank_info.utils.SpaceItemDecoration
 import com.reader.bd_bank_info.utils.dimenSize
 
@@ -84,6 +85,6 @@ class BankListActivity : AppCompatActivity(), BankItemClickListener {
     }
 
     override fun onItemClick(bank: Bank) {
-        startActivity(Intent(this, BankDetailsActivity::class.java))
+        startActivity(Intent(this, BankDetailsActivity::class.java).putExtra(ITEM_BANK, bank))
     }
 }
