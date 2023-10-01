@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.reader.bd_bank_info.R
 import com.reader.bd_bank_info.data.model.Bank
+import com.reader.bd_bank_info.data.model.NavigationRail
 import com.reader.bd_bank_info.databinding.ActivityMainBinding
 import com.reader.bd_bank_info.ui.adapters.BankItemAdapter
 import com.reader.bd_bank_info.ui.adapters.NavRailAdapter
@@ -20,7 +21,7 @@ import com.reader.bd_bank_info.utils.ITEM_BANK
 import com.reader.bd_bank_info.utils.SpaceItemDecoration
 import com.reader.bd_bank_info.utils.dimenSize
 
-class HomeActivity : AppCompatActivity(), BankItemClickListener {
+class HomeActivity : AppCompatActivity(), BankItemClickListener, NavRailAdapter.NavRailClickListener {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var viewModel: HomeViewModel
@@ -98,5 +99,9 @@ class HomeActivity : AppCompatActivity(), BankItemClickListener {
 
     override fun onItemClick(bank: Bank) {
         startActivity(Intent(this, BankDetailsActivity::class.java).putExtra(ITEM_BANK, bank))
+    }
+
+    override fun onItemClick(navRail: NavigationRail) {
+
     }
 }

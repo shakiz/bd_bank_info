@@ -12,6 +12,7 @@ import com.reader.bd_bank_info.utils.*
 class NavRailAdapter : RecyclerView.Adapter<NavRailAdapter.NavigationRailViewHolder>() {
 
     private val items = ArrayList<NavigationRail>()
+    private var navRailClickListener: NavRailClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NavigationRailViewHolder {
         val binding = RecyclerItemNavigationRailBinding.inflate(
@@ -21,7 +22,7 @@ class NavRailAdapter : RecyclerView.Adapter<NavRailAdapter.NavigationRailViewHol
         )
         return NavigationRailViewHolder(binding).apply {
             itemView.setOnClickListener {
-                //callback?.onNavRailItemClick(items[bindingAdapterPosition])
+                navRailClickListener?.onItemClick(items[adapterPosition])
             }
         }
     }
@@ -31,6 +32,10 @@ class NavRailAdapter : RecyclerView.Adapter<NavRailAdapter.NavigationRailViewHol
     }
 
     override fun getItemCount() = items.size
+
+    fun setItemClickListener(navRailClickListener: NavRailClickListener){
+        this.navRailClickListener = navRailClickListener
+    }
 
     fun addItems(navRails: List<NavigationRail>) {
         val oldData = ArrayList(items)
@@ -68,5 +73,9 @@ class NavRailAdapter : RecyclerView.Adapter<NavRailAdapter.NavigationRailViewHol
 
             binding.tvTitle.text = navRail.titleEn
         }
+    }
+
+    interface NavRailClickListener{
+        fun onItemClick(navRail: NavigationRail)
     }
 }
