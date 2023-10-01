@@ -22,6 +22,11 @@
             android:label="@string/bank_list"
             android:theme="@style/Theme.Bd_bank_info.NoActionBar" />
         <activity
+            android:name=".ui.swiftcode.SwiftCodeListActivity"
+            android:exported="false"
+            android:label="@string/swift_code_list"
+            android:theme="@style/Theme.Bd_bank_info.NoActionBar" />
+        <activity
             android:name=".ui.HomeActivity"
             android:exported="true"
             android:theme="@style/Theme.Bd_bank_info.NoActionBar" >
