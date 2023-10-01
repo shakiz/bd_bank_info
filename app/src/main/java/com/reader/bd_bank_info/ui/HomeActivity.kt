@@ -104,6 +104,7 @@ class HomeActivity : AppCompatActivity(), BankItemClickListener, NavRailAdapter.
     override fun onItemClick(navRail: NavigationRail) {
         when(navRail.identifier){
             IDENTIFIER_SWIFT_CODE -> startActivity(Intent(this, SwiftCodeListActivity::class.java))
+            IDENTIFIER_BANK -> startActivity(Intent(this, BankListActivity::class.java))
         }
     }
 }
