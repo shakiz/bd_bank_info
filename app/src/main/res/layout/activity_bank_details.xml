@@ -27,7 +27,111 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ivBankLogo"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintDimensionRatio="3:1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/roundedImageViewGenericSliderStyle"
+            tools:src="@drawable/ic_placeholder" />
 
+        <TextView
+            android:id="@+id/tvBankTitle"
+            style="@style/BoldTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/ivBankLogo"
+            tools:text="AB Bank" />
+
+        <TextView
+            android:id="@+id/tvBankLegalStatus"
+            style="@style/NormalTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tvBankTitle"
+            tools:text="Public Limited Bank" />
+
+        <TextView
+            android:id="@+id/tvBankType"
+            style="@style/NormalTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tvBankLegalStatus"
+            tools:text="Private Bank" />
+
+        <TextView
+            android:id="@+id/tvBankCategory"
+            style="@style/NormalTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tvBankType"
+            tools:text="Commercial Bank" />
+
+        <TextView
+            android:id="@+id/tvBankOrigin"
+            style="@style/NormalTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tvBankCategory"
+            tools:text="Local Bank" />
+
+        <TextView
+            android:id="@+id/tvBankCorporateAddress"
+            style="@style/NormalTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tvBankOrigin"
+            tools:text="Dhaka, Bangladesh" />
+
+        <TextView
+            android:id="@+id/tvHotlineNumber"
+            style="@style/NormalTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tvBankCorporateAddress"
+            tools:text="12345" />
+
+        <TextView
+            android:id="@+id/tvOverseas"
+            style="@style/NormalTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tvHotlineNumber"
+            tools:text="+34567890" />
+
+        <TextView
+            android:id="@+id/tvBankEmail"
+            style="@style/NormalTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tvOverseas"
+            tools:text="test@gmail.com" />
+
+        <TextView
+            android:id="@+id/tvBankWebsite"
+            style="@style/NormalTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tvBankEmail"
+            tools:text="www.google.com" />
+
+        <TextView
+            android:id="@+id/tvBankSwiftCode"
+            style="@style/NormalTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tvBankWebsite"
+            tools:text="AFGVB45678" />
+
+        <TextView
+            android:id="@+id/tvBankStockCode"
+            style="@style/NormalTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tvBankSwiftCode"
+            tools:text="GHJK" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

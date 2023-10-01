@@ -3,6 +3,7 @@ package com.reader.bd_bank_info.ui.bank
 import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.reader.bd_bank_info.data.model.Bank
 import com.reader.bd_bank_info.databinding.ActivityBankDetailsBinding
@@ -31,20 +32,35 @@ class BankDetailsActivity : AppCompatActivity() {
 
         initView()
         initListeners()
-        initObservers()
 
         viewModel.fetchBankList()
     }
 
     private fun initView() {
         setSupportActionBar(binding.toolbar)
+        setupBankDetailsUI()
     }
 
     private fun initListeners() {
         binding.toolbar.setNavigationOnClickListener { onBackPressed() }
     }
 
-    private fun initObservers() {
-
+    private fun setupBankDetailsUI(){
+        bank?.let {
+            it.bankIconRes?.let { res ->
+                binding.ivBankLogo.background = (ContextCompat.getDrawable(this, res))
+            }
+            binding.tvBankTitle.text = it.bankName
+            binding.tvBankLegalStatus.text = it.legalStatus
+            binding.tvBankType.text = it.bankType
+            binding.tvBankCategory.text = it.bankCategory
+            binding.tvBankOrigin.text = it.origin
+            binding.tvBankCorporateAddress.text = it.corporateAddress
+            binding.tvHotlineNumber.text = it.hotlineNo.toString()
+            binding.tvOverseas.text = it.hotlinePhoneNo
+            binding.tvBankWebsite.text = it.address
+            binding.tvBankSwiftCode.text = it.swiftCode
+            binding.tvBankStockCode.text = it.stockCode
+        }
     }
 }
