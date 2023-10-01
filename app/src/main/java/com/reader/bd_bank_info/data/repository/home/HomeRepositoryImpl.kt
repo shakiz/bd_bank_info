@@ -4,6 +4,7 @@ import com.reader.bd_bank_info.R
 import com.reader.bd_bank_info.data.datasource.HomeApi
 import com.reader.bd_bank_info.data.model.Bank
 import com.reader.bd_bank_info.data.model.NavigationRail
+import com.reader.bd_bank_info.utils.*
 
 class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
     override suspend fun fetchNavigationRailItems(): List<NavigationRail> {
@@ -12,19 +13,23 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
 
     private fun fetchLocalNavigationRailData(): List<NavigationRail> {
         return listOf(
-            NavigationRail(titleEn = "Home", titleBn = "Home", identifier = "home"),
+            NavigationRail(titleEn = "Home", titleBn = "Home", identifier = IDENTIFIER_HOME),
             NavigationRail(
                 titleEn = "Currency Rates",
                 titleBn = "Currency Rates",
-                identifier = "currency-rates"
+                identifier = IDENTIFIER_CURRENCY_RATES
             ),
-            NavigationRail(titleEn = "Loan", titleBn = "Loan", identifier = "loan"),
+            NavigationRail(titleEn = "Loan", titleBn = "Loan", identifier = IDENTIFIER_LOAN),
             NavigationRail(
                 titleEn = "Swift Codes",
                 titleBn = "Swift Codes",
-                identifier = "swift-codes"
+                identifier = IDENTIFIER_SWIFT_CODE
             ),
-            NavigationRail(titleEn = "Support", titleBn = "Support", identifier = "Support")
+            NavigationRail(
+                titleEn = "Support",
+                titleBn = "Support",
+                identifier = IDENTIFIER_SUPPORT
+            )
         )
     }
 }
