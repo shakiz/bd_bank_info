@@ -17,9 +17,8 @@ import com.reader.bd_bank_info.ui.adapters.NavRailAdapter
 import com.reader.bd_bank_info.ui.bank.BankDetailsActivity
 import com.reader.bd_bank_info.ui.bank.BankItemClickListener
 import com.reader.bd_bank_info.ui.bank.BankListActivity
-import com.reader.bd_bank_info.utils.ITEM_BANK
-import com.reader.bd_bank_info.utils.SpaceItemDecoration
-import com.reader.bd_bank_info.utils.dimenSize
+import com.reader.bd_bank_info.ui.swiftcode.SwiftCodeListActivity
+import com.reader.bd_bank_info.utils.*
 
 class HomeActivity : AppCompatActivity(), BankItemClickListener, NavRailAdapter.NavRailClickListener {
 
@@ -76,6 +75,7 @@ class HomeActivity : AppCompatActivity(), BankItemClickListener, NavRailAdapter.
         binding.rvNavRail.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
         binding.rvNavRail.addItemDecoration(SpaceItemDecoration(this.dimenSize(com.intuit.sdp.R.dimen._8sdp)))
         binding.rvNavRail.adapter = navRailAdapter
+        navRailAdapter.setItemClickListener(this)
     }
 
     private fun setUpBankListView(){
@@ -102,6 +102,8 @@ class HomeActivity : AppCompatActivity(), BankItemClickListener, NavRailAdapter.
     }
 
     override fun onItemClick(navRail: NavigationRail) {
-
+        when(navRail.identifier){
+            IDENTIFIER_SWIFT_CODE -> startActivity(Intent(this, SwiftCodeListActivity::class.java))
+        }
     }
 }
