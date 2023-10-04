@@ -55,58 +55,47 @@ class CommonWebViewActivity : AppCompatActivity() {
         initView()
     }
 
-
     private fun initView() {
         with(binding) {
             setSupportActionBar(binding.toolbar)
 
-            webView?.settings?.loadsImagesAutomatically = true
-            webView?.settings?.javaScriptEnabled = true
-            webView?.settings?.javaScriptCanOpenWindowsAutomatically = true
-            webView?.settings?.pluginState = WebSettings.PluginState.ON_DEMAND
-            webView?.settings?.mediaPlaybackRequiresUserGesture = false
-            if (Build.VERSION.SDK_INT >= 21) {
-                webView.settings.mixedContentMode =
-                    WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
-                CookieManager.getInstance()
-                    .setAcceptThirdPartyCookies(webView, true)
-            }
-            webView?.settings?.useWideViewPort = true
-            webView?.settings?.loadWithOverviewMode = true
-            webView?.isFocusableInTouchMode = true
-            webView?.settings?.allowFileAccessFromFileURLs = true
-            webView?.settings?.allowUniversalAccessFromFileURLs = true
-            webView?.settings?.domStorageEnabled = true
+            webView.settings.loadsImagesAutomatically = true
+            webView.settings.javaScriptCanOpenWindowsAutomatically = true
+            webView.settings.pluginState = WebSettings.PluginState.ON_DEMAND
+            webView.settings.mediaPlaybackRequiresUserGesture = false
+            webView.settings.mixedContentMode =
+                WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
+            CookieManager.getInstance()
+                .setAcceptThirdPartyCookies(webView, true)
+            webView.settings.useWideViewPort = true
+            webView.settings.loadWithOverviewMode = true
+            webView.isFocusableInTouchMode = true
+            webView.settings.allowFileAccessFromFileURLs = true
+            webView.settings.allowUniversalAccessFromFileURLs = true
+            webView.settings.domStorageEnabled = true
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                webView?.settings?.safeBrowsingEnabled = false
+                webView.settings.safeBrowsingEnabled = false
             }
-            webView?.settings?.cacheMode = WebSettings.LOAD_NO_CACHE
-            try {
-                if (Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-                    // only for gingerbread and newer versions
-                    progressBar?.visibility = View.VISIBLE
-                    progressBar?.progressTintList =
-                        ColorStateList.valueOf(
-                            ContextCompat.getColor(
-                                this@CommonWebViewActivity,
-                                R.color.colorPrimaryDark
-                            )
-                        )
-                    progressBar?.indeterminateDrawable?.setTint(
-                        ContextCompat.getColor(
-                            this@CommonWebViewActivity,
-                            R.color.colorPrimary
-                        )
+            webView.settings.cacheMode = WebSettings.LOAD_NO_CACHE
+            progressBar.visibility = View.VISIBLE
+            progressBar.progressTintList =
+                ColorStateList.valueOf(
+                    ContextCompat.getColor(
+                        this@CommonWebViewActivity,
+                        R.color.colorPrimaryDark
                     )
-                }
-            } catch (ex: Exception) {
-
-            }
+                )
+            progressBar.indeterminateDrawable?.setTint(
+                ContextCompat.getColor(
+                    this@CommonWebViewActivity,
+                    R.color.colorPrimary
+                )
+            )
             webView.webChromeClient = object : WebChromeClient() {
                 override fun onProgressChanged(view: WebView?, newProgress: Int) {
                     super.onProgressChanged(view, newProgress)
                     if (newProgress > 70) {
-                        progressBar?.visibility = View.GONE
+                        progressBar.visibility = View.GONE
                     }
                 }
             }
@@ -145,7 +134,7 @@ class CommonWebViewActivity : AppCompatActivity() {
 
                 override fun onPageFinished(view: WebView?, url: String?) {
                     super.onPageFinished(view, url)
-                    progressBar?.visibility = View.GONE
+                    progressBar.visibility = View.GONE
                 }
 
                 override fun onReceivedError(
@@ -154,7 +143,7 @@ class CommonWebViewActivity : AppCompatActivity() {
                     error: WebResourceError?
                 ) {
                     super.onReceivedError(view, request, error)
-                    progressBar?.visibility = View.GONE
+                    progressBar.visibility = View.GONE
                 }
 
 
@@ -162,7 +151,6 @@ class CommonWebViewActivity : AppCompatActivity() {
             if (webUrl.contains("https://www.youtube.com")) {
                 webView.settings.userAgentString =
                     "Mozilla/5.0 (Linux; U; Android 5.0; en-us; Droid Build/ESD20) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17"
-
             }
             webUrl.let { webView.loadUrl(it) }
         }
@@ -211,9 +199,9 @@ class CommonWebViewActivity : AppCompatActivity() {
 
         // Pass the package name as application ID so that the intent from the
         // same application can be opened in the same tab.
-        intent.putExtra(Browser.EXTRA_APPLICATION_ID, context.getPackageName())
+        intent.putExtra(Browser.EXTRA_APPLICATION_ID, context.packageName)
         try {
-            Log.e("errorurl", "$url")
+            Log.e("errorurl", url)
             context.startActivity(intent)
             return true
         } catch (ex: ActivityNotFoundException) {
