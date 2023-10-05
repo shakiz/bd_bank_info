@@ -3,6 +3,7 @@ package com.reader.bd_bank_info.data.repository.home
 import com.reader.bd_bank_info.R
 import com.reader.bd_bank_info.data.datasource.HomeApi
 import com.reader.bd_bank_info.data.model.Bank
+import com.reader.bd_bank_info.data.model.ExtraContent
 import com.reader.bd_bank_info.data.model.NavigationRail
 import com.reader.bd_bank_info.utils.*
 
@@ -23,7 +24,8 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
             NavigationRail(
                 titleEn = "Currency Rates",
                 titleBn = "Currency Rates",
-                identifier = IDENTIFIER_CURRENCY_RATES
+                identifier = IDENTIFIER_CURRENCY_RATES,
+                content = ExtraContent(url = "https://www.banksbd.org/exchange.html")
             ),
             NavigationRail(titleEn = "Loan", titleBn = "Loan", identifier = IDENTIFIER_LOAN),
             NavigationRail(

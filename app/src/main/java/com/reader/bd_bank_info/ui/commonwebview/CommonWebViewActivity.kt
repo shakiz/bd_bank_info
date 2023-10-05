@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.reader.bd_bank_info.R
 import com.reader.bd_bank_info.databinding.ActivityCommonWebviewBinding
+import com.reader.bd_bank_info.utils.WEB_URL
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 
@@ -24,9 +25,8 @@ class CommonWebViewActivity : AppCompatActivity() {
 
     companion object {
         const val TAG = "CommonWebViewActivity"
-        const val WEB_URL = "web-url"
 
-        fun createIntent(context: Context?, webUrl: String): Intent {
+        fun createIntent(context: Context?, webUrl: String?): Intent {
             context ?: Intent()
             return Intent(context, CommonWebViewActivity::class.java).apply {
                 putExtra(WEB_URL, webUrl)

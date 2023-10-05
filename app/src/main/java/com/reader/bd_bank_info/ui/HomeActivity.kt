@@ -17,6 +17,7 @@ import com.reader.bd_bank_info.ui.adapters.NavRailAdapter
 import com.reader.bd_bank_info.ui.bank.BankDetailsActivity
 import com.reader.bd_bank_info.ui.bank.BankItemClickListener
 import com.reader.bd_bank_info.ui.bank.BankListActivity
+import com.reader.bd_bank_info.ui.commonwebview.CommonWebViewActivity
 import com.reader.bd_bank_info.ui.swiftcode.SwiftCodeListActivity
 import com.reader.bd_bank_info.utils.*
 
@@ -105,6 +106,7 @@ class HomeActivity : AppCompatActivity(), BankItemClickListener, NavRailAdapter.
         when(navRail.identifier){
             IDENTIFIER_SWIFT_CODE -> startActivity(Intent(this, SwiftCodeListActivity::class.java))
             IDENTIFIER_BANK -> startActivity(Intent(this, BankListActivity::class.java))
+            IDENTIFIER_CURRENCY_RATES -> startActivity(Intent(this, CommonWebViewActivity::class.java).putExtra(WEB_URL, navRail.content?.url))
         }
     }
 }
