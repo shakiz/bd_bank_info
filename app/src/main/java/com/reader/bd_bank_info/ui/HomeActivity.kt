@@ -107,7 +107,8 @@ class HomeActivity : AppCompatActivity(), BankItemClickListener, NavRailAdapter.
             IDENTIFIER_SWIFT_CODE -> startActivity(Intent(this, SwiftCodeListActivity::class.java))
             IDENTIFIER_BANK -> startActivity(Intent(this, BankListActivity::class.java))
             IDENTIFIER_CURRENCY_RATES ->{
-                startActivity(Intent(this, CommonWebViewActivity::class.java).putExtra(WEB_URL, navRail.content?.url))
+                val bundle = CommonWebViewActivity.createIntent(this, navRail.content?.url, getString(R.string.currency_rates))
+                startActivity(Intent(this, CommonWebViewActivity::class.java).putExtra(WEBVIEW_BUNDLE, bundle))
             }
         }
     }

@@ -12,6 +12,7 @@ import androidx.core.content.ContextCompat
 import com.reader.bd_bank_info.R
 import com.reader.bd_bank_info.databinding.ActivityCommonWebviewBinding
 import com.reader.bd_bank_info.utils.TOOLBAR_TITLE
+import com.reader.bd_bank_info.utils.WEBVIEW_BUNDLE
 import com.reader.bd_bank_info.utils.WEB_URL
 
 class CommonWebViewActivity : AppCompatActivity() {
@@ -20,11 +21,11 @@ class CommonWebViewActivity : AppCompatActivity() {
     companion object {
         const val TAG = "CommonWebViewActivity"
 
-        fun createIntent(context: Context?, webUrl: String?, toolbarTitle: String?): Intent {
+        fun createIntent(context: Context?, webUrl: String?, toolbarTitle: String?): Bundle {
             context ?: Intent()
-            return Intent(context, CommonWebViewActivity::class.java).apply {
-                putExtra(WEB_URL, webUrl)
-                putExtra(TOOLBAR_TITLE, toolbarTitle)
+            return Bundle().apply {
+                putString(WEB_URL, webUrl)
+                putString(TOOLBAR_TITLE, toolbarTitle)
             }
         }
     }
@@ -37,11 +38,15 @@ class CommonWebViewActivity : AppCompatActivity() {
         binding = ActivityCommonWebviewBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        webUrl = intent?.getStringExtra(WEB_URL).orEmpty()
-        toolbarTitle = intent?.getStringExtra(TOOLBAR_TITLE).orEmpty()
-
+        setUpIntentData()
         initView()
         initListeners()
+    }
+
+    private fun setUpIntentData(){
+        val bundle = intent.getBundleExtra(WEBVIEW_BUNDLE)
+        webUrl = bundle?.getString(WEB_URL)
+        toolbarTitle = bundle?.getString(TOOLBAR_TITLE)
     }
 
     private fun initView() {
