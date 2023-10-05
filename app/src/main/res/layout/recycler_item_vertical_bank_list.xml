@@ -6,6 +6,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingTop="@dimen/_8sdp"
+        android:paddingBottom="@dimen/_8sdp"
         android:background="@drawable/rectangle_white_generic_layout"
         android:orientation="vertical">
 
@@ -15,7 +17,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_12sdp"
             app:cardCornerRadius="@dimen/_12sdp"
-            app:cardBackgroundColor="@color/md_grey_50"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="@color/md_grey_100"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent">
@@ -24,10 +27,10 @@
                 android:id="@+id/ivSlider"
                 android:layout_width="@dimen/_48sdp"
                 android:layout_height="@dimen/_48sdp"
-                android:scaleType="centerCrop"
+                android:scaleType="centerInside"
                 android:padding="@dimen/_1sdp"
                 app:shapeAppearanceOverlay="@style/roundedImageViewGenericSliderStyle"
-                tools:src="@drawable/ic_placeholder"
+                tools:src="@drawable/ebl"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -99,7 +102,7 @@
             android:id="@+id/ibSearchButton"
             android:layout_width="@dimen/_24sdp"
             android:layout_height="@dimen/_24sdp"
-            android:layout_margin="4dp"
+            android:layout_marginEnd="@dimen/_8sdp"
             android:padding="2dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -115,7 +118,7 @@
             app:layout_constraintTop_toBottomOf="@id/ibSearchButton"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_margin="4dp"
+            android:layout_marginEnd="@dimen/_8sdp"
             android:padding="4dp"
             android:background="@color/transparent"
             android:src="@drawable/ic_email"
