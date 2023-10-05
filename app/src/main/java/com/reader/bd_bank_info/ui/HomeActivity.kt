@@ -18,6 +18,7 @@ import com.reader.bd_bank_info.ui.bank.BankDetailsActivity
 import com.reader.bd_bank_info.ui.bank.BankItemClickListener
 import com.reader.bd_bank_info.ui.bank.BankListActivity
 import com.reader.bd_bank_info.ui.commonwebview.CommonWebViewActivity
+import com.reader.bd_bank_info.ui.routings.RoutingBankListActivity
 import com.reader.bd_bank_info.ui.swiftcode.SwiftCodeListActivity
 import com.reader.bd_bank_info.utils.*
 
@@ -110,6 +111,7 @@ class HomeActivity : AppCompatActivity(), BankItemClickListener, NavRailAdapter.
                 val bundle = CommonWebViewActivity.createIntent(this, navRail.content?.url, getString(R.string.currency_rates))
                 startActivity(Intent(this, CommonWebViewActivity::class.java).putExtra(WEBVIEW_BUNDLE, bundle))
             }
+            IDENTIFIER_ROUTING_NO -> startActivity(Intent(this, RoutingBankListActivity::class.java))
         }
     }
 }

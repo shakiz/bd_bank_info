@@ -18,7 +18,7 @@
             android:background="?attr/colorPrimary"
             app:navigationIcon="?attr/homeAsUpIndicator"
             app:popupTheme="@style/Theme.Bd_bank_info.PopupOverlay"
-            app:title="@string/bank_list" />
+            app:title="@string/routings" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
