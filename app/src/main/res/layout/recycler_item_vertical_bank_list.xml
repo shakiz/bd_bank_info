@@ -18,18 +18,17 @@
             android:layout_marginStart="@dimen/_12sdp"
             app:cardCornerRadius="@dimen/_12sdp"
             app:cardElevation="0dp"
-            app:cardBackgroundColor="@color/md_grey_100"
+            app:cardBackgroundColor="@color/md_grey_50"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent">
 
-            <com.google.android.material.imageview.ShapeableImageView
+            <ImageView
                 android:id="@+id/ivSlider"
                 android:layout_width="@dimen/_48sdp"
                 android:layout_height="@dimen/_48sdp"
-                android:scaleType="centerInside"
+                android:scaleType="fitCenter"
                 android:padding="@dimen/_1sdp"
-                app:shapeAppearanceOverlay="@style/roundedImageViewGenericSliderStyle"
                 tools:src="@drawable/ebl"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

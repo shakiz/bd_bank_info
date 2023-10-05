@@ -3,6 +3,7 @@ package com.reader.bd_bank_info.utils
 const val BANGLA = "bn"
 const val ITEM_BANK = "item_bank"
 const val WEB_URL = "web_url"
+const val TOOLBAR_TITLE = "toolbar_title"
 
 const val IDENTIFIER_HOME = "home"
 const val IDENTIFIER_BANK = "bank"
