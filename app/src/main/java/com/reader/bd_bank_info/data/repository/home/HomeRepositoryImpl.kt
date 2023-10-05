@@ -27,6 +27,11 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
                 identifier = IDENTIFIER_CURRENCY_RATES,
                 content = ExtraContent(url = "https://www.banksbd.org/exchange.html")
             ),
+            NavigationRail(
+                titleEn = "Routings",
+                titleBn = "Routings",
+                identifier = IDENTIFIER_ROUTING_NO
+            ),
             NavigationRail(titleEn = "Loan", titleBn = "Loan", identifier = IDENTIFIER_LOAN),
             NavigationRail(
                 titleEn = "Support",

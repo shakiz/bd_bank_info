@@ -92,7 +92,7 @@ class CommonWebViewActivity : AppCompatActivity() {
             webView.webChromeClient = object : WebChromeClient() {
                 override fun onProgressChanged(view: WebView?, newProgress: Int) {
                     super.onProgressChanged(view, newProgress)
-                    if (newProgress > 100) {
+                    if (newProgress > 80) {
                         progressBar.visibility = View.GONE
                     }
                 }
