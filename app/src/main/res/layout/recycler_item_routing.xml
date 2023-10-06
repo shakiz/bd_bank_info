@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cv_root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/_9sdp"
+        app:cardElevation="0dp"
+        app:strokeWidth="@dimen/_1sdp"
+        android:padding="@dimen/_8sdp"
+        tools:strokeColor="?colorPrimary">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cvIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="@dimen/_14sdp"
+            app:cardBackgroundColor="@color/colorPrimary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <TextView
+                android:id="@+id/ivSlider"
+                style="@style/BoldTextStyle"
+                android:layout_width="@dimen/_28sdp"
+                android:layout_height="@dimen/_28sdp"
+                android:gravity="center"
+                android:scaleType="centerCrop"
+                android:padding="@dimen/_1sdp"
+                tools:text="1"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_16ssp"/>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <View
+            android:id="@+id/divider1"
+            android:layout_width="@dimen/_24sdp"
+            android:layout_height="@dimen/_1sdp"
+            android:background="@color/md_grey_400"
+            app:layout_constraintStart_toEndOf="@id/cvIcon"
+            app:layout_constraintTop_toTopOf="@id/cvIcon"
+            app:layout_constraintBottom_toBottomOf="@id/cvIcon"/>
+
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="@dimen/_1sdp"
+            android:layout_height="@dimen/_48sdp"
+            android:background="@color/md_grey_400"
+            app:layout_constraintStart_toEndOf="@id/divider1"
+            app:layout_constraintTop_toTopOf="@id/cvIcon"
+            app:layout_constraintBottom_toBottomOf="@id/cvIcon"/>
+
+        <View
+            android:id="@+id/topLine1"
+            android:layout_width="@dimen/_24sdp"
+            android:layout_height="@dimen/_1sdp"
+            android:background="@color/md_grey_400"
+            app:layout_constraintStart_toEndOf="@id/divider2"
+            app:layout_constraintTop_toTopOf="@id/divider2"/>
+
+        <View
+            android:id="@+id/midLine1"
+            android:layout_width="@dimen/_24sdp"
+            android:layout_height="@dimen/_1sdp"
+            android:background="@color/md_grey_400"
+            app:layout_constraintStart_toEndOf="@id/divider2"
+            app:layout_constraintTop_toTopOf="@id/divider1"
+            app:layout_constraintBottom_toBottomOf="@id/divider1"/>
+
+        <View
+            android:id="@+id/bottomLine1"
+            android:layout_width="@dimen/_24sdp"
+            android:layout_height="@dimen/_1sdp"
+            android:background="@color/md_grey_400"
+            app:layout_constraintStart_toEndOf="@id/divider2"
+            app:layout_constraintBottom_toBottomOf="@id/divider2"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvDistrict"
+            style="@style/BoldTextStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/topLine1"
+            app:layout_constraintTop_toTopOf="@id/topLine1"
+            app:layout_constraintBottom_toBottomOf="@id/topLine1"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            android:ellipsize="end"
+            android:fontFamily="@font/roboto_bold"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:padding="0dp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_10sdp"
+            android:textStyle="bold"
+            app:fontFamily="@font/roboto_bold"
+            tools:text="Barisal" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvBranchName"
+            style="@style/BoldTextStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/midLine1"
+            app:layout_constraintTop_toTopOf="@id/midLine1"
+            app:layout_constraintBottom_toBottomOf="@id/midLine1"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            android:ellipsize="end"
+            android:fontFamily="@font/roboto_bold"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:padding="0dp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_10sdp"
+            android:textStyle="bold"
+            app:fontFamily="@font/roboto_bold"
+            tools:text="Barisal Branch" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvRoutingNo"
+            style="@style/BoldTextStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/bottomLine1"
+            app:layout_constraintTop_toTopOf="@id/bottomLine1"
+            app:layout_constraintBottom_toBottomOf="@id/bottomLine1"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            android:ellipsize="end"
+            android:fontFamily="@font/roboto_bold"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:padding="0dp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_10sdp"
+            android:textStyle="bold"
+            app:fontFamily="@font/roboto_bold"
+            tools:text="020060288" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
