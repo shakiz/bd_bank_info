@@ -8,25 +8,27 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/rectangle_white_bg">
+            app:cardElevation="0dp"
+            app:cardCornerRadius="@dimen/_12sdp">
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/ivSlider"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="@dimen/_48sdp"
+                android:layout_margin="@dimen/_4sdp"
                 android:scaleType="centerCrop"
                 android:padding="@dimen/_1sdp"
                 app:shapeAppearanceOverlay="@style/roundedImageViewGenericSliderStyle"
                 app:layout_constraintDimensionRatio="2:1"
-                tools:src="@drawable/ic_placeholder"
+                tools:src="@drawable/ebl"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvTitle"

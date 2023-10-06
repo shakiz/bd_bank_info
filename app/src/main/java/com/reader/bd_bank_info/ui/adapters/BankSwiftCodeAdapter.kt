@@ -6,10 +6,8 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.reader.bd_bank_info.data.model.Bank
-import com.reader.bd_bank_info.databinding.RecyclerItemHorizontalBankListBinding
 import com.reader.bd_bank_info.databinding.RecyclerItemSwiftCodeBinding
-import com.reader.bd_bank_info.ui.bank.BankItemClickListener
-import com.reader.bd_bank_info.utils.*
+import com.reader.bd_bank_info.utils.DiffUtilCallback
 
 class BankSwiftCodeAdapter : RecyclerView.Adapter<BankSwiftCodeAdapter.BankSwiftCodeViewHolder>() {
     private val items = ArrayList<Bank>()

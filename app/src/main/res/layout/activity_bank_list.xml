@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.bank.BankListActivity">
+    tools:context=".ui.bank.BankListActivity"
+    android:background="@color/window_background2">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
