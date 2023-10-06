@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "408178979375",
+    "project_id": "bd-bank-info",
+    "storage_bucket": "bd-bank-info.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:408178979375:android:d338ccca67ec5c3b518cda",
+        "android_client_info": {
+          "package_name": "com.reader.bd_bank_info"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZjjFmPCfdfKVmIcLFxr-emxpA1PSMuOs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:408178979375:android:d338ccca67ec5c3b518cda",
+        "android_client_info": {
+          "package_name": "com.reader.bd_bank_info.dev"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZjjFmPCfdfKVmIcLFxr-emxpA1PSMuOs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:408178979375:android:d338ccca67ec5c3b518cda",
+        "android_client_info": {
+          "package_name": "com.reader.bd_bank_info.qa"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZjjFmPCfdfKVmIcLFxr-emxpA1PSMuOs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+
+  "configuration_version": "1"
+}
