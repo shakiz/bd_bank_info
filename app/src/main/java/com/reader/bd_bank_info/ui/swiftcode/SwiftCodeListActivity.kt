@@ -10,6 +10,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.reader.bd_bank_info.databinding.ActivitySwiftCodeListBinding
 import com.reader.bd_bank_info.ui.adapters.BankSwiftCodeAdapter
 import com.reader.bd_bank_info.ui.bank.BankViewModel
+import com.reader.bd_bank_info.utils.SpaceItemDecoration
+import com.intuit.sdp.R
+import com.reader.bd_bank_info.utils.dimenSize
 
 class SwiftCodeListActivity : AppCompatActivity() {
 
@@ -62,6 +65,7 @@ class SwiftCodeListActivity : AppCompatActivity() {
 
     private fun setupBankListView() {
         binding.rvSwiftCodeList.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+        binding.rvSwiftCodeList.addItemDecoration(SpaceItemDecoration(this.dimenSize(R.dimen._8sdp)))
         binding.rvSwiftCodeList.adapter = bankItemAdapter
     }
 
