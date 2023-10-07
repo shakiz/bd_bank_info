@@ -12,4 +12,5 @@
     <string name="currency_rates">Currency Rates</string>
     <string name="routings">Routings</string>
     <string name="search_branch_name">Search Branch Name</string>
+    <string name="swift_codes">Swift Codes</string>
 </resources>

@@ -6,12 +6,14 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.reader.bd_bank_info.R
 import com.reader.bd_bank_info.data.model.Bank
 import com.reader.bd_bank_info.data.model.NavigationRail
 import com.reader.bd_bank_info.databinding.ActivityMainBinding
+import com.reader.bd_bank_info.ui.adapters.BankHorizontalSwiftCodeAdapter
 import com.reader.bd_bank_info.ui.adapters.BankItemAdapter
 import com.reader.bd_bank_info.ui.adapters.NavRailAdapter
 import com.reader.bd_bank_info.ui.bank.BankDetailsActivity
@@ -29,6 +31,7 @@ class HomeActivity : AppCompatActivity(), BankItemClickListener, NavRailAdapter.
 
     private val navRailAdapter = NavRailAdapter()
     private val bankItemAdapter = BankItemAdapter()
+    private val swiftCodeAdapter = BankHorizontalSwiftCodeAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,11 +54,16 @@ class HomeActivity : AppCompatActivity(), BankItemClickListener, NavRailAdapter.
     private fun initView(){
         setUpNavRailListView()
         setUpBankListView()
+        setupSwiftCodeListView()
     }
 
     private fun initListeners(){
-        binding.layoutBankList.tvSeeAll.setOnClickListener {
+        binding.tvSeeAllBank.setOnClickListener {
             startActivity(Intent(this, BankListActivity::class.java))
+        }
+
+        binding.tvSeeAllSwiftCode.setOnClickListener {
+            startActivity(Intent(this, SwiftCodeListActivity::class.java))
         }
     }
 
@@ -69,6 +77,7 @@ class HomeActivity : AppCompatActivity(), BankItemClickListener, NavRailAdapter.
         viewModel.onBankListFetched().observe(this){bankList ->
             bankList?.let {
                 bankItemAdapter.addItems(it)
+                swiftCodeAdapter.addItems(it.takeLast(3))
             }
         }
     }
@@ -81,10 +90,16 @@ class HomeActivity : AppCompatActivity(), BankItemClickListener, NavRailAdapter.
     }
 
     private fun setUpBankListView(){
-        binding.layoutBankList.rvBankList.layoutManager = PartiallyVisibleHorizontalLayoutManager(this, .3f)
-        binding.layoutBankList.rvBankList.addItemDecoration(SpaceItemDecoration(this.dimenSize(com.intuit.sdp.R.dimen._8sdp)))
-        binding.layoutBankList.rvBankList.adapter = bankItemAdapter
+        binding.rvBankList.layoutManager = PartiallyVisibleHorizontalLayoutManager(this, .3f)
+        binding.rvBankList.addItemDecoration(SpaceItemDecoration(this.dimenSize(com.intuit.sdp.R.dimen._8sdp)))
+        binding.rvBankList.adapter = bankItemAdapter
         bankItemAdapter.setOnItemClickListener(this)
+    }
+
+    private fun setupSwiftCodeListView(){
+        binding.rvSwiftCodeList.layoutManager = GridLayoutManager(this, 3, RecyclerView.VERTICAL,false)
+        binding.rvSwiftCodeList.addItemDecoration(SpaceItemDecoration(this.dimenSize(com.intuit.sdp.R.dimen._8sdp), false))
+        binding.rvSwiftCodeList.adapter = swiftCodeAdapter
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
