@@ -13,3 +13,6 @@ const val IDENTIFIER_ROUTING_NO = "routing-no"
 const val IDENTIFIER_LOAN = "loan"
 const val IDENTIFIER_SWIFT_CODE = "swift-codes"
 const val IDENTIFIER_SUPPORT = "support"
+
+const val BANK_LIST_ITEM_VIEW_TYPE_BANK_LIST = 1
+const val BANK_LIST_ITEM_VIEW_TYPE_ROUTING = 2

@@ -13,6 +13,7 @@ import com.reader.bd_bank_info.data.model.Bank
 import com.reader.bd_bank_info.databinding.ActivityRoutingBankListBinding
 import com.reader.bd_bank_info.ui.adapters.BankVerticalItemAdapter
 import com.reader.bd_bank_info.ui.bank.BankItemClickListener
+import com.reader.bd_bank_info.utils.BANK_LIST_ITEM_VIEW_TYPE_ROUTING
 import com.reader.bd_bank_info.utils.ITEM_BANK
 import com.reader.bd_bank_info.utils.SpaceItemDecoration
 import com.reader.bd_bank_info.utils.dimenSize
@@ -70,6 +71,7 @@ class RoutingBankListActivity : AppCompatActivity(), BankItemClickListener {
         binding.rvBankList.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         binding.rvBankList.addItemDecoration(SpaceItemDecoration(this.dimenSize(R.dimen._8sdp)))
         binding.rvBankList.adapter = bankItemAdapter
+        bankItemAdapter.setViewType(BANK_LIST_ITEM_VIEW_TYPE_ROUTING)
         bankItemAdapter.setItemClickListener(this)
     }
 

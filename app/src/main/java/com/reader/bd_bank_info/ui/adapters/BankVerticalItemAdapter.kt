@@ -1,6 +1,7 @@
 package com.reader.bd_bank_info.ui.adapters
 
 import android.view.LayoutInflater
+import android.view.View.*
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
@@ -14,6 +15,7 @@ import com.reader.bd_bank_info.utils.*
 class BankVerticalItemAdapter : RecyclerView.Adapter<BankVerticalItemAdapter.BankVerticalViewHolder>() {
     private val items = ArrayList<Bank>()
     private var bankItemClickListener: BankItemClickListener? = null
+    private var viewType: Int = BANK_LIST_ITEM_VIEW_TYPE_BANK_LIST
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BankVerticalViewHolder {
         val binding = RecyclerItemVerticalBankListBinding.inflate(
@@ -21,7 +23,7 @@ class BankVerticalItemAdapter : RecyclerView.Adapter<BankVerticalItemAdapter.Ban
             parent,
             false
         )
-        return BankVerticalViewHolder(binding).apply {
+        return BankVerticalViewHolder(binding, viewType).apply {
             itemView.setOnClickListener {
                 bankItemClickListener?.onItemClick(items[adapterPosition])
             }
@@ -30,6 +32,14 @@ class BankVerticalItemAdapter : RecyclerView.Adapter<BankVerticalItemAdapter.Ban
 
     override fun onBindViewHolder(holder: BankVerticalViewHolder, position: Int) {
         holder.bindItem(items[position])
+    }
+
+    fun setViewType(viewType: Int){
+        this.viewType = viewType
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return viewType
     }
 
     override fun getItemCount() = items.size
@@ -58,7 +68,7 @@ class BankVerticalItemAdapter : RecyclerView.Adapter<BankVerticalItemAdapter.Ban
         diffResult.dispatchUpdatesTo(this)
     }
 
-    class BankVerticalViewHolder(val binding: RecyclerItemVerticalBankListBinding) :
+    class BankVerticalViewHolder(val binding: RecyclerItemVerticalBankListBinding,val viewType: Int) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bindItem(bank: Bank) {
@@ -67,6 +77,14 @@ class BankVerticalItemAdapter : RecyclerView.Adapter<BankVerticalItemAdapter.Ban
             binding.tvEstablishedAtAndCategory.text = itemView.context.getString(R.string.x_s_established_x_s, bank.bankCategory, bank.establishedDate.toString())
             bank.bankIconRes?.let {
                 binding.ivSlider.background = ContextCompat.getDrawable(itemView.context, it)
+            }
+
+            if(viewType == BANK_LIST_ITEM_VIEW_TYPE_ROUTING){
+                binding.ibCallButton.visibility = GONE
+                binding.ibMailButton.visibility = GONE
+            } else {
+                binding.ibCallButton.visibility = VISIBLE
+                binding.ibMailButton.visibility = VISIBLE
             }
         }
     }
