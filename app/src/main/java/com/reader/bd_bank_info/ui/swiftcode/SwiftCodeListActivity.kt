@@ -1,5 +1,7 @@
 package com.reader.bd_bank_info.ui.swiftcode
 
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.Context
 import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
@@ -13,12 +15,13 @@ import com.reader.bd_bank_info.ui.bank.BankViewModel
 import com.reader.bd_bank_info.utils.SpaceItemDecoration
 import com.intuit.sdp.R
 import com.reader.bd_bank_info.utils.dimenSize
+import com.reader.bd_bank_info.utils.showLongToast
 
-class SwiftCodeListActivity : AppCompatActivity() {
+class SwiftCodeListActivity : AppCompatActivity(), BankSwiftCodeAdapter.SwiftCodeCopyListener {
 
     private lateinit var binding: ActivitySwiftCodeListBinding
     private lateinit var viewModel: BankViewModel
-    private val bankItemAdapter = BankSwiftCodeAdapter()
+    private val swiftCodeAdapter = BankSwiftCodeAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,7 +61,7 @@ class SwiftCodeListActivity : AppCompatActivity() {
     private fun initObservers() {
         viewModel.onBankListFetched().observe(this) { bankList ->
             bankList?.let {
-                bankItemAdapter.addItems(bankList)
+                swiftCodeAdapter.addItems(bankList)
             }
         }
     }
@@ -66,7 +69,8 @@ class SwiftCodeListActivity : AppCompatActivity() {
     private fun setupBankListView() {
         binding.rvSwiftCodeList.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         binding.rvSwiftCodeList.addItemDecoration(SpaceItemDecoration(this.dimenSize(R.dimen._8sdp)))
-        binding.rvSwiftCodeList.adapter = bankItemAdapter
+        binding.rvSwiftCodeList.adapter = swiftCodeAdapter
+        swiftCodeAdapter.setOnSwiftCodeCopyListener(this)
     }
 
     private fun closeKeyboard() {
@@ -79,5 +83,13 @@ class SwiftCodeListActivity : AppCompatActivity() {
                     it.windowToken, 0
                 )
         }
+    }
+
+    override fun onSwiftCodeCopied(swiftCode: String) {
+        val clipboard: ClipboardManager =
+            getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+        val clip: ClipData = ClipData.newPlainText(swiftCode, swiftCode)
+        clipboard.setPrimaryClip(clip)
+        showLongToast(getString(com.reader.bd_bank_info.R.string.swift_code_copied))
     }
 }

@@ -13,4 +13,5 @@
     <string name="routings">Routings</string>
     <string name="search_branch_name">Search Branch Name</string>
     <string name="swift_codes">Swift Codes</string>
+    <string name="swift_code_copied">Swift code copied</string>
 </resources>

@@ -11,6 +11,7 @@ import com.reader.bd_bank_info.utils.DiffUtilCallback
 
 class BankSwiftCodeAdapter : RecyclerView.Adapter<BankSwiftCodeAdapter.BankSwiftCodeViewHolder>() {
     private val items = ArrayList<Bank>()
+    private var swiftCodeCopyListener: SwiftCodeCopyListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BankSwiftCodeViewHolder {
         val binding = RecyclerItemSwiftCodeBinding.inflate(
@@ -18,7 +19,7 @@ class BankSwiftCodeAdapter : RecyclerView.Adapter<BankSwiftCodeAdapter.BankSwift
             parent,
             false
         )
-        return BankSwiftCodeViewHolder(binding)
+        return BankSwiftCodeViewHolder(binding, swiftCodeCopyListener)
     }
 
     override fun onBindViewHolder(holder: BankSwiftCodeViewHolder, position: Int) {
@@ -26,6 +27,10 @@ class BankSwiftCodeAdapter : RecyclerView.Adapter<BankSwiftCodeAdapter.BankSwift
     }
 
     override fun getItemCount() = items.size
+
+    fun setOnSwiftCodeCopyListener(swiftCodeCopyListener: SwiftCodeCopyListener){
+        this.swiftCodeCopyListener = swiftCodeCopyListener
+    }
 
     fun addItems(navRails: List<Bank>) {
         val oldData = ArrayList(items)
@@ -47,7 +52,7 @@ class BankSwiftCodeAdapter : RecyclerView.Adapter<BankSwiftCodeAdapter.BankSwift
         diffResult.dispatchUpdatesTo(this)
     }
 
-    class BankSwiftCodeViewHolder(val binding: RecyclerItemSwiftCodeBinding) :
+    class BankSwiftCodeViewHolder(val binding: RecyclerItemSwiftCodeBinding, private val swiftCodeCopyListener: SwiftCodeCopyListener?) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bindItem(bank: Bank) {
@@ -57,6 +62,13 @@ class BankSwiftCodeAdapter : RecyclerView.Adapter<BankSwiftCodeAdapter.BankSwift
             bank.bankIconRes?.let {
                 binding.ivSlider.background = ContextCompat.getDrawable(itemView.context, it)
             }
+            binding.ivCopy.setOnClickListener {
+                swiftCodeCopyListener?.onSwiftCodeCopied(bank.swiftCode.orEmpty())
+            }
         }
+    }
+
+    interface SwiftCodeCopyListener{
+        fun onSwiftCodeCopied(swiftCode: String)
     }
 }
