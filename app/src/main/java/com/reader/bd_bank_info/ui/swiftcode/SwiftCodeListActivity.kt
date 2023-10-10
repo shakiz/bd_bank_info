@@ -1,19 +1,27 @@
 package com.reader.bd_bank_info.ui.swiftcode
 
+import android.Manifest
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.intuit.sdp.R
 import com.reader.bd_bank_info.databinding.ActivitySwiftCodeListBinding
 import com.reader.bd_bank_info.ui.adapters.BankSwiftCodeAdapter
 import com.reader.bd_bank_info.ui.bank.BankViewModel
+import com.reader.bd_bank_info.utils.REQUEST_CALL_CODE
 import com.reader.bd_bank_info.utils.SpaceItemDecoration
-import com.intuit.sdp.R
 import com.reader.bd_bank_info.utils.dimenSize
 import com.reader.bd_bank_info.utils.showLongToast
 
@@ -91,5 +99,39 @@ class SwiftCodeListActivity : AppCompatActivity(), BankSwiftCodeAdapter.SwiftCod
         val clip: ClipData = ClipData.newPlainText(swiftCode, swiftCode)
         clipboard.setPrimaryClip(clip)
         showLongToast(getString(com.reader.bd_bank_info.R.string.swift_code_copied))
+    }
+
+    override fun onHotlineNumberCalled(hotlineNo: Int) {
+        if(hotlineNo <= 0){
+            return
+        }
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.CALL_PHONE
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
+            val uri = "tel:$hotlineNo"
+            val callIntent = Intent(Intent.ACTION_CALL)
+            callIntent.data = Uri.parse(uri)
+            showLongToast(getString(com.reader.bd_bank_info.R.string.calling_x_hotline_number, hotlineNo))
+            startActivity(callIntent)
+        } else {
+            Toast.makeText(
+                this,
+                getString(com.reader.bd_bank_info.R.string.please_allow_call_permission),
+                Toast.LENGTH_SHORT
+            ).show()
+            if (ContextCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.CALL_PHONE
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                ActivityCompat.requestPermissions(
+                    this,
+                    arrayOf(Manifest.permission.CALL_PHONE),
+                    REQUEST_CALL_CODE
+                )
+            }
+        }
     }
 }

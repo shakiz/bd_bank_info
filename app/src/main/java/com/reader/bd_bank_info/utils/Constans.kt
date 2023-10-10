@@ -16,3 +16,5 @@ const val IDENTIFIER_SUPPORT = "support"
 
 const val BANK_LIST_ITEM_VIEW_TYPE_BANK_LIST = 1
 const val BANK_LIST_ITEM_VIEW_TYPE_ROUTING = 2
+
+const val REQUEST_CALL_CODE = 335

@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.reader.bd_bank_info.data.model.Bank
 import com.reader.bd_bank_info.databinding.RecyclerItemSwiftCodeBinding
 import com.reader.bd_bank_info.utils.DiffUtilCallback
+import com.reader.bd_bank_info.utils.isNull
+import com.reader.bd_bank_info.utils.orZero
 
 class BankSwiftCodeAdapter : RecyclerView.Adapter<BankSwiftCodeAdapter.BankSwiftCodeViewHolder>() {
     private val items = ArrayList<Bank>()
@@ -58,17 +60,26 @@ class BankSwiftCodeAdapter : RecyclerView.Adapter<BankSwiftCodeAdapter.BankSwift
         fun bindItem(bank: Bank) {
             binding.tvBankTitle.text = bank.bankName
             binding.tvBankSwiftCode.text = bank.swiftCode
-            binding.tvHotlineNumber.text = bank.hotlineNo.toString()
+            binding.tvHotlineNumber.text = if(!bank.hotlineNo.isNull()){
+                bank.hotlineNo.toString()
+            } else {
+                "N/A"
+            }
             bank.bankIconRes?.let {
                 binding.ivSlider.background = ContextCompat.getDrawable(itemView.context, it)
             }
             binding.ivCopy.setOnClickListener {
                 swiftCodeCopyListener?.onSwiftCodeCopied(bank.swiftCode.orEmpty())
             }
+
+            binding.ivCall.setOnClickListener {
+                swiftCodeCopyListener?.onHotlineNumberCalled(bank.hotlineNo.orZero())
+            }
         }
     }
 
     interface SwiftCodeCopyListener{
         fun onSwiftCodeCopied(swiftCode: String)
+        fun onHotlineNumberCalled(hotlineNo: Int)
     }
 }

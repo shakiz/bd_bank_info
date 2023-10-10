@@ -147,6 +147,19 @@
                 android:textSize="@dimen/_10sdp"
                 tools:text="14278" />
 
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivCall"
+                android:layout_width="@dimen/_24sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_marginStart="@dimen/_4sdp"
+                android:background="@drawable/rectangle_bg_bank_name"
+                app:srcCompat="@drawable/ic_call"
+                android:padding="@dimen/_4sdp"
+                app:layout_constraintTop_toTopOf="@id/tvHotlineNumber"
+                app:layout_constraintStart_toEndOf="@id/tvHotlineNumber"
+                app:layout_constraintBottom_toBottomOf="@id/tvHotlineNumber"
+                android:layout_marginEnd="@dimen/_12sdp"/>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>

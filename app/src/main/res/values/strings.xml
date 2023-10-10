@@ -14,4 +14,6 @@
     <string name="search_branch_name">Search Branch Name</string>
     <string name="swift_codes">Swift Codes</string>
     <string name="swift_code_copied">Swift code copied</string>
+    <string name="calling_x_hotline_number">Calling %d hotline number</string>
+    <string name="please_allow_call_permission">Please allow call permission</string>
 </resources>
