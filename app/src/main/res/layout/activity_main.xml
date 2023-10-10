@@ -70,11 +70,13 @@
             android:id="@+id/rvBankList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:layout_marginEnd="@dimen/_8sdp"
+            android:layout_marginTop="@dimen/_8sdp"
             app:layout_constraintTop_toBottomOf="@id/tvHeadingBankList"
             android:clipToPadding="false"
             android:orientation="horizontal"
             android:overScrollMode="never"
-            android:paddingHorizontal="@dimen/_4sdp"
             tools:itemCount="1"
             tools:listitem="@layout/recycler_item_horizontal_bank_list" />
 
@@ -86,12 +88,13 @@
             android:layout_marginTop="@dimen/_8sdp"
             android:layout_marginStart="@dimen/_8sdp"
             android:layout_marginEnd="@dimen/_8sdp"
+            app:cardUseCompatPadding="false"
             app:cardElevation="0dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_12sdp">
+                android:padding="@dimen/_8sdp">
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvHeadingSwiftCode"

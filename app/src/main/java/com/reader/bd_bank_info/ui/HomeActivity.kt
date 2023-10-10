@@ -91,7 +91,7 @@ class HomeActivity : AppCompatActivity(), BankItemClickListener, NavRailAdapter.
 
     private fun setUpBankListView(){
         binding.rvBankList.layoutManager = PartiallyVisibleHorizontalLayoutManager(this, .3f)
-        binding.rvBankList.addItemDecoration(SpaceItemDecoration(this.dimenSize(com.intuit.sdp.R.dimen._8sdp)))
+        binding.rvBankList.addItemDecoration(SpaceItemDecoration(this.dimenSize(com.intuit.sdp.R.dimen._8sdp), false))
         binding.rvBankList.adapter = bankItemAdapter
         bankItemAdapter.setOnItemClickListener(this)
     }
