@@ -53,7 +53,7 @@ class BankHorizontalSwiftCodeAdapter : RecyclerView.Adapter<BankHorizontalSwiftC
         fun bindItem(bank: Bank) {
             binding.tvBankTitle.text = bank.bankName
             bank.bankIconRes?.let {
-                binding.ivBankLogo.background = ContextCompat.getDrawable(itemView.context, it)
+                binding.ivBankLogo.setImageResource(it)
             }
         }
     }

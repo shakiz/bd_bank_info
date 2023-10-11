@@ -64,7 +64,7 @@ class BankItemAdapter : RecyclerView.Adapter<BankItemAdapter.BankViewHolder>() {
             binding.tvTitle.text = bank.bankName
             binding.tvSubTitle.text = bank.bankType
             bank.bankIconRes?.let {
-                binding.ivSlider.background = ContextCompat.getDrawable(itemView.context, it)
+                binding.ivSlider.setImageResource(it)
             }
         }
     }

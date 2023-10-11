@@ -76,7 +76,7 @@ class BankVerticalItemAdapter : RecyclerView.Adapter<BankVerticalItemAdapter.Ban
             binding.tvType.text = bank.bankType
             binding.tvEstablishedAtAndCategory.text = itemView.context.getString(R.string.x_s_established_x_s, bank.bankCategory, bank.establishedDate.toString())
             bank.bankIconRes?.let {
-                binding.ivSlider.background = ContextCompat.getDrawable(itemView.context, it)
+                binding.ivSlider.setImageResource(it)
             }
 
             if(viewType == BANK_LIST_ITEM_VIEW_TYPE_ROUTING){

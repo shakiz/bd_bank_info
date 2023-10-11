@@ -20,7 +20,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_48sdp"
                 android:layout_margin="@dimen/_4sdp"
-                android:scaleType="centerCrop"
+                android:scaleType="centerInside"
                 android:padding="@dimen/_1sdp"
                 app:shapeAppearanceOverlay="@style/roundedImageViewGenericSliderStyle"
                 app:layout_constraintDimensionRatio="2:1"
