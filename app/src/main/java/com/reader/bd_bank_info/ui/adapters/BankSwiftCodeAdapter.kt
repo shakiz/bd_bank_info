@@ -66,7 +66,7 @@ class BankSwiftCodeAdapter : RecyclerView.Adapter<BankSwiftCodeAdapter.BankSwift
                 "N/A"
             }
             bank.bankIconRes?.let {
-                binding.ivSlider.background = ContextCompat.getDrawable(itemView.context, it)
+                binding.ivSlider.setImageResource(it)
             }
             binding.ivCopy.setOnClickListener {
                 swiftCodeCopyListener?.onSwiftCodeCopied(bank.swiftCode.orEmpty())
