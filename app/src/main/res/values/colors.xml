@@ -2,6 +2,21 @@
 <resources>
     <color name="colorPrimary">#FFBB86FC</color>
     <color name="colorPrimaryDark">#FF6200EE</color>
+
+    <!--Color scheme Red-->
+<!--    <color name="colorPrimary">#DA2C38</color>-->
+<!--    <color name="colorPrimaryDark">#C11521</color>-->
+
+<!--    &lt;!&ndash;Color scheme Green&ndash;&gt;-->
+<!--    <color name="colorPrimary">#0AAD0A</color>-->
+<!--    <color name="colorPrimaryDark">#179B17</color>-->
+
+<!--    &lt;!&ndash;Color scheme Blue&ndash;&gt;-->
+<!--    <color name="colorPrimary">#266DD3</color>-->
+<!--    <color name="colorPrimaryDark">#195CBD</color>-->
+
+    <color name="colorOnPrimary">#FFFFFF</color>
+
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
