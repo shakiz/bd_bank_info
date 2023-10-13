@@ -68,7 +68,7 @@ class NavRailAdapter : RecyclerView.Adapter<NavRailAdapter.NavigationRailViewHol
                 binding.tvTitle.setTextColor(context.compatColor(R.color.colorOnPrimary))
             } else {
                 binding.tvTitle.setBackgroundColor(context.compatColor(R.color.window_background2))
-                binding.tvTitle.setTextColor(context.compatColor(R.color.raisin_black))
+                binding.tvTitle.setTextColor(context.compatColor(R.color.colorOnSecondary))
             }
 
             binding.tvTitle.text = navRail.titleEn

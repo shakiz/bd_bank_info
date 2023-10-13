@@ -28,7 +28,7 @@
             android:includeFontPadding="false"
             android:gravity="center|top"
             android:maxLines="1"
-            android:textColor="@color/raisin_black"
+            android:textColor="@color/colorOnSecondary"
             android:textSize="@dimen/_9ssp"
             android:layout_marginTop="@dimen/_4sdp"
             android:layout_marginBottom="@dimen/_4sdp"

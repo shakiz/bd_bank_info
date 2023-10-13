@@ -8,7 +8,7 @@
         android:layout_height="wrap_content"
         app:cardCornerRadius="@dimen/_9sdp"
         app:cardElevation="0dp"
-        app:cardBackgroundColor="@color/white">
+        app:cardBackgroundColor="@color/colorOnPrimary">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cv_root"
@@ -22,7 +22,7 @@
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="@dimen/_12sdp"
                 app:cardElevation="0dp"
-                app:cardBackgroundColor="@color/white"
+                app:cardBackgroundColor="@color/colorOnPrimary"
                 app:strokeColor="@color/md_grey_200"
                 app:strokeWidth="@dimen/_1sdp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -95,7 +95,7 @@
                 android:includeFontPadding="false"
                 android:maxLines="1"
                 android:padding="4dp"
-                android:textColor="@color/raisin_black"
+                android:textColor="@color/colorOnSecondary"
                 android:textSize="@dimen/_10ssp"
                 tools:text="AB Bank" />
 
@@ -143,7 +143,7 @@
                 android:layout_marginEnd="@dimen/_12sdp"
                 android:ellipsize="end"
                 android:includeFontPadding="false"
-                android:textColor="@color/raisin_black"
+                android:textColor="@color/colorOnSecondary"
                 android:maxLines="1"
                 android:padding="4dp"
                 android:textSize="@dimen/_10sdp"
