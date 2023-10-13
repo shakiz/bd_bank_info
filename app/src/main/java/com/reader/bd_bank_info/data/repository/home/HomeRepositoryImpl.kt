@@ -26,6 +26,12 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
                 icon = R.drawable.ic_swift_key
             ),
             MainMenuItem(
+                titleEn = "Stock Market",
+                titleBn = "Stock Market",
+                identifier = IDENTIFIER_STOCK_MARKET,
+                icon = R.drawable.ic_stock_market
+            ),
+            MainMenuItem(
                 titleEn = "Currency Rates",
                 titleBn = "Currency Rates",
                 identifier = IDENTIFIER_CURRENCY_RATES,

@@ -19,6 +19,7 @@ import com.reader.bd_bank_info.ui.bank.BankItemClickListener
 import com.reader.bd_bank_info.ui.bank.BankListActivity
 import com.reader.bd_bank_info.ui.commonwebview.CommonWebViewActivity
 import com.reader.bd_bank_info.ui.routings.RoutingBankListActivity
+import com.reader.bd_bank_info.ui.stockmarket.StockMarketListActivity
 import com.reader.bd_bank_info.ui.swiftcode.SwiftCodeListActivity
 import com.reader.bd_bank_info.utils.*
 
@@ -100,18 +101,6 @@ class HomeActivity : AppCompatActivity(), BankItemClickListener, HomeMenuAdapter
         binding.rvSwiftCodeList.adapter = swiftCodeAdapter
     }
 
-//    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-//        menuInflater.inflate(R.menu.menu_main, menu)
-//        return true
-//    }
-
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        return when (item.itemId) {
-//            R.id.action_settings -> true
-//            else -> super.onOptionsItemSelected(item)
-//        }
-//    }
-
     override fun onItemClick(bank: Bank) {
         startActivity(Intent(this, BankDetailsActivity::class.java).putExtra(ITEM_BANK, bank))
     }
@@ -119,6 +108,7 @@ class HomeActivity : AppCompatActivity(), BankItemClickListener, HomeMenuAdapter
     override fun onItemClick(navRail: MainMenuItem) {
         when(navRail.identifier){
             IDENTIFIER_SWIFT_CODE -> startActivity(Intent(this, SwiftCodeListActivity::class.java))
+            IDENTIFIER_STOCK_MARKET -> startActivity(Intent(this, StockMarketListActivity::class.java))
             IDENTIFIER_BANK -> startActivity(Intent(this, BankListActivity::class.java))
             IDENTIFIER_CURRENCY_RATES ->{
                 val bundle = CommonWebViewActivity.createIntent(this, navRail.content?.url, getString(R.string.currency_rates))
