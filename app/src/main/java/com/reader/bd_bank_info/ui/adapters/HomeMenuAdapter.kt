@@ -4,13 +4,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.reader.bd_bank_info.data.model.NavigationRail
+import com.reader.bd_bank_info.data.model.MainMenuItem
 import com.reader.bd_bank_info.databinding.RecyclerItemHomeMenuBinding
 import com.reader.bd_bank_info.utils.*
 
-class NavRailAdapter : RecyclerView.Adapter<NavRailAdapter.NavigationRailViewHolder>() {
+class HomeMenuAdapter : RecyclerView.Adapter<HomeMenuAdapter.NavigationRailViewHolder>() {
 
-    private val items = ArrayList<NavigationRail>()
+    private val items = ArrayList<MainMenuItem>()
     private var navRailClickListener: NavRailClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NavigationRailViewHolder {
@@ -36,7 +36,7 @@ class NavRailAdapter : RecyclerView.Adapter<NavRailAdapter.NavigationRailViewHol
         this.navRailClickListener = navRailClickListener
     }
 
-    fun addItems(navRails: List<NavigationRail>) {
+    fun addItems(navRails: List<MainMenuItem>) {
         val oldData = ArrayList(items)
         items.clear()
         items.addAll(navRails)
@@ -58,13 +58,13 @@ class NavRailAdapter : RecyclerView.Adapter<NavRailAdapter.NavigationRailViewHol
 
     class NavigationRailViewHolder(val binding: RecyclerItemHomeMenuBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bindItem(navRail: NavigationRail) {
+        fun bindItem(navRail: MainMenuItem) {
             binding.tvTitle.text = navRail.titleEn
             navRail.icon?.let { binding.ivIcon.setImageResource(it) }
         }
     }
 
     interface NavRailClickListener{
-        fun onItemClick(navRail: NavigationRail)
+        fun onItemClick(navRail: MainMenuItem)
     }
 }

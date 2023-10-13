@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.reader.bd_bank_info.AppInjector
 import com.reader.bd_bank_info.data.datasource.HomeApi
 import com.reader.bd_bank_info.data.model.Bank
-import com.reader.bd_bank_info.data.model.NavigationRail
+import com.reader.bd_bank_info.data.model.MainMenuItem
 import com.reader.bd_bank_info.data.repository.bank.BankRepositoryImpl
 import com.reader.bd_bank_info.data.repository.home.HomeRepositoryImpl
 import kotlinx.coroutines.launch
@@ -15,11 +15,11 @@ import kotlinx.coroutines.launch
 class HomeViewModel: ViewModel(){
     private var homeRepository = HomeRepositoryImpl(HomeApi(AppInjector.getRestApiClient("http://data.fixer.io/api/")))
     private var bankRepository = BankRepositoryImpl(HomeApi(AppInjector.getRestApiClient("http://data.fixer.io/api/")))
-    private var navigationRailList = MutableLiveData<List<NavigationRail>>()
+    private var mainMenuItemList = MutableLiveData<List<MainMenuItem>>()
     private var bankList = MutableLiveData<List<Bank>>()
 
-    fun onNavigationRailFetched() : LiveData<List<NavigationRail>?>{
-        return navigationRailList
+    fun onNavigationRailFetched() : LiveData<List<MainMenuItem>?>{
+        return mainMenuItemList
     }
 
     fun onBankListFetched() : LiveData<List<Bank>?>{
@@ -29,7 +29,7 @@ class HomeViewModel: ViewModel(){
     fun fetchNavigationRailItems(){
         viewModelScope.launch {
             val response = homeRepository.fetchNavigationRailItems()
-            navigationRailList.postValue(response)
+            mainMenuItemList.postValue(response)
         }
     }
 

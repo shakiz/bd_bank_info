@@ -73,4 +73,12 @@
         <item name="cornerFamily">rounded</item>
     </style>
 
+    <style name="roundedImageViewGenericSliderStyle16" parent="">
+        <item name="cornerSizeTopRight">@dimen/_16sdp</item>
+        <item name="cornerSizeTopLeft">@dimen/_16sdp</item>
+        <item name="cornerSizeBottomLeft">@dimen/_16sdp</item>
+        <item name="cornerSizeBottomRight">@dimen/_16sdp</item>
+        <item name="cornerFamily">rounded</item>
+    </style>
+
 </resources>

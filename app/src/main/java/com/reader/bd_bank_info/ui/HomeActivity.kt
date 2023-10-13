@@ -2,8 +2,6 @@ package com.reader.bd_bank_info.ui
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
@@ -11,11 +9,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.reader.bd_bank_info.R
 import com.reader.bd_bank_info.data.model.Bank
-import com.reader.bd_bank_info.data.model.NavigationRail
+import com.reader.bd_bank_info.data.model.MainMenuItem
 import com.reader.bd_bank_info.databinding.ActivityMainBinding
 import com.reader.bd_bank_info.ui.adapters.BankHorizontalSwiftCodeAdapter
 import com.reader.bd_bank_info.ui.adapters.BankItemAdapter
-import com.reader.bd_bank_info.ui.adapters.NavRailAdapter
+import com.reader.bd_bank_info.ui.adapters.HomeMenuAdapter
 import com.reader.bd_bank_info.ui.bank.BankDetailsActivity
 import com.reader.bd_bank_info.ui.bank.BankItemClickListener
 import com.reader.bd_bank_info.ui.bank.BankListActivity
@@ -24,12 +22,12 @@ import com.reader.bd_bank_info.ui.routings.RoutingBankListActivity
 import com.reader.bd_bank_info.ui.swiftcode.SwiftCodeListActivity
 import com.reader.bd_bank_info.utils.*
 
-class HomeActivity : AppCompatActivity(), BankItemClickListener, NavRailAdapter.NavRailClickListener {
+class HomeActivity : AppCompatActivity(), BankItemClickListener, HomeMenuAdapter.NavRailClickListener {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var viewModel: HomeViewModel
 
-    private val navRailAdapter = NavRailAdapter()
+    private val homeMenuAdapter = HomeMenuAdapter()
     private val bankItemAdapter = BankItemAdapter()
     private val swiftCodeAdapter = BankHorizontalSwiftCodeAdapter()
 
@@ -70,7 +68,7 @@ class HomeActivity : AppCompatActivity(), BankItemClickListener, NavRailAdapter.
     private fun initObservers(){
         viewModel.onNavigationRailFetched().observe(this){ railItems ->
             railItems?.let {
-                navRailAdapter.addItems(it)
+                homeMenuAdapter.addItems(it)
             }
         }
 
@@ -85,8 +83,8 @@ class HomeActivity : AppCompatActivity(), BankItemClickListener, NavRailAdapter.
     private fun setUpNavRailListView(){
         binding.rvNavRail.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
         binding.rvNavRail.addItemDecoration(SpaceItemDecoration(this.dimenSize(com.intuit.sdp.R.dimen._8sdp)))
-        binding.rvNavRail.adapter = navRailAdapter
-        navRailAdapter.setItemClickListener(this)
+        binding.rvNavRail.adapter = homeMenuAdapter
+        homeMenuAdapter.setItemClickListener(this)
     }
 
     private fun setUpBankListView(){
@@ -118,7 +116,7 @@ class HomeActivity : AppCompatActivity(), BankItemClickListener, NavRailAdapter.
         startActivity(Intent(this, BankDetailsActivity::class.java).putExtra(ITEM_BANK, bank))
     }
 
-    override fun onItemClick(navRail: NavigationRail) {
+    override fun onItemClick(navRail: MainMenuItem) {
         when(navRail.identifier){
             IDENTIFIER_SWIFT_CODE -> startActivity(Intent(this, SwiftCodeListActivity::class.java))
             IDENTIFIER_BANK -> startActivity(Intent(this, BankListActivity::class.java))

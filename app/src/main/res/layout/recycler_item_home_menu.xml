@@ -10,13 +10,13 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/ivIcon"
-            android:layout_width="@dimen/_40sdp"
-            android:layout_height="@dimen/_40sdp"
+            android:layout_width="@dimen/_32sdp"
+            android:layout_height="@dimen/_32sdp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:elevation="1dp"
             android:scaleType="center"
-            app:shapeAppearance="@style/roundedImageViewGenericSliderStyle20"
+            app:shapeAppearance="@style/roundedImageViewGenericSliderStyle16"
             android:background="@color/colorPrimaryDark"
             tools:src="@drawable/ic_bank_icon"
             app:tint="@color/colorOnPrimary"/>
@@ -54,6 +54,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="start"
                     android:minWidth="@dimen/_64sdp"
+                    android:textSize="@dimen/_10ssp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/ivSeeAll"
                     tools:text="Navigation" />

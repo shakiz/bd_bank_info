@@ -1,6 +1,6 @@
 package com.reader.bd_bank_info.data.model
 
-data class NavigationRail(
+data class MainMenuItem(
     val titleEn : String? = null,
     val titleBn : String? = null,
     val identifier: String? = null,
