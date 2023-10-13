@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.reader.bd_bank_info.R
 import com.reader.bd_bank_info.data.model.NavigationRail
 import com.reader.bd_bank_info.databinding.RecyclerItemNavigationRailBinding
 import com.reader.bd_bank_info.utils.*
@@ -60,17 +59,6 @@ class NavRailAdapter : RecyclerView.Adapter<NavRailAdapter.NavigationRailViewHol
     class NavigationRailViewHolder(val binding: RecyclerItemNavigationRailBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bindItem(navRail: NavigationRail) {
-            val context = binding.cvRoot.context
-
-            binding.cvRoot.strokeColor = context.attrColor(androidx.appcompat.R.attr.colorPrimary)
-            if (adapterPosition == 0) {
-                binding.tvTitle.setBackgroundColor(context.compatColor(R.color.colorPrimary))
-                binding.tvTitle.setTextColor(context.compatColor(R.color.colorOnPrimary))
-            } else {
-                binding.tvTitle.setBackgroundColor(context.compatColor(R.color.window_background2))
-                binding.tvTitle.setTextColor(context.compatColor(R.color.colorOnSecondary))
-            }
-
             binding.tvTitle.text = navRail.titleEn
         }
     }

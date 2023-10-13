@@ -14,7 +14,6 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
 
     private fun fetchLocalNavigationRailData(): List<NavigationRail> {
         return listOf(
-            NavigationRail(titleEn = "Home", titleBn = "Home", identifier = IDENTIFIER_HOME),
             NavigationRail(titleEn = "Banks", titleBn = "Banks", identifier = IDENTIFIER_BANK),
             NavigationRail(
                 titleEn = "Swift Codes",

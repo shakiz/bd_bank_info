@@ -10,7 +10,7 @@
         app:cardCornerRadius="@dimen/_9sdp"
         app:cardElevation="0dp"
         app:strokeWidth="@dimen/_1sdp"
-        tools:strokeColor="?colorPrimary">
+        app:strokeColor="?colorPrimary">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvTitle"
