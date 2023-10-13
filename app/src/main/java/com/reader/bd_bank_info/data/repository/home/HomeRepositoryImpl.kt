@@ -23,7 +23,7 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
                 titleEn = "Swift Codes",
                 titleBn = "Swift Codes",
                 identifier = IDENTIFIER_SWIFT_CODE,
-                icon = R.drawable.ic_bank_icon
+                icon = R.drawable.ic_swift_key
             ),
             MainMenuItem(
                 titleEn = "Currency Rates",
@@ -36,7 +36,7 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
                 titleEn = "Routings",
                 titleBn = "Routings",
                 identifier = IDENTIFIER_ROUTING_NO,
-                icon = R.drawable.ic_bank_icon
+                icon = R.drawable.ic_routing_no
             ),
             MainMenuItem(
                 titleEn = "Loan",
