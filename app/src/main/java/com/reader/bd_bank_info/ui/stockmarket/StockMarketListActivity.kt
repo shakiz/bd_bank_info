@@ -67,15 +67,18 @@ class StockMarketListActivity : AppCompatActivity(), BankSwiftCodeAdapter.SwiftC
     }
 
     private fun initObservers() {
-        viewModel.onBankListFetched().observe(this) { bankList ->
-            bankList?.let {
-                swiftCodeAdapter.addItems(bankList)
-            }
+        viewModel.onBankListFetched().observe(this) {
+            viewModel.fetchStockMarketList()
+        }
+
+        viewModel.onStockMarketFetched().observe(this) { stockMarketlist ->
+            swiftCodeAdapter.addItems(stockMarketlist)
         }
     }
 
     private fun setupBankListView() {
-        binding.rvSwiftCodeList.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+        binding.rvSwiftCodeList.layoutManager =
+            LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         binding.rvSwiftCodeList.addItemDecoration(SpaceItemDecoration(this.dimenSize(R.dimen._8sdp)))
         binding.rvSwiftCodeList.adapter = swiftCodeAdapter
         swiftCodeAdapter.setOnSwiftCodeCopyListener(this)
@@ -102,7 +105,7 @@ class StockMarketListActivity : AppCompatActivity(), BankSwiftCodeAdapter.SwiftC
     }
 
     override fun onHotlineNumberCalled(hotlineNo: Int) {
-        if(hotlineNo <= 0){
+        if (hotlineNo <= 0) {
             return
         }
         if (ContextCompat.checkSelfPermission(
@@ -113,7 +116,12 @@ class StockMarketListActivity : AppCompatActivity(), BankSwiftCodeAdapter.SwiftC
             val uri = "tel:$hotlineNo"
             val callIntent = Intent(Intent.ACTION_CALL)
             callIntent.data = Uri.parse(uri)
-            showLongToast(getString(com.reader.bd_bank_info.R.string.calling_x_hotline_number, hotlineNo))
+            showLongToast(
+                getString(
+                    com.reader.bd_bank_info.R.string.calling_x_hotline_number,
+                    hotlineNo
+                )
+            )
             startActivity(callIntent)
         } else {
             Toast.makeText(
