@@ -17,4 +17,5 @@
     <string name="calling_x_hotline_number">Calling %d hotline number</string>
     <string name="please_allow_call_permission">Please allow call permission</string>
     <string name="home">Home</string>
+    <string name="stock_market_list">Stock Market List</string>
 </resources>
