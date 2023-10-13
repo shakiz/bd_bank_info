@@ -49,4 +49,28 @@
         <item name="cornerFamily">rounded</item>
     </style>
 
+    <style name="roundedImageViewGenericSliderStyle20" parent="">
+        <item name="cornerSizeTopRight">@dimen/_20sdp</item>
+        <item name="cornerSizeTopLeft">@dimen/_20sdp</item>
+        <item name="cornerSizeBottomLeft">@dimen/_20sdp</item>
+        <item name="cornerSizeBottomRight">@dimen/_20sdp</item>
+        <item name="cornerFamily">rounded</item>
+    </style>
+
+    <style name="roundedImageViewGenericSliderStyle10" parent="">
+        <item name="cornerSizeTopRight">@dimen/_10sdp</item>
+        <item name="cornerSizeTopLeft">@dimen/_10sdp</item>
+        <item name="cornerSizeBottomLeft">@dimen/_10sdp</item>
+        <item name="cornerSizeBottomRight">@dimen/_10sdp</item>
+        <item name="cornerFamily">rounded</item>
+    </style>
+
+    <style name="roundedImageViewGenericSliderStyle8" parent="">
+        <item name="cornerSizeTopRight">@dimen/_8sdp</item>
+        <item name="cornerSizeTopLeft">@dimen/_8sdp</item>
+        <item name="cornerSizeBottomLeft">@dimen/_8sdp</item>
+        <item name="cornerSizeBottomRight">@dimen/_8sdp</item>
+        <item name="cornerFamily">rounded</item>
+    </style>
+
 </resources>

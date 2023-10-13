@@ -14,29 +14,37 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
 
     private fun fetchLocalNavigationRailData(): List<NavigationRail> {
         return listOf(
-            NavigationRail(titleEn = "Banks", titleBn = "Banks", identifier = IDENTIFIER_BANK),
+            NavigationRail(
+                titleEn = "Banks",
+                titleBn = "Banks",
+                identifier = IDENTIFIER_BANK,
+                icon = R.drawable.ic_bank_icon
+            ),
             NavigationRail(
                 titleEn = "Swift Codes",
                 titleBn = "Swift Codes",
-                identifier = IDENTIFIER_SWIFT_CODE
+                identifier = IDENTIFIER_SWIFT_CODE,
+                icon = R.drawable.ic_bank_icon
             ),
             NavigationRail(
                 titleEn = "Currency Rates",
                 titleBn = "Currency Rates",
                 identifier = IDENTIFIER_CURRENCY_RATES,
+                icon = R.drawable.ic_exchange_rate,
                 content = ExtraContent(url = "https://www.banksbd.org/exchange.html")
             ),
             NavigationRail(
                 titleEn = "Routings",
                 titleBn = "Routings",
-                identifier = IDENTIFIER_ROUTING_NO
+                identifier = IDENTIFIER_ROUTING_NO,
+                icon = R.drawable.ic_bank_icon
             ),
-            NavigationRail(titleEn = "Loan", titleBn = "Loan", identifier = IDENTIFIER_LOAN),
             NavigationRail(
-                titleEn = "Support",
-                titleBn = "Support",
-                identifier = IDENTIFIER_SUPPORT
-            )
+                titleEn = "Loan",
+                titleBn = "Loan",
+                identifier = IDENTIFIER_LOAN,
+                icon = R.drawable.ic_bank_loan
+            ),
         )
     }
 }
