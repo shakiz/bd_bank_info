@@ -1,35 +1,29 @@
 package com.reader.bd_bank_info.ui.stockmarket
 
-import android.Manifest
-import android.content.ClipData
-import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.net.Uri
 import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.intuit.sdp.R
+import com.reader.bd_bank_info.data.model.StockMarket
 import com.reader.bd_bank_info.databinding.ActivityStockMarketListBinding
-import com.reader.bd_bank_info.ui.adapters.BankSwiftCodeAdapter
+import com.reader.bd_bank_info.ui.adapters.StockMarketAdapter
 import com.reader.bd_bank_info.ui.bank.BankViewModel
-import com.reader.bd_bank_info.utils.REQUEST_CALL_CODE
+import com.reader.bd_bank_info.ui.commonwebview.CommonWebViewActivity
+import com.reader.bd_bank_info.utils.STOCK_MARKET_BASE_URL
 import com.reader.bd_bank_info.utils.SpaceItemDecoration
+import com.reader.bd_bank_info.utils.WEBVIEW_BUNDLE
 import com.reader.bd_bank_info.utils.dimenSize
-import com.reader.bd_bank_info.utils.showLongToast
 
-class StockMarketListActivity : AppCompatActivity(), BankSwiftCodeAdapter.SwiftCodeCopyListener {
+class StockMarketListActivity : AppCompatActivity(), StockMarketAdapter.StockMarketClickListener{
 
     private lateinit var binding: ActivityStockMarketListBinding
     private lateinit var viewModel: BankViewModel
-    private val swiftCodeAdapter = BankSwiftCodeAdapter()
+    private val stockMarketAdapter = StockMarketAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -71,8 +65,8 @@ class StockMarketListActivity : AppCompatActivity(), BankSwiftCodeAdapter.SwiftC
             viewModel.fetchStockMarketList()
         }
 
-        viewModel.onStockMarketFetched().observe(this) { stockMarketlist ->
-            swiftCodeAdapter.addItems(stockMarketlist)
+        viewModel.onStockMarketFetched().observe(this) { stockMarketList ->
+            stockMarketList?.let { stockMarketAdapter.addItems(it) }
         }
     }
 
@@ -80,8 +74,8 @@ class StockMarketListActivity : AppCompatActivity(), BankSwiftCodeAdapter.SwiftC
         binding.rvSwiftCodeList.layoutManager =
             LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         binding.rvSwiftCodeList.addItemDecoration(SpaceItemDecoration(this.dimenSize(R.dimen._8sdp)))
-        binding.rvSwiftCodeList.adapter = swiftCodeAdapter
-        swiftCodeAdapter.setOnSwiftCodeCopyListener(this)
+        binding.rvSwiftCodeList.adapter = stockMarketAdapter
+        stockMarketAdapter.setItemClickListener(this)
     }
 
     private fun closeKeyboard() {
@@ -96,50 +90,8 @@ class StockMarketListActivity : AppCompatActivity(), BankSwiftCodeAdapter.SwiftC
         }
     }
 
-    override fun onSwiftCodeCopied(swiftCode: String) {
-        val clipboard: ClipboardManager =
-            getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-        val clip: ClipData = ClipData.newPlainText(swiftCode, swiftCode)
-        clipboard.setPrimaryClip(clip)
-        showLongToast(getString(com.reader.bd_bank_info.R.string.swift_code_copied))
-    }
-
-    override fun onHotlineNumberCalled(hotlineNo: Int) {
-        if (hotlineNo <= 0) {
-            return
-        }
-        if (ContextCompat.checkSelfPermission(
-                this,
-                Manifest.permission.CALL_PHONE
-            ) == PackageManager.PERMISSION_GRANTED
-        ) {
-            val uri = "tel:$hotlineNo"
-            val callIntent = Intent(Intent.ACTION_CALL)
-            callIntent.data = Uri.parse(uri)
-            showLongToast(
-                getString(
-                    com.reader.bd_bank_info.R.string.calling_x_hotline_number,
-                    hotlineNo
-                )
-            )
-            startActivity(callIntent)
-        } else {
-            Toast.makeText(
-                this,
-                getString(com.reader.bd_bank_info.R.string.please_allow_call_permission),
-                Toast.LENGTH_SHORT
-            ).show()
-            if (ContextCompat.checkSelfPermission(
-                    this,
-                    Manifest.permission.CALL_PHONE
-                ) != PackageManager.PERMISSION_GRANTED
-            ) {
-                ActivityCompat.requestPermissions(
-                    this,
-                    arrayOf(Manifest.permission.CALL_PHONE),
-                    REQUEST_CALL_CODE
-                )
-            }
-        }
+    override fun onItemClick(stockMarket: StockMarket) {
+        val bundle = CommonWebViewActivity.createIntent(this, "$STOCK_MARKET_BASE_URL${stockMarket.stockCode}", stockMarket.bankName)
+        startActivity(Intent(this, CommonWebViewActivity::class.java).putExtra(WEBVIEW_BUNDLE, bundle))
     }
 }

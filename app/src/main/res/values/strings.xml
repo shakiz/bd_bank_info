@@ -18,4 +18,10 @@
     <string name="please_allow_call_permission">Please allow call permission</string>
     <string name="home">Home</string>
     <string name="stock_market_list">Stock Market List</string>
+    <string name="stock_code_x">Stock Code: %s</string>
+    <string name="send_email">Send Email</string>
+    <string name="call_hotline">Call Hotline No</string>
+    <string name="corporate_address">Corporate Address</string>
+    <string name="address">Address</string>
+    <string name="bank_details_with_x_values">\"Its a %s, which was established at %d. This bank is a type of %s and Origin is %s. Corporate address is at %s\"</string>
 </resources>
