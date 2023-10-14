@@ -27,7 +27,7 @@ class BankRepositoryImpl(private val homeApi: HomeApi) : BankRepository {
                 email = "info@abbl.com",
                 address = "www.abbl.com",
                 swiftCode = "ABBLBDDH",
-                stockCode = "ABBANK - DSE CSE"
+                stockCode = "ABBANK"
             ),
             Bank(
                 bankId = 2,
@@ -86,7 +86,7 @@ class BankRepositoryImpl(private val homeApi: HomeApi) : BankRepository {
                 bankType = "Public Bank",
                 bankCategory = "Specialized Bank",
                 origin = "Local Bank",
-                corporateAddress = "",
+                corporateAddress = "PCH9+692, Motijheel Rd, Dhaka 1000",
                 hotlineNo = 16129,
                 hotlinePhoneNo = "9556903",
                 email = "info@krishibank.org.bd",

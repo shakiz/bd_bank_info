@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
+import com.reader.bd_bank_info.R
 import com.reader.bd_bank_info.data.model.Bank
 import com.reader.bd_bank_info.databinding.ActivityBankDetailsBinding
 import com.reader.bd_bank_info.utils.ITEM_BANK
@@ -50,12 +51,7 @@ class BankDetailsActivity : AppCompatActivity() {
             it.bankIconRes?.let { res ->
                 binding.ivBankLogo.background = (ContextCompat.getDrawable(this, res))
             }
-            binding.tvBankTitle.text = it.bankName
-            binding.tvBankLegalStatus.text = it.legalStatus
-            binding.tvBankType.text = it.bankType
-            binding.tvBankCategory.text = it.bankCategory
-            binding.tvBankOrigin.text = it.origin
-            binding.tvBankCorporateAddress.text = it.corporateAddress
+            binding.tvBankDetails.text = getString(R.string.bank_details_with_x_values, it.legalStatus, it.establishedDate, it.bankType, it.origin, it.corporateAddress)
             binding.tvHotlineNumber.text = it.hotlineNo.toString()
             binding.tvOverseas.text = it.hotlinePhoneNo
             binding.tvBankWebsite.text = it.address

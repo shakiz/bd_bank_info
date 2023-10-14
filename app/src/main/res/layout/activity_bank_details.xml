@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.bank.BankListActivity">
+    tools:context=".ui.bank.BankListActivity"
+    android:background="@color/window_background2">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -31,66 +32,142 @@
             android:id="@+id/ivBankLogo"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:scaleType="centerCrop"
+            android:scaleType="centerInside"
+            android:layout_margin="@dimen/_12sdp"
+            android:background="@color/colorOnPrimary"
+            app:strokeWidth="@dimen/_1sdp"
+            app:strokeColor="@color/colorOnPrimary"
             app:layout_constraintDimensionRatio="3:1"
             app:layout_constraintTop_toTopOf="parent"
             app:shapeAppearanceOverlay="@style/roundedImageViewGenericSliderStyle"
-            tools:src="@drawable/ic_placeholder" />
+            tools:src="@drawable/ebl" />
 
-        <TextView
-            android:id="@+id/tvBankTitle"
-            style="@style/BoldTextStyle"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cvBankDetails"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/ivBankLogo"
-            tools:text="AB Bank" />
+            android:layout_margin="@dimen/_12sdp"
+            app:cardElevation="0dp"
+            app:cardCornerRadius="@dimen/_8sdp"
+            app:layout_constraintTop_toBottomOf="@id/ivBankLogo">
 
-        <TextView
-            android:id="@+id/tvBankLegalStatus"
-            style="@style/NormalTextStyle"
+            <TextView
+                android:id="@+id/tvBankDetails"
+                style="@style/SemiBoldTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_8sdp"
+                android:gravity="center"
+                tools:text="@string/bank_details_with_x_values" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cvNoAndEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/tvBankTitle"
-            tools:text="Public Limited Bank" />
+            app:cardBackgroundColor="@color/colorOnPrimary"
+            app:cardElevation="0dp"
+            android:layout_margin="@dimen/_12sdp"
+            app:cardCornerRadius="@dimen/_8sdp"
+            app:layout_constraintTop_toBottomOf="@id/cvBankDetails">
 
-        <TextView
-            android:id="@+id/tvBankType"
-            style="@style/NormalTextStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/tvBankLegalStatus"
-            tools:text="Private Bank" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_8sdp">
 
-        <TextView
-            android:id="@+id/tvBankCategory"
-            style="@style/NormalTextStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/tvBankType"
-            tools:text="Commercial Bank" />
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/ivEmail"
+                    android:layout_width="@dimen/_32sdp"
+                    android:layout_height="@dimen/_32sdp"
+                    android:background="@color/colorPrimaryDark"
+                    android:scaleType="center"
+                    android:src="@drawable/ic_email"
+                    app:layout_constraintEnd_toEndOf="@+id/tvSendEmail"
+                    app:layout_constraintStart_toStartOf="@+id/tvSendEmail"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:shapeAppearance="@style/roundedImageViewGenericSliderStyle16"
+                    app:tint="@color/colorOnPrimary" />
 
-        <TextView
-            android:id="@+id/tvBankOrigin"
-            style="@style/NormalTextStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/tvBankCategory"
-            tools:text="Local Bank" />
+                <TextView
+                    style="@style/SemiBoldTextStyle"
+                    android:id="@+id/tvSendEmail"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:text="@string/send_email"
+                    android:gravity="center"
+                    android:textSize="@dimen/_11ssp"
+                    app:layout_constraintEnd_toStartOf="@id/tvCallHotline"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/ivEmail"/>
 
-        <TextView
-            android:id="@+id/tvBankCorporateAddress"
-            style="@style/NormalTextStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/tvBankOrigin"
-            tools:text="Dhaka, Bangladesh" />
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/ivCall"
+                    android:layout_width="@dimen/_32sdp"
+                    android:layout_height="@dimen/_32sdp"
+                    android:background="@color/colorPrimaryDark"
+                    android:scaleType="center"
+                    android:src="@drawable/ic_call"
+                    app:layout_constraintEnd_toEndOf="@+id/tvCallHotline"
+                    app:layout_constraintStart_toEndOf="@+id/tvSendEmail"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:shapeAppearance="@style/roundedImageViewGenericSliderStyle16"
+                    app:tint="@color/colorOnPrimary" />
+
+                <TextView
+                    style="@style/SemiBoldTextStyle"
+                    android:id="@+id/tvCallHotline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:gravity="center"
+                    android:text="@string/call_hotline"
+                    android:textSize="@dimen/_11ssp"
+                    app:layout_constraintStart_toEndOf="@id/tvSendEmail"
+                    app:layout_constraintEnd_toStartOf="@id/tvBankCorporateAddress"
+                    app:layout_constraintTop_toBottomOf="@id/ivCall"/>
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/ivLocation"
+                    android:layout_width="@dimen/_32sdp"
+                    android:layout_height="@dimen/_32sdp"
+                    android:background="@color/colorPrimaryDark"
+                    android:scaleType="center"
+                    android:src="@drawable/ic_location"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/tvBankCorporateAddress"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:shapeAppearance="@style/roundedImageViewGenericSliderStyle16"
+                    app:tint="@color/colorOnPrimary" />
+
+                <TextView
+                    style="@style/SemiBoldTextStyle"
+                    android:id="@+id/tvBankCorporateAddress"
+                    android:layout_width="0dp"
+                    android:gravity="center"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:textSize="@dimen/_11ssp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/address"
+                    app:layout_constraintStart_toEndOf="@id/tvCallHotline"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/ivLocation"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
 
         <TextView
             android:id="@+id/tvHotlineNumber"
             style="@style/NormalTextStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/tvBankCorporateAddress"
+            app:layout_constraintTop_toBottomOf="@id/cvNoAndEmail"
             tools:text="12345" />
 
         <TextView
