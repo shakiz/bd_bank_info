@@ -2,6 +2,8 @@ package com.reader.bd_bank_info.ui.bank
 
 import com.reader.bd_bank_info.data.model.Bank
 
-interface BankItemClickListener {
+interface BankCallBack {
     fun onItemClick(bank: Bank)
+    fun onMailClicked(email: String)
+    fun onHotlineNumberCalled(hotlineNo: Int)
 }

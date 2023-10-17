@@ -3,18 +3,17 @@ package com.reader.bd_bank_info.ui.adapters
 import android.view.LayoutInflater
 import android.view.View.*
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.reader.bd_bank_info.R
 import com.reader.bd_bank_info.data.model.Bank
 import com.reader.bd_bank_info.databinding.RecyclerItemVerticalBankListBinding
-import com.reader.bd_bank_info.ui.bank.BankItemClickListener
+import com.reader.bd_bank_info.ui.bank.BankCallBack
 import com.reader.bd_bank_info.utils.*
 
 class BankVerticalItemAdapter : RecyclerView.Adapter<BankVerticalItemAdapter.BankVerticalViewHolder>() {
     private val items = ArrayList<Bank>()
-    private var bankItemClickListener: BankItemClickListener? = null
+    private var bankCallBack: BankCallBack? = null
     private var viewType: Int = BANK_LIST_ITEM_VIEW_TYPE_BANK_LIST
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BankVerticalViewHolder {
@@ -25,7 +24,7 @@ class BankVerticalItemAdapter : RecyclerView.Adapter<BankVerticalItemAdapter.Ban
         )
         return BankVerticalViewHolder(binding, viewType).apply {
             itemView.setOnClickListener {
-                bankItemClickListener?.onItemClick(items[adapterPosition])
+                bankCallBack?.onItemClick(items[adapterPosition])
             }
         }
     }
@@ -44,8 +43,8 @@ class BankVerticalItemAdapter : RecyclerView.Adapter<BankVerticalItemAdapter.Ban
 
     override fun getItemCount() = items.size
 
-    fun setItemClickListener(bankItemClickListener: BankItemClickListener){
-        this.bankItemClickListener = bankItemClickListener
+    fun setItemClickListener(bankCallBack: BankCallBack){
+        this.bankCallBack = bankCallBack
     }
 
     fun addItems(navRails: List<Bank>) {

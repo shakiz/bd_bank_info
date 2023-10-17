@@ -17,7 +17,7 @@ import com.reader.bd_bank_info.utils.ITEM_BANK
 import com.reader.bd_bank_info.utils.SpaceItemDecoration
 import com.reader.bd_bank_info.utils.dimenSize
 
-class BankListActivity : AppCompatActivity(), BankItemClickListener {
+class BankListActivity : AppCompatActivity(), BankCallBack {
 
     private lateinit var binding: ActivityBankListBinding
     private lateinit var viewModel: BankViewModel
@@ -88,5 +88,13 @@ class BankListActivity : AppCompatActivity(), BankItemClickListener {
 
     override fun onItemClick(bank: Bank) {
         startActivity(Intent(this, BankDetailsActivity::class.java).putExtra(ITEM_BANK, bank))
+    }
+
+    override fun onMailClicked(email: String) {
+
+    }
+
+    override fun onHotlineNumberCalled(hotlineNo: Int) {
+
     }
 }

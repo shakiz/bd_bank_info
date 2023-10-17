@@ -12,13 +12,13 @@ import com.intuit.sdp.R
 import com.reader.bd_bank_info.data.model.Bank
 import com.reader.bd_bank_info.databinding.ActivityRoutingBankListBinding
 import com.reader.bd_bank_info.ui.adapters.BankVerticalItemAdapter
-import com.reader.bd_bank_info.ui.bank.BankItemClickListener
+import com.reader.bd_bank_info.ui.bank.BankCallBack
 import com.reader.bd_bank_info.utils.BANK_LIST_ITEM_VIEW_TYPE_ROUTING
 import com.reader.bd_bank_info.utils.ITEM_BANK
 import com.reader.bd_bank_info.utils.SpaceItemDecoration
 import com.reader.bd_bank_info.utils.dimenSize
 
-class RoutingBankListActivity : AppCompatActivity(), BankItemClickListener {
+class RoutingBankListActivity : AppCompatActivity(), BankCallBack {
 
     private lateinit var binding: ActivityRoutingBankListBinding
     private lateinit var viewModel: RoutingViewModel
@@ -89,5 +89,13 @@ class RoutingBankListActivity : AppCompatActivity(), BankItemClickListener {
 
     override fun onItemClick(bank: Bank) {
         startActivity(Intent(this, RoutingDetailsActivity::class.java).putExtra(ITEM_BANK, bank))
+    }
+
+    override fun onMailClicked(email: String) {
+
+    }
+
+    override fun onHotlineNumberCalled(hotlineNo: Int) {
+        
     }
 }

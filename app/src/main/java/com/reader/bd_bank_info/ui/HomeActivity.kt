@@ -15,7 +15,7 @@ import com.reader.bd_bank_info.ui.adapters.BankHorizontalSwiftCodeAdapter
 import com.reader.bd_bank_info.ui.adapters.BankItemAdapter
 import com.reader.bd_bank_info.ui.adapters.HomeMenuAdapter
 import com.reader.bd_bank_info.ui.bank.BankDetailsActivity
-import com.reader.bd_bank_info.ui.bank.BankItemClickListener
+import com.reader.bd_bank_info.ui.bank.BankCallBack
 import com.reader.bd_bank_info.ui.bank.BankListActivity
 import com.reader.bd_bank_info.ui.commonwebview.CommonWebViewActivity
 import com.reader.bd_bank_info.ui.routings.RoutingBankListActivity
@@ -23,7 +23,7 @@ import com.reader.bd_bank_info.ui.stockmarket.StockMarketListActivity
 import com.reader.bd_bank_info.ui.swiftcode.SwiftCodeListActivity
 import com.reader.bd_bank_info.utils.*
 
-class HomeActivity : AppCompatActivity(), BankItemClickListener, HomeMenuAdapter.NavRailClickListener {
+class HomeActivity : AppCompatActivity(), BankCallBack, HomeMenuAdapter.NavRailClickListener {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var viewModel: HomeViewModel
@@ -103,6 +103,14 @@ class HomeActivity : AppCompatActivity(), BankItemClickListener, HomeMenuAdapter
 
     override fun onItemClick(bank: Bank) {
         startActivity(Intent(this, BankDetailsActivity::class.java).putExtra(ITEM_BANK, bank))
+    }
+
+    override fun onMailClicked(email: String) {
+
+    }
+
+    override fun onHotlineNumberCalled(hotlineNo: Int) {
+
     }
 
     override fun onItemClick(navRail: MainMenuItem) {
