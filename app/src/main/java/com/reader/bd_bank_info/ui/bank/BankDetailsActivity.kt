@@ -39,6 +39,7 @@ class BankDetailsActivity : AppCompatActivity() {
 
     private fun initView() {
         setSupportActionBar(binding.toolbar)
+        binding.toolbar.title = bank?.bankName
         setupBankDetailsUI()
     }
 
@@ -52,9 +53,10 @@ class BankDetailsActivity : AppCompatActivity() {
                 binding.ivBankLogo.background = (ContextCompat.getDrawable(this, res))
             }
             binding.tvBankDetails.text = getString(R.string.bank_details_with_x_values, it.legalStatus, it.establishedDate, it.bankType, it.origin, it.corporateAddress)
+            binding.tvBankOverseasNo.text = it.hotlinePhoneNo
             binding.tvHotlineNumber.text = it.hotlineNo.toString()
-            binding.tvOverseas.text = it.hotlinePhoneNo
-            binding.tvBankWebsite.text = it.address
+            binding.tvBankEmail.text = it.email
+            binding.tvBankCorporateAddress.text = it.corporateAddress
             binding.tvBankSwiftCode.text = it.swiftCode
             binding.tvBankStockCode.text = it.stockCode
         }
