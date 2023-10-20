@@ -63,108 +63,103 @@
 
         </com.google.android.material.card.MaterialCardView>
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cvNoAndEmail"
+        <LinearLayout
+            android:id="@+id/llEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="horizontal"
             android:layout_margin="@dimen/_12sdp"
-            app:cardBackgroundColor="@color/colorOnPrimary"
-            app:cardCornerRadius="@dimen/_8sdp"
-            app:cardElevation="0dp"
+            android:background="@drawable/rectangle_white_bg_top_round"
+            android:padding="@dimen/_8sdp"
+            android:gravity="center|start"
             app:layout_constraintTop_toBottomOf="@id/cvBankDetails">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
+            <ImageView
+                android:id="@+id/ivEmail"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:scaleType="center"
+                android:src="@drawable/ic_email"
+                app:tint="@color/colorPrimaryDark" />
+
+            <TextView
+                android:id="@+id/tvBankEmail"
+                style="@style/SemiBoldTextStyle"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_8sdp">
+                android:layout_marginStart="@dimen/_4sdp"
+                android:layout_marginEnd="@dimen/_4sdp"
+                android:gravity="center|start"
+                android:textSize="@dimen/_10ssp"
+                tools:text="test@gmail.com" />
 
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/ivEmail"
-                    android:layout_width="@dimen/_30sdp"
-                    android:layout_height="@dimen/_30sdp"
-                    android:background="@color/colorPrimaryDark"
-                    android:scaleType="center"
-                    android:src="@drawable/ic_email"
-                    app:layout_constraintEnd_toEndOf="@+id/tvBankEmail"
-                    app:layout_constraintStart_toStartOf="@+id/tvBankEmail"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:shapeAppearance="@style/roundedImageViewGenericSliderStyle16"
-                    app:tint="@color/colorOnPrimary" />
+        </LinearLayout>
 
-                <TextView
-                    android:id="@+id/tvBankEmail"
-                    style="@style/SemiBoldTextStyle"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_4sdp"
-                    android:layout_marginTop="@dimen/_4sdp"
-                    android:layout_marginEnd="@dimen/_4sdp"
-                    android:gravity="center"
-                    tools:text="test@gmail.com"
-                    android:textSize="@dimen/_10ssp"
-                    app:layout_constraintEnd_toStartOf="@id/tvHotlineNumber"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/ivEmail" />
+        <LinearLayout
+            android:id="@+id/llHotlineNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/rectangle_white_bg_without_round"
+            android:layout_marginStart="@dimen/_13sdp"
+            android:layout_marginEnd="@dimen/_13sdp"
+            android:padding="@dimen/_8sdp"
+            android:gravity="center|start"
+            app:layout_constraintTop_toBottomOf="@id/llEmail">
 
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/ivCall"
-                    android:layout_width="@dimen/_30sdp"
-                    android:layout_height="@dimen/_30sdp"
-                    android:background="@color/colorPrimaryDark"
-                    android:scaleType="center"
-                    android:src="@drawable/ic_call"
-                    app:layout_constraintEnd_toEndOf="@+id/tvHotlineNumber"
-                    app:layout_constraintStart_toStartOf="@+id/tvHotlineNumber"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:shapeAppearance="@style/roundedImageViewGenericSliderStyle16"
-                    app:tint="@color/colorOnPrimary" />
+            <ImageView
+                android:id="@+id/ivCall"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:scaleType="center"
+                android:src="@drawable/ic_call"
+                app:tint="@color/colorPrimaryDark" />
 
-                <TextView
-                    android:id="@+id/tvHotlineNumber"
-                    style="@style/SemiBoldTextStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_4sdp"
-                    android:layout_marginTop="@dimen/_4sdp"
-                    android:layout_marginEnd="@dimen/_4sdp"
-                    android:gravity="center"
-                    tools:text="1234567"
-                    android:textSize="@dimen/_10ssp"
-                    app:layout_constraintEnd_toStartOf="@id/tvBankCorporateAddress"
-                    app:layout_constraintStart_toEndOf="@id/tvBankEmail"
-                    app:layout_constraintTop_toBottomOf="@id/ivCall" />
+            <TextView
+                android:id="@+id/tvHotlineNumber"
+                style="@style/SemiBoldTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_4sdp"
+                android:layout_marginEnd="@dimen/_4sdp"
+                android:gravity="center|start"
+                android:textSize="@dimen/_10ssp"
+                tools:text="1234567" />
 
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/ivLocation"
-                    android:layout_width="@dimen/_30sdp"
-                    android:layout_height="@dimen/_30sdp"
-                    android:background="@color/colorPrimaryDark"
-                    android:scaleType="center"
-                    android:src="@drawable/ic_location"
-                    app:layout_constraintEnd_toEndOf="@+id/tvBankCorporateAddress"
-                    app:layout_constraintStart_toStartOf="@+id/tvBankCorporateAddress"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:shapeAppearance="@style/roundedImageViewGenericSliderStyle16"
-                    app:tint="@color/colorOnPrimary" />
+        </LinearLayout>
 
-                <TextView
-                    android:id="@+id/tvBankCorporateAddress"
-                    style="@style/SemiBoldTextStyle"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_4sdp"
-                    android:layout_marginTop="@dimen/_4sdp"
-                    android:layout_marginEnd="@dimen/_4sdp"
-                    android:gravity="center"
-                    android:text="@string/address"
-                    android:textSize="@dimen/_10ssp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/tvHotlineNumber"
-                    app:layout_constraintTop_toBottomOf="@id/ivLocation" />
+        <LinearLayout
+            android:id="@+id/llCorporateAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            android:background="@drawable/rectangle_white_bg_bottom_round"
+            android:padding="@dimen/_8sdp"
+            android:orientation="horizontal"
+            android:gravity="center|start"
+            app:layout_constraintTop_toBottomOf="@id/llHotlineNumber">
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageView
+                android:id="@+id/ivLocation"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:scaleType="center"
+                android:src="@drawable/ic_location"
+                app:tint="@color/colorPrimaryDark" />
 
-        </com.google.android.material.card.MaterialCardView>
+            <TextView
+                android:id="@+id/tvBankCorporateAddress"
+                style="@style/SemiBoldTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_4sdp"
+                android:layout_marginEnd="@dimen/_4sdp"
+                android:gravity="center|start"
+                android:text="@string/address"
+                android:textSize="@dimen/_10ssp" />
+
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/llOverseas"
@@ -177,14 +172,14 @@
             android:gravity="center"
             android:orientation="horizontal"
             android:padding="@dimen/_8sdp"
-            app:layout_constraintTop_toBottomOf="@id/cvNoAndEmail">
+            app:layout_constraintTop_toBottomOf="@id/llCorporateAddress">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ivCallIcon"
                 android:layout_width="@dimen/_20sdp"
                 android:layout_height="@dimen/_20sdp"
                 android:src="@drawable/ic_call"
-                app:tint="@color/colorPrimaryDark"/>
+                app:tint="@color/colorPrimaryDark" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvBankOverseasNo"
@@ -195,7 +190,7 @@
                 android:layout_marginEnd="@dimen/_8sdp"
                 android:layout_weight="1"
                 android:fontFamily="@font/roboto_regular"
-                android:textSize="@dimen/_12sdp"
+                android:textSize="@dimen/_10ssp"
                 app:fontFamily="@font/roboto_regular"
                 tools:text="2345678909" />
 
@@ -224,7 +219,7 @@
                 android:layout_width="@dimen/_20sdp"
                 android:layout_height="@dimen/_20sdp"
                 android:src="@drawable/ic_swift_key"
-                app:tint="@color/colorPrimaryDark"/>
+                app:tint="@color/colorPrimaryDark" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvBankSwiftCode"
@@ -235,7 +230,7 @@
                 android:layout_marginEnd="@dimen/_8sdp"
                 android:layout_weight="1"
                 android:fontFamily="@font/roboto_regular"
-                android:textSize="@dimen/_12sdp"
+                android:textSize="@dimen/_10ssp"
                 app:fontFamily="@font/roboto_regular"
                 tools:text="AS45678" />
 
@@ -264,7 +259,7 @@
                 android:layout_width="@dimen/_20sdp"
                 android:layout_height="@dimen/_20sdp"
                 android:src="@drawable/ic_stock_market"
-                app:tint="@color/colorPrimaryDark"/>
+                app:tint="@color/colorPrimaryDark" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvBankStockCode"
@@ -275,7 +270,7 @@
                 android:layout_marginEnd="@dimen/_8sdp"
                 android:layout_weight="1"
                 android:fontFamily="@font/roboto_regular"
-                android:textSize="@dimen/_12sdp"
+                android:textSize="@dimen/_10ssp"
                 app:fontFamily="@font/roboto_regular"
                 tools:text="ABBANK12" />
 

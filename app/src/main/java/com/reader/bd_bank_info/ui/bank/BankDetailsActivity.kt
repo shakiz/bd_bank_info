@@ -53,12 +53,12 @@ class BankDetailsActivity : AppCompatActivity() {
                 binding.ivBankLogo.background = (ContextCompat.getDrawable(this, res))
             }
             binding.tvBankDetails.text = getString(R.string.bank_details_with_x_values, it.legalStatus, it.establishedDate, it.bankType, it.origin, it.corporateAddress)
-            binding.tvBankOverseasNo.text = it.hotlinePhoneNo
-            binding.tvHotlineNumber.text = it.hotlineNo.toString()
-            binding.tvBankEmail.text = it.email
-            binding.tvBankCorporateAddress.text = it.corporateAddress
-            binding.tvBankSwiftCode.text = it.swiftCode
-            binding.tvBankStockCode.text = it.stockCode
+            binding.tvHotlineNumber.text = getString(R.string.call_for_help_x, it.hotlineNo)
+            binding.tvBankEmail.text = getString(R.string.send_mail_at_x, it.email)
+            binding.tvBankCorporateAddress.text = getString(R.string.address_x, it.corporateAddress)
+            binding.tvBankSwiftCode.text = getString(R.string.swift_code_x, it.swiftCode)
+            binding.tvBankStockCode.text = getString(R.string.stock_code_x, it.stockCode)
+            binding.tvBankOverseasNo.text = getString(R.string.for_overseas_x, it.hotlinePhoneNo)
         }
     }
 }
