@@ -7,16 +7,16 @@
 <!--    <color name="colorSecondaryDark">#FB4B57</color>-->
 
 <!--    &lt;!&ndash;Color scheme Green&ndash;&gt;-->
-<!--    <color name="colorPrimary">#0AAD0A</color>-->
-<!--    <color name="colorPrimaryDark">#179B17</color>-->
-<!--    <color name="colorSecondary">#89EB89</color>-->
-<!--    <color name="colorSecondaryDark">#46CE46</color>-->
+    <color name="colorPrimary">#0AAD0A</color>
+    <color name="colorPrimaryDark">#179B17</color>
+    <color name="colorSecondary">#89EB89</color>
+    <color name="colorSecondaryDark">#46CE46</color>
 
 <!--    &lt;!&ndash;Color scheme Blue&ndash;&gt;-->
-    <color name="colorPrimary">#266DD3</color>
-    <color name="colorPrimaryDark">#195CBD</color>
-    <color name="colorSecondary">#8CBAFA</color>
-    <color name="colorSecondaryDark">#4489EB</color>
+<!--    <color name="colorPrimary">#266DD3</color>-->
+<!--    <color name="colorPrimaryDark">#195CBD</color>-->
+<!--    <color name="colorSecondary">#8CBAFA</color>-->
+<!--    <color name="colorSecondaryDark">#4489EB</color>-->
 
     <color name="colorOnPrimary">#FFFFFF</color>
     <color name="colorOnSecondary">#212121</color>
