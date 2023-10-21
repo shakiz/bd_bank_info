@@ -22,11 +22,7 @@ class BankVerticalItemAdapter : RecyclerView.Adapter<BankVerticalItemAdapter.Ban
             parent,
             false
         )
-        return BankVerticalViewHolder(binding, viewType).apply {
-            itemView.setOnClickListener {
-                bankCallBack?.onItemClick(items[adapterPosition])
-            }
-        }
+        return BankVerticalViewHolder(binding, viewType, bankCallBack)
     }
 
     override fun onBindViewHolder(holder: BankVerticalViewHolder, position: Int) {
@@ -67,7 +63,11 @@ class BankVerticalItemAdapter : RecyclerView.Adapter<BankVerticalItemAdapter.Ban
         diffResult.dispatchUpdatesTo(this)
     }
 
-    class BankVerticalViewHolder(val binding: RecyclerItemVerticalBankListBinding,val viewType: Int) :
+    class BankVerticalViewHolder(
+        val binding: RecyclerItemVerticalBankListBinding,
+        val viewType: Int,
+        val bankCallBack: BankCallBack?
+    ) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bindItem(bank: Bank) {
@@ -76,6 +76,18 @@ class BankVerticalItemAdapter : RecyclerView.Adapter<BankVerticalItemAdapter.Ban
             binding.tvEstablishedAtAndCategory.text = itemView.context.getString(R.string.x_s_established_x_s, bank.bankCategory, bank.establishedDate.toString())
             bank.bankIconRes?.let {
                 binding.ivSlider.setImageResource(it)
+            }
+
+            itemView.setOnClickListener {
+                bankCallBack?.onItemClick(bank)
+            }
+
+            binding.ibMailButton.setOnClickListener {
+                bankCallBack?.onMailClicked(bank.email.orEmpty())
+            }
+
+            binding.ibCallButton.setOnClickListener {
+                bankCallBack?.onHotlineNumberCalled(bank.hotlineNo.orZero())
             }
 
             if(viewType == BANK_LIST_ITEM_VIEW_TYPE_ROUTING){
