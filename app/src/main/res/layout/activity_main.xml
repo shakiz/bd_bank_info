@@ -93,6 +93,7 @@
             android:layout_marginTop="@dimen/_8sdp"
             android:layout_marginStart="@dimen/_8sdp"
             android:layout_marginEnd="@dimen/_8sdp"
+            app:cardBackgroundColor="@color/colorOnPrimary"
             app:cardUseCompatPadding="false"
             app:cardElevation="0dp">
 

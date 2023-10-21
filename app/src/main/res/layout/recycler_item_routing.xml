@@ -7,9 +7,7 @@
         android:id="@+id/cv_root"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="@dimen/_9sdp"
-        app:cardElevation="0dp"
-        app:strokeWidth="@dimen/_1sdp"
+        android:background="@color/colorOnPrimary"
         android:padding="@dimen/_8sdp">
 
         <com.google.android.material.card.MaterialCardView

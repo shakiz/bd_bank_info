@@ -13,6 +13,7 @@
             android:layout_height="wrap_content"
             app:cardUseCompatPadding="false"
             app:cardElevation="0dp"
+            app:cardBackgroundColor="@color/colorOnPrimary"
             app:cardCornerRadius="@dimen/_12sdp">
 
             <com.google.android.material.imageview.ShapeableImageView
