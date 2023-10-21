@@ -10,8 +10,7 @@
         app:cardCornerRadius="@dimen/_9sdp"
         app:cardElevation="0dp"
         app:strokeWidth="@dimen/_1sdp"
-        android:padding="@dimen/_8sdp"
-        tools:strokeColor="?colorPrimary">
+        android:padding="@dimen/_8sdp">
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cvIcon"
