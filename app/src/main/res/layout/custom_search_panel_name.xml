@@ -29,6 +29,7 @@
                 android:layout_margin="@dimen/_8sdp"
                 android:background="@drawable/rectangle_gray_et_bg"
                 android:hint="@string/name_search"
+                android:textColorHint="@color/md_grey_600"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
