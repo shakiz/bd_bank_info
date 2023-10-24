@@ -24,7 +24,9 @@
                 android:layout_marginStart="@dimen/_12sdp"
                 app:cardCornerRadius="@dimen/_12sdp"
                 app:cardElevation="0dp"
-                app:cardBackgroundColor="@color/md_grey_50"
+                app:strokeColor="@color/md_grey_100"
+                app:strokeWidth="@dimen/_1sdp"
+                app:cardBackgroundColor="@color/colorOnPrimary"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent">
