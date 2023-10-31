@@ -31,5 +31,6 @@
     <string name="for_overseas_x">For Overseas: %s</string>
     <string name="swift_code_x">Swift Code: %s</string>
     <string name="stock_code_x">Stock Code: %s</string>
+    <string name="all_menu">All Menu</string>
 
 </resources>
