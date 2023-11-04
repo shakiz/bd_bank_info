@@ -20,4 +20,6 @@ const val BANK_LIST_ITEM_VIEW_TYPE_ROUTING = 2
 
 const val REQUEST_CALL_CODE = 335
 
+const val ROUTINGS = "routings"
+
 const val STOCK_MARKET_BASE_URL = "https://www.dsebd.org/displayCompany.php?name="
