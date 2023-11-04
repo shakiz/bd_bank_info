@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "408178979375",
+    "firebase_url": "https://bd-bank-info-default-rtdb.firebaseio.com",
     "project_id": "bd-bank-info",
     "storage_bucket": "bd-bank-info.appspot.com"
   },
