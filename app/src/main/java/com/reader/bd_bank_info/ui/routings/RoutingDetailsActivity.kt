@@ -9,10 +9,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.intuit.sdp.R
-import com.reader.bd_bank_info.AppInjector
 import com.reader.bd_bank_info.data.model.Bank
 import com.reader.bd_bank_info.databinding.ActivityRoutingDetailsBinding
-import com.reader.bd_bank_info.ui.adapters.BankVerticalItemAdapter
+import com.reader.bd_bank_info.ui.adapters.RoutingItemAdapter
 import com.reader.bd_bank_info.utils.ITEM_BANK
 import com.reader.bd_bank_info.utils.SpaceItemDecoration
 import com.reader.bd_bank_info.utils.dimenSize
@@ -22,7 +21,7 @@ class RoutingDetailsActivity : AppCompatActivity(){
 
     private lateinit var binding: ActivityRoutingDetailsBinding
     private lateinit var viewModel: RoutingViewModel
-    private val bankItemAdapter = BankVerticalItemAdapter()
+    private val routingItemAdapter = RoutingItemAdapter()
     private var bank: Bank? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,15 +57,17 @@ class RoutingDetailsActivity : AppCompatActivity(){
     }
 
     private fun initObservers() {
-        viewModel.onRoutingListFetched().observe(this){
-
+        viewModel.onRoutingListFetched().observe(this){ routings ->
+            routings?.let {
+                routingItemAdapter.addItems(it)
+            }
         }
     }
 
     private fun setupRoutingBankListView() {
         binding.rvRoutings.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         binding.rvRoutings.addItemDecoration(SpaceItemDecoration(this.dimenSize(R.dimen._8sdp)))
-        binding.rvRoutings.adapter = bankItemAdapter
+        binding.rvRoutings.adapter = routingItemAdapter
     }
 
     private fun closeKeyboard() {

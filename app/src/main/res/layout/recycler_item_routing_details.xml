@@ -78,7 +78,7 @@
             app:layout_constraintBottom_toBottomOf="@id/divider2"/>
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvDistrict"
+            android:id="@+id/tvDistricts"
             style="@style/BoldTextStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
