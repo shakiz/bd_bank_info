@@ -2,7 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-parcelize'
-    id("com.google.gms.google-services")
+    id('com.google.gms.google-services')
 }
 
 android {
@@ -92,4 +92,8 @@ dependencies {
 
     //Splash Screen
     implementation "androidx.core:core-splashscreen:1.0.0"
+
+    //Firebase db
+    implementation "com.google.firebase:firebase-core:11.6.2"
+    implementation 'com.google.firebase:firebase-database:19.7.0'
 }
