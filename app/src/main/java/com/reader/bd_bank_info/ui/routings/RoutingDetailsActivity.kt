@@ -9,12 +9,14 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.intuit.sdp.R
+import com.reader.bd_bank_info.AppInjector
 import com.reader.bd_bank_info.data.model.Bank
 import com.reader.bd_bank_info.databinding.ActivityRoutingDetailsBinding
 import com.reader.bd_bank_info.ui.adapters.BankVerticalItemAdapter
 import com.reader.bd_bank_info.utils.ITEM_BANK
 import com.reader.bd_bank_info.utils.SpaceItemDecoration
 import com.reader.bd_bank_info.utils.dimenSize
+import com.reader.bd_bank_info.utils.orZero
 
 class RoutingDetailsActivity : AppCompatActivity(){
 
@@ -41,7 +43,7 @@ class RoutingDetailsActivity : AppCompatActivity(){
         initListeners()
         initObservers()
 
-        viewModel.fetchBankList()
+        viewModel.fetchRoutingByBankId(bankId = bank?.bankId.orZero())
     }
 
     private fun initView() {
@@ -56,7 +58,9 @@ class RoutingDetailsActivity : AppCompatActivity(){
     }
 
     private fun initObservers() {
+        viewModel.onRoutingListFetched().observe(this){
 
+        }
     }
 
     private fun setupRoutingBankListView() {
