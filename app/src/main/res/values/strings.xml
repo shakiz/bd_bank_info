@@ -32,5 +32,10 @@
     <string name="swift_code_x">Swift Code: %s</string>
     <string name="stock_code_x">Stock Code: %s</string>
     <string name="all_menu">All Menu</string>
+    <string name="branch_name_x">Branch Name: %s</string>
+    <string name="district_name_x">District Name: %s</string>
+    <string name="routing_no_x">Routing No: %d</string>
+    <string name="x_d">%d</string>
+    <string name="copy_routing_no">Copy Rout. No.</string>
 
 </resources>

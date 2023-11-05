@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.reader.bd_bank_info.R
 import com.reader.bd_bank_info.data.model.Routings
 import com.reader.bd_bank_info.databinding.RecyclerItemRoutingDetailsBinding
 import com.reader.bd_bank_info.utils.DiffUtilCallback
@@ -50,9 +51,11 @@ class RoutingItemAdapter : RecyclerView.Adapter<RoutingItemAdapter.BankViewHolde
         RecyclerView.ViewHolder(binding.root) {
 
         fun bindItem(routings: Routings) {
-            binding.tvDistricts.text = routings.districts
-            binding.tvBranchName.text = routings.branchName
-            binding.tvRoutingNo.text = routings.routingNo.toString()
+            val context = binding.root.context
+            binding.tvIndex.text = context.getString(R.string.x_d, adapterPosition + 1)
+            binding.tvDistricts.text = context.getString(R.string.district_name_x, routings.districts)
+            binding.tvBranchName.text = context.getString(R.string.branch_name_x, routings.branchName)
+            binding.tvRoutingNo.text = context.getString(R.string.routing_no_x, routings.routingNo)
         }
     }
 }

@@ -3,146 +3,131 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cv_root"
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorOnPrimary"
-        android:padding="@dimen/_8sdp">
+        app:cardCornerRadius="@dimen/_12sdp"
+        app:cardBackgroundColor="@color/colorOnPrimary"
+        app:cardElevation="0dp">
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cvIcon"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="@dimen/_14sdp"
-            app:cardBackgroundColor="@color/colorPrimary"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
+            android:paddingTop="@dimen/_8sdp"
+            android:paddingBottom="@dimen/_8sdp"
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/ivSlider"
-                style="@style/BoldTextStyle"
-                android:layout_width="@dimen/_28sdp"
-                android:layout_height="@dimen/_28sdp"
-                android:gravity="center"
-                android:scaleType="centerCrop"
-                android:padding="@dimen/_1sdp"
-                tools:text="1"
-                android:textColor="@color/colorOnPrimary"
-                android:textSize="@dimen/_16ssp"/>
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cvIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8sdp"
+                app:cardCornerRadius="@dimen/_12sdp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@color/md_grey_50"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
 
-        </com.google.android.material.card.MaterialCardView>
+                <TextView
+                    style="@style/SemiBoldTextStyle"
+                    android:id="@+id/tvIndex"
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="@dimen/_40sdp"
+                    tools:text="1"
+                    android:gravity="center" />
 
-        <View
-            android:id="@+id/divider1"
-            android:layout_width="@dimen/_24sdp"
-            android:layout_height="@dimen/_1sdp"
-            android:background="@color/md_grey_400"
-            app:layout_constraintStart_toEndOf="@id/cvIcon"
-            app:layout_constraintTop_toTopOf="@id/cvIcon"
-            app:layout_constraintBottom_toBottomOf="@id/cvIcon"/>
+            </com.google.android.material.card.MaterialCardView>
 
-        <View
-            android:id="@+id/divider2"
-            android:layout_width="@dimen/_1sdp"
-            android:layout_height="@dimen/_48sdp"
-            android:background="@color/md_grey_400"
-            app:layout_constraintStart_toEndOf="@id/divider1"
-            app:layout_constraintTop_toTopOf="@id/cvIcon"
-            app:layout_constraintBottom_toBottomOf="@id/cvIcon"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/NormalTextStyle"
+                android:id="@+id/tvDistricts"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginEnd="@dimen/_12sdp"
+                app:layout_constraintTop_toTopOf="@id/cvIcon"
+                app:layout_constraintStart_toEndOf="@id/cvIcon"
+                app:layout_constraintBottom_toTopOf="@id/tvBranchName"
+                app:layout_constraintEnd_toStartOf="@id/cvCopyRoutingNo"
+                android:ellipsize="end"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:padding="0dp"
+                android:textColor="@color/colorOnSecondary"
+                android:textSize="@dimen/_9ssp"
+                tools:text="District Name: Barisal"/>
 
-        <View
-            android:id="@+id/topLine1"
-            android:layout_width="@dimen/_24sdp"
-            android:layout_height="@dimen/_1sdp"
-            android:background="@color/md_grey_400"
-            app:layout_constraintStart_toEndOf="@id/divider2"
-            app:layout_constraintTop_toTopOf="@id/divider2"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvBranchName"
+                style="@style/SemiBoldTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/cvIcon"
+                app:layout_constraintEnd_toStartOf="@id/cvCopyRoutingNo"
+                app:layout_constraintBottom_toTopOf="@id/tvRoutingNo"
+                app:layout_constraintTop_toBottomOf="@id/tvDistricts"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginEnd="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:ellipsize="end"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:padding="0dp"
+                android:textColor="@color/colorOnSecondary"
+                android:textSize="@dimen/_9sdp"
+                tools:text="Branch Name" />
 
-        <View
-            android:id="@+id/midLine1"
-            android:layout_width="@dimen/_24sdp"
-            android:layout_height="@dimen/_1sdp"
-            android:background="@color/md_grey_400"
-            app:layout_constraintStart_toEndOf="@id/divider2"
-            app:layout_constraintTop_toTopOf="@id/divider1"
-            app:layout_constraintBottom_toBottomOf="@id/divider1"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/SemiBoldTextStyle"
+                android:id="@+id/tvRoutingNo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginEnd="@dimen/_12sdp"
+                app:layout_constraintTop_toBottomOf="@id/tvBranchName"
+                app:layout_constraintStart_toEndOf="@id/cvIcon"
+                app:layout_constraintBottom_toBottomOf="@id/cvIcon"
+                app:layout_constraintEnd_toStartOf="@id/cvCopyRoutingNo"
+                android:ellipsize="end"
+                android:fontFamily="@font/roboto_regular"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:padding="0dp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11ssp"
+                tools:text="Routing No: AJSDSD"/>
 
-        <View
-            android:id="@+id/bottomLine1"
-            android:layout_width="@dimen/_24sdp"
-            android:layout_height="@dimen/_1sdp"
-            android:background="@color/md_grey_400"
-            app:layout_constraintStart_toEndOf="@id/divider2"
-            app:layout_constraintBottom_toBottomOf="@id/divider2"/>
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cvCopyRoutingNo"
+                android:layout_width="@dimen/_48sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_8sdp"
+                app:cardElevation="0dp"
+                app:cardCornerRadius="@dimen/_8sdp"
+                app:cardBackgroundColor="@color/colorPrimaryDark"
+                app:cardUseCompatPadding="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvDistricts"
-            style="@style/BoldTextStyle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/topLine1"
-            app:layout_constraintTop_toTopOf="@id/topLine1"
-            app:layout_constraintBottom_toBottomOf="@id/topLine1"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginStart="@dimen/_4sdp"
-            android:layout_marginEnd="@dimen/_12sdp"
-            android:ellipsize="end"
-            android:fontFamily="@font/roboto_bold"
-            android:includeFontPadding="false"
-            android:maxLines="1"
-            android:padding="0dp"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_10sdp"
-            android:textStyle="bold"
-            app:fontFamily="@font/roboto_bold"
-            tools:text="Barisal" />
+                <TextView
+                    style="@style/NormalTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/_4sdp"
+                    android:gravity="center"
+                    android:textColor="@color/colorOnPrimary"
+                    android:text="@string/copy"
+                    android:textSize="@dimen/_9ssp"
+                    android:layout_gravity="center"/>
+                
+            </com.google.android.material.card.MaterialCardView>
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvBranchName"
-            style="@style/BoldTextStyle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/midLine1"
-            app:layout_constraintTop_toTopOf="@id/midLine1"
-            app:layout_constraintBottom_toBottomOf="@id/midLine1"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginStart="@dimen/_4sdp"
-            android:layout_marginEnd="@dimen/_12sdp"
-            android:ellipsize="end"
-            android:fontFamily="@font/roboto_bold"
-            android:includeFontPadding="false"
-            android:maxLines="1"
-            android:padding="0dp"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_10sdp"
-            android:textStyle="bold"
-            app:fontFamily="@font/roboto_bold"
-            tools:text="Barisal Branch" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvRoutingNo"
-            style="@style/BoldTextStyle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/bottomLine1"
-            app:layout_constraintTop_toTopOf="@id/bottomLine1"
-            app:layout_constraintBottom_toBottomOf="@id/bottomLine1"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginStart="@dimen/_4sdp"
-            android:layout_marginEnd="@dimen/_12sdp"
-            android:ellipsize="end"
-            android:fontFamily="@font/roboto_bold"
-            android:includeFontPadding="false"
-            android:maxLines="1"
-            android:padding="0dp"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_10sdp"
-            android:textStyle="bold"
-            app:fontFamily="@font/roboto_bold"
-            tools:text="020060288" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
 
 </layout>
