@@ -1,5 +1,8 @@
 package com.reader.bd_bank_info.ui.routings
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -15,8 +18,9 @@ import com.reader.bd_bank_info.utils.SpaceItemDecoration
 import com.reader.bd_bank_info.utils.dimenSize
 import com.reader.bd_bank_info.utils.hideSoftKeyboard
 import com.reader.bd_bank_info.utils.orZero
+import com.reader.bd_bank_info.utils.showLongToast
 
-class RoutingDetailsActivity : AppCompatActivity(){
+class RoutingDetailsActivity : AppCompatActivity(), RoutingItemAdapter.RoutingCopyClickListener{
 
     private lateinit var binding: ActivityRoutingDetailsBinding
     private lateinit var viewModel: RoutingViewModel
@@ -77,5 +81,14 @@ class RoutingDetailsActivity : AppCompatActivity(){
         binding.rvRoutings.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         binding.rvRoutings.addItemDecoration(SpaceItemDecoration(this.dimenSize(R.dimen._8sdp)))
         binding.rvRoutings.adapter = routingItemAdapter
+        routingItemAdapter.setCopyClickListener(this)
+    }
+
+    override fun onCopyClicked(routingNo: Int) {
+        val clipboard: ClipboardManager =
+            getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+        val clip: ClipData = ClipData.newPlainText(routingNo.toString(), routingNo.toString())
+        clipboard.setPrimaryClip(clip)
+        showLongToast(getString(com.reader.bd_bank_info.R.string.routing_no_copied))
     }
 }

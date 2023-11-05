@@ -8,9 +8,11 @@ import com.reader.bd_bank_info.R
 import com.reader.bd_bank_info.data.model.Routings
 import com.reader.bd_bank_info.databinding.RecyclerItemRoutingDetailsBinding
 import com.reader.bd_bank_info.utils.DiffUtilCallback
+import com.reader.bd_bank_info.utils.orZero
 
 class RoutingItemAdapter : RecyclerView.Adapter<RoutingItemAdapter.BankViewHolder>() {
     private val items = ArrayList<Routings>()
+    private var routingCopyClickListener: RoutingCopyClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BankViewHolder {
         val binding = RecyclerItemRoutingDetailsBinding.inflate(
@@ -18,7 +20,7 @@ class RoutingItemAdapter : RecyclerView.Adapter<RoutingItemAdapter.BankViewHolde
             parent,
             false
         )
-        return BankViewHolder(binding)
+        return BankViewHolder(binding, copyClickListener = routingCopyClickListener)
     }
 
     override fun onBindViewHolder(holder: BankViewHolder, position: Int) {
@@ -26,6 +28,10 @@ class RoutingItemAdapter : RecyclerView.Adapter<RoutingItemAdapter.BankViewHolde
     }
 
     override fun getItemCount() = items.size
+
+    fun setCopyClickListener(routingCopyClickListener: RoutingCopyClickListener){
+        this.routingCopyClickListener = routingCopyClickListener
+    }
 
     fun addItems(navRails: List<Routings>) {
         val oldData = ArrayList(items)
@@ -47,7 +53,7 @@ class RoutingItemAdapter : RecyclerView.Adapter<RoutingItemAdapter.BankViewHolde
         diffResult.dispatchUpdatesTo(this)
     }
 
-    class BankViewHolder(val binding: RecyclerItemRoutingDetailsBinding) :
+    class BankViewHolder(val binding: RecyclerItemRoutingDetailsBinding, val copyClickListener: RoutingCopyClickListener?) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bindItem(routings: Routings) {
@@ -56,6 +62,13 @@ class RoutingItemAdapter : RecyclerView.Adapter<RoutingItemAdapter.BankViewHolde
             binding.tvDistricts.text = context.getString(R.string.district_name_x, routings.districts)
             binding.tvBranchName.text = context.getString(R.string.branch_name_x, routings.branchName)
             binding.tvRoutingNo.text = context.getString(R.string.routing_no_x, routings.routingNo)
+            binding.cvCopyRoutingNo.setOnClickListener {
+                copyClickListener?.onCopyClicked(routings.routingNo.orZero())
+            }
         }
+    }
+
+    interface RoutingCopyClickListener{
+        fun onCopyClicked(routingNo: Int)
     }
 }
