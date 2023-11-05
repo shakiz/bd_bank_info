@@ -1,9 +1,7 @@
 package com.reader.bd_bank_info.ui.routings
 
-import android.content.Context
 import android.os.Build
 import android.os.Bundle
-import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,6 +13,7 @@ import com.reader.bd_bank_info.ui.adapters.RoutingItemAdapter
 import com.reader.bd_bank_info.utils.ITEM_BANK
 import com.reader.bd_bank_info.utils.SpaceItemDecoration
 import com.reader.bd_bank_info.utils.dimenSize
+import com.reader.bd_bank_info.utils.hideSoftKeyboard
 import com.reader.bd_bank_info.utils.orZero
 
 class RoutingDetailsActivity : AppCompatActivity(){
@@ -54,6 +53,16 @@ class RoutingDetailsActivity : AppCompatActivity(){
 
     private fun initListeners() {
         binding.toolbar.setNavigationOnClickListener { onBackPressed() }
+
+        binding.searchLayout.ibSearchButton.setOnClickListener {
+            hideSoftKeyboard()
+            viewModel.searchBankItemForRoutingByBranch(binding.searchLayout.etSearchName.text.toString())
+        }
+
+        binding.searchLayout.ibRefreshButton.setOnClickListener {
+            hideSoftKeyboard()
+            viewModel.fetchRoutingByBankId(bankId = bank?.bankId.orZero())
+        }
     }
 
     private fun initObservers() {
@@ -68,17 +77,5 @@ class RoutingDetailsActivity : AppCompatActivity(){
         binding.rvRoutings.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         binding.rvRoutings.addItemDecoration(SpaceItemDecoration(this.dimenSize(R.dimen._8sdp)))
         binding.rvRoutings.adapter = routingItemAdapter
-    }
-
-    private fun closeKeyboard() {
-        currentFocus?.let {
-            val manager: InputMethodManager = getSystemService(
-                Context.INPUT_METHOD_SERVICE
-            ) as InputMethodManager
-            manager
-                .hideSoftInputFromWindow(
-                    it.windowToken, 0
-                )
-        }
     }
 }

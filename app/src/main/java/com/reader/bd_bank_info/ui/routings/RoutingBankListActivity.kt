@@ -1,9 +1,7 @@
 package com.reader.bd_bank_info.ui.routings
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,6 +15,7 @@ import com.reader.bd_bank_info.utils.BANK_LIST_ITEM_VIEW_TYPE_ROUTING
 import com.reader.bd_bank_info.utils.ITEM_BANK
 import com.reader.bd_bank_info.utils.SpaceItemDecoration
 import com.reader.bd_bank_info.utils.dimenSize
+import com.reader.bd_bank_info.utils.hideSoftKeyboard
 
 class RoutingBankListActivity : AppCompatActivity(), BankCallBack {
 
@@ -48,12 +47,12 @@ class RoutingBankListActivity : AppCompatActivity(), BankCallBack {
         binding.toolbar.setNavigationOnClickListener { onBackPressed() }
 
         binding.searchLayout.ibSearchButton.setOnClickListener {
-            closeKeyboard()
+            hideSoftKeyboard()
             viewModel.searchBankItem(binding.searchLayout.etSearchName.text.toString())
         }
 
         binding.searchLayout.ibRefreshButton.setOnClickListener {
-            closeKeyboard()
+            hideSoftKeyboard()
             binding.searchLayout.etSearchName.text?.clear()
             viewModel.fetchBankList()
         }
@@ -73,18 +72,6 @@ class RoutingBankListActivity : AppCompatActivity(), BankCallBack {
         binding.rvBankList.adapter = bankItemAdapter
         bankItemAdapter.setViewType(BANK_LIST_ITEM_VIEW_TYPE_ROUTING)
         bankItemAdapter.setItemClickListener(this)
-    }
-
-    private fun closeKeyboard() {
-        currentFocus?.let {
-            val manager: InputMethodManager = getSystemService(
-                Context.INPUT_METHOD_SERVICE
-            ) as InputMethodManager
-            manager
-                .hideSoftInputFromWindow(
-                    it.windowToken, 0
-                )
-        }
     }
 
     override fun onItemClick(bank: Bank) {

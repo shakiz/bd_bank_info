@@ -1,12 +1,10 @@
 package com.reader.bd_bank_info.ui.bank
 
 import android.Manifest
-import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
-import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -18,7 +16,13 @@ import com.intuit.sdp.R
 import com.reader.bd_bank_info.data.model.Bank
 import com.reader.bd_bank_info.databinding.ActivityBankListBinding
 import com.reader.bd_bank_info.ui.adapters.BankVerticalItemAdapter
-import com.reader.bd_bank_info.utils.*
+import com.reader.bd_bank_info.utils.BANK_LIST_ITEM_VIEW_TYPE_BANK_LIST
+import com.reader.bd_bank_info.utils.ITEM_BANK
+import com.reader.bd_bank_info.utils.REQUEST_CALL_CODE
+import com.reader.bd_bank_info.utils.SpaceItemDecoration
+import com.reader.bd_bank_info.utils.dimenSize
+import com.reader.bd_bank_info.utils.hideSoftKeyboard
+import com.reader.bd_bank_info.utils.showLongToast
 
 class BankListActivity : AppCompatActivity(), BankCallBack {
 
@@ -50,12 +54,12 @@ class BankListActivity : AppCompatActivity(), BankCallBack {
         binding.toolbar.setNavigationOnClickListener { onBackPressed() }
 
         binding.searchLayout.ibSearchButton.setOnClickListener {
-            closeKeyboard()
+            hideSoftKeyboard()
             viewModel.searchBankItem(binding.searchLayout.etSearchName.text.toString())
         }
 
         binding.searchLayout.ibRefreshButton.setOnClickListener {
-            closeKeyboard()
+            hideSoftKeyboard()
             binding.searchLayout.etSearchName.text?.clear()
             viewModel.fetchBankList()
         }
@@ -75,18 +79,6 @@ class BankListActivity : AppCompatActivity(), BankCallBack {
         binding.rvBankList.adapter = bankItemAdapter
         bankItemAdapter.setViewType(BANK_LIST_ITEM_VIEW_TYPE_BANK_LIST)
         bankItemAdapter.setItemClickListener(this)
-    }
-
-    private fun closeKeyboard() {
-        currentFocus?.let {
-            val manager: InputMethodManager = getSystemService(
-                Context.INPUT_METHOD_SERVICE
-            ) as InputMethodManager
-            manager
-                .hideSoftInputFromWindow(
-                    it.windowToken, 0
-                )
-        }
     }
 
     override fun onItemClick(bank: Bank) {

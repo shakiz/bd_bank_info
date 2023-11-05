@@ -8,7 +8,6 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
-import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -23,6 +22,7 @@ import com.reader.bd_bank_info.ui.bank.BankViewModel
 import com.reader.bd_bank_info.utils.REQUEST_CALL_CODE
 import com.reader.bd_bank_info.utils.SpaceItemDecoration
 import com.reader.bd_bank_info.utils.dimenSize
+import com.reader.bd_bank_info.utils.hideSoftKeyboard
 import com.reader.bd_bank_info.utils.showLongToast
 
 class SwiftCodeListActivity : AppCompatActivity(), BankSwiftCodeAdapter.SwiftCodeCopyListener {
@@ -55,12 +55,12 @@ class SwiftCodeListActivity : AppCompatActivity(), BankSwiftCodeAdapter.SwiftCod
         binding.toolbar.setNavigationOnClickListener { onBackPressed() }
 
         binding.searchLayout.ibSearchButton.setOnClickListener {
-            closeKeyboard()
+            hideSoftKeyboard()
             viewModel.searchBankItem(binding.searchLayout.etSearchName.text.toString())
         }
 
         binding.searchLayout.ibRefreshButton.setOnClickListener {
-            closeKeyboard()
+            hideSoftKeyboard()
             binding.searchLayout.etSearchName.text?.clear()
             viewModel.fetchBankList()
         }
@@ -79,18 +79,6 @@ class SwiftCodeListActivity : AppCompatActivity(), BankSwiftCodeAdapter.SwiftCod
         binding.rvSwiftCodeList.addItemDecoration(SpaceItemDecoration(this.dimenSize(R.dimen._8sdp)))
         binding.rvSwiftCodeList.adapter = swiftCodeAdapter
         swiftCodeAdapter.setOnSwiftCodeCopyListener(this)
-    }
-
-    private fun closeKeyboard() {
-        currentFocus?.let {
-            val manager: InputMethodManager = getSystemService(
-                Context.INPUT_METHOD_SERVICE
-            ) as InputMethodManager
-            manager
-                .hideSoftInputFromWindow(
-                    it.windowToken, 0
-                )
-        }
     }
 
     override fun onSwiftCodeCopied(swiftCode: String) {
