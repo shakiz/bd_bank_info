@@ -13,6 +13,7 @@ import com.reader.bd_bank_info.data.model.MainMenuItem
 import com.reader.bd_bank_info.databinding.ActivityMainBinding
 import com.reader.bd_bank_info.ui.adapters.BankHorizontalSwiftCodeAdapter
 import com.reader.bd_bank_info.ui.adapters.BankItemAdapter
+import com.reader.bd_bank_info.ui.adapters.BankVerticalItemAdapter
 import com.reader.bd_bank_info.ui.adapters.HomeMenuAdapter
 import com.reader.bd_bank_info.ui.bank.BankDetailsActivity
 import com.reader.bd_bank_info.ui.bank.BankCallBack
@@ -30,6 +31,7 @@ class HomeActivity : AppCompatActivity(), BankCallBack, HomeMenuAdapter.NavRailC
 
     private val homeMenuAdapter = HomeMenuAdapter()
     private val bankItemAdapter = BankItemAdapter()
+    private val bankVerticalItemAdapter = BankVerticalItemAdapter()
     private val swiftCodeAdapter = BankHorizontalSwiftCodeAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,6 +56,7 @@ class HomeActivity : AppCompatActivity(), BankCallBack, HomeMenuAdapter.NavRailC
         setUpNavRailListView()
         setUpBankListView()
         setupSwiftCodeListView()
+        setupRoutingListView()
     }
 
     private fun initListeners(){
@@ -63,6 +66,10 @@ class HomeActivity : AppCompatActivity(), BankCallBack, HomeMenuAdapter.NavRailC
 
         binding.tvSeeAllSwiftCode.setOnClickListener {
             startActivity(Intent(this, SwiftCodeListActivity::class.java))
+        }
+
+        binding.tvSeeAllBankRouting.setOnClickListener {
+            startActivity(Intent(this, RoutingBankListActivity::class.java))
         }
     }
 
@@ -76,6 +83,7 @@ class HomeActivity : AppCompatActivity(), BankCallBack, HomeMenuAdapter.NavRailC
         viewModel.onBankListFetched().observe(this){bankList ->
             bankList?.let {
                 bankItemAdapter.addItems(it)
+                bankVerticalItemAdapter.addItems(it)
                 swiftCodeAdapter.addItems(it.takeLast(3))
             }
         }
@@ -99,6 +107,13 @@ class HomeActivity : AppCompatActivity(), BankCallBack, HomeMenuAdapter.NavRailC
         binding.rvSwiftCodeList.layoutManager = GridLayoutManager(this, 3, RecyclerView.VERTICAL,false)
         binding.rvSwiftCodeList.addItemDecoration(SpaceItemDecoration(this.dimenSize(com.intuit.sdp.R.dimen._8sdp), false))
         binding.rvSwiftCodeList.adapter = swiftCodeAdapter
+    }
+
+    private fun setupRoutingListView(){
+        binding.rvBankListRouting.layoutManager = PartiallyVisibleHorizontalLayoutManager(this, .45f)
+        binding.rvBankListRouting.addItemDecoration(SpaceItemDecoration(this.dimenSize(com.intuit.sdp.R.dimen._8sdp), false))
+        binding.rvBankListRouting.adapter = bankVerticalItemAdapter
+        bankVerticalItemAdapter.setViewType(BANK_LIST_ITEM_VIEW_TYPE_ROUTING)
     }
 
     override fun onItemClick(bank: Bank) {

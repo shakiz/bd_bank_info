@@ -77,12 +77,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/tvHeadingBankList" />
 
-        <androidx.constraintlayout.widget.Group
-            android:id="@+id/groupTopViews"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:constraint_referenced_ids="tvHeadingBankList, tvSeeAllBank"/>
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvBankList"
             android:layout_width="match_parent"
@@ -98,6 +92,7 @@
             tools:listitem="@layout/recycler_item_horizontal_bank_list" />
 
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cvSwiftCode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardCornerRadius="@dimen/_12sdp"
@@ -156,6 +151,48 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </com.google.android.material.card.MaterialCardView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvHeadingRoutingBankList"
+            style="@style/BoldTextStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:layout_marginEnd="@dimen/_8sdp"
+            android:text="@string/routings"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tvSeeAllBank"
+            app:layout_constraintTop_toBottomOf="@id/cvSwiftCode" />
+
+        <TextView
+            android:id="@+id/tvSeeAllBankRouting"
+            style="@style/SemiBoldTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_8sdp"
+            android:gravity="center"
+            android:text="@string/see_all"
+            android:textColor="@color/colorOnSecondary"
+            android:textSize="@dimen/_10ssp"
+            app:drawableEndCompat="@drawable/ic_arrow_forward"
+            app:layout_constraintBottom_toBottomOf="@id/tvHeadingRoutingBankList"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvHeadingRoutingBankList" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvBankListRouting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:layout_marginEnd="@dimen/_8sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            app:layout_constraintTop_toBottomOf="@id/tvHeadingRoutingBankList"
+            android:clipToPadding="false"
+            android:orientation="horizontal"
+            android:overScrollMode="never"
+            tools:itemCount="1"
+            tools:listitem="@layout/recycler_item_vertical_bank_list" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
