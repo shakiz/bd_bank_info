@@ -21,7 +21,8 @@ class RoutingViewModel: ViewModel(){
     private var bankRepository = BankRepositoryImpl(HomeApi(AppInjector.getRestApiClient("http://data.fixer.io/api/")))
     private var bankList = ArrayList<Bank>()
     private var filteredBankList = MutableLiveData<List<Bank>>()
-    private var routingList = MutableLiveData<List<Routings>>()
+    private var routingList = ArrayList<Routings>()
+    private var filteredRoutingList = MutableLiveData<List<Routings>>()
 
     companion object{
         const val TAG = "RoutingViewModel"
@@ -32,7 +33,7 @@ class RoutingViewModel: ViewModel(){
     }
 
     fun onRoutingListFetched() : LiveData<List<Routings>?>{
-        return routingList
+        return filteredRoutingList
     }
 
     fun fetchBankList(){
@@ -62,7 +63,8 @@ class RoutingViewModel: ViewModel(){
                             Log.i(TAG, "" + routing?.branchName)
                         }
                         tempData.let {
-                            routingList.postValue(it as List<Routings>)
+                            routingList.addAll(it as List<Routings>)
+                            filteredRoutingList.postValue(it as List<Routings>)
                         }
                     }
                 }
@@ -80,5 +82,13 @@ class RoutingViewModel: ViewModel(){
         }
         val newList = bankList.filter { bank: Bank -> bank.bankName?.lowercase()?.contains(bankName.lowercase()).orFalse() }
         filteredBankList.postValue(newList)
+    }
+
+    fun searchBankItemForRoutingByBranch(branchName: String){
+        if (branchName.isEmpty()){
+            return
+        }
+        val newList = routingList.filter { routing: Routings -> routing.branchName?.lowercase()?.contains(branchName.lowercase()).orFalse() }
+        filteredRoutingList.postValue(newList)
     }
 }
