@@ -18,6 +18,7 @@ import com.reader.bd_bank_info.utils.SpaceItemDecoration
 import com.reader.bd_bank_info.utils.dimenSize
 import com.reader.bd_bank_info.utils.hideSoftKeyboard
 import com.reader.bd_bank_info.utils.orZero
+import com.reader.bd_bank_info.utils.setVisibility
 import com.reader.bd_bank_info.utils.showLongToast
 
 class RoutingDetailsActivity : AppCompatActivity(), RoutingItemAdapter.RoutingCopyClickListener{
@@ -70,6 +71,10 @@ class RoutingDetailsActivity : AppCompatActivity(), RoutingItemAdapter.RoutingCo
     }
 
     private fun initObservers() {
+        viewModel.onDataLoadingStateChanged().observe(this){ isLoading ->
+            binding.loadingLayout.llLoading.setVisibility(isLoading)
+        }
+
         viewModel.onRoutingListFetched().observe(this){ routings ->
             routings?.let {
                 routingItemAdapter.addItems(it)

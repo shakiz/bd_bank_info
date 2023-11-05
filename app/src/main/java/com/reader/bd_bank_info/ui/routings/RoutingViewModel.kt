@@ -23,9 +23,14 @@ class RoutingViewModel: ViewModel(){
     private var filteredBankList = MutableLiveData<List<Bank>>()
     private var routingList = ArrayList<Routings>()
     private var filteredRoutingList = MutableLiveData<List<Routings>>()
+    private var isDataLoading = MutableLiveData<Boolean>()
 
     companion object{
         const val TAG = "RoutingViewModel"
+    }
+
+    fun onDataLoadingStateChanged(): LiveData<Boolean>{
+        return isDataLoading
     }
 
     fun onBankListFetched() : LiveData<List<Bank>?>{
@@ -45,6 +50,7 @@ class RoutingViewModel: ViewModel(){
     }
 
     fun fetchRoutingByBankId(bankId: Int){
+        isDataLoading.postValue(true)
         if(bankId <= 0){
             return
         }
@@ -67,10 +73,12 @@ class RoutingViewModel: ViewModel(){
                             filteredRoutingList.postValue(it as List<Routings>)
                         }
                     }
+                    isDataLoading.postValue(false)
                 }
 
                 override fun onCancelled(error: DatabaseError) {
                     Log.i(TAG, "" + error.message)
+                    isDataLoading.postValue(false)
                 }
             })
         }
