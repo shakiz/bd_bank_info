@@ -38,5 +38,8 @@
     <string name="x_d">%d</string>
     <string name="copy_routing_no">Copy Rout. No.</string>
     <string name="routing_no_copied">Routing No. Copied</string>
+    <string name="try_again">Try Again</string>
+    <string name="oops">Whoops!</string>
+    <string name="internet_connection_error">Slow or no internet connections.\nPlease check your internet settings.</string>
 
 </resources>

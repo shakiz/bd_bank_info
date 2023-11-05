@@ -1,7 +1,13 @@
 package com.reader.bd_bank_info.ui.routings
 
+import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.view.Window
+import android.view.WindowManager
+import android.widget.Button
+import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -9,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.intuit.sdp.R
 import com.reader.bd_bank_info.data.model.Bank
 import com.reader.bd_bank_info.databinding.ActivityRoutingBankListBinding
+import com.reader.bd_bank_info.network.InternetConnectivity
 import com.reader.bd_bank_info.ui.adapters.BankVerticalItemAdapter
 import com.reader.bd_bank_info.ui.bank.BankCallBack
 import com.reader.bd_bank_info.utils.BANK_LIST_ITEM_VIEW_TYPE_ROUTING
@@ -75,7 +82,25 @@ class RoutingBankListActivity : AppCompatActivity(), BankCallBack {
     }
 
     override fun onItemClick(bank: Bank) {
-        startActivity(Intent(this, RoutingDetailsActivity::class.java).putExtra(ITEM_BANK, bank))
+        if(InternetConnectivity.checkConnectivity(this)){
+            startActivity(Intent(this, RoutingDetailsActivity::class.java).putExtra(ITEM_BANK, bank))
+        } else {
+            showNoInternetDialog()
+        }
+    }
+
+    private fun showNoInternetDialog(){
+        val dialog = Dialog(this, android.R.style.Theme_Dialog)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setContentView(com.reader.bd_bank_info.R.layout.dialog_no_internet)
+        dialog.window!!.setBackgroundDrawableResource(android.R.color.transparent)
+        dialog.setCanceledOnTouchOutside(true)
+
+
+        dialog.setCanceledOnTouchOutside(true)
+        dialog.window!!.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
+        dialog.window!!.setLayout(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT)
+        dialog.show()
     }
 
     override fun onMailClicked(email: String) {
