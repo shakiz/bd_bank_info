@@ -15,9 +15,9 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.reader.bd_bank_info.AppInjector
 import com.reader.bd_bank_info.R
 import com.reader.bd_bank_info.databinding.ActivityCommonWebviewBinding
-import com.reader.bd_bank_info.utils.AppAnalytics
 import com.reader.bd_bank_info.utils.EXTERNAL_LINK
 import com.reader.bd_bank_info.utils.TOOLBAR_TITLE
 import com.reader.bd_bank_info.utils.WEBVIEW_BUNDLE
@@ -25,7 +25,7 @@ import com.reader.bd_bank_info.utils.WEB_URL
 
 class CommonWebViewActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCommonWebviewBinding
-    private val appAnalytics = AppAnalytics(this)
+    private val appAnalytics = AppInjector.getAnalytics(this)
 
     companion object {
         const val TAG = "CommonWebViewActivity"

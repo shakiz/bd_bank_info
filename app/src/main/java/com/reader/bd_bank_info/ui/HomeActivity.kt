@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.reader.bd_bank_info.AppInjector
 import com.reader.bd_bank_info.R
 import com.reader.bd_bank_info.data.model.Bank
 import com.reader.bd_bank_info.data.model.MainMenuItem
@@ -28,7 +29,7 @@ class HomeActivity : AppCompatActivity(), BankCallBack, HomeMenuAdapter.NavRailC
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var viewModel: HomeViewModel
-    private val appAnalytics = AppAnalytics(this)
+    private val appAnalytics = AppInjector.getAnalytics(this)
 
     private val homeMenuAdapter = HomeMenuAdapter()
     private val bankItemAdapter = BankItemAdapter()

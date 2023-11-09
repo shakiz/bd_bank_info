@@ -11,12 +11,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.intuit.sdp.R
+import com.reader.bd_bank_info.AppInjector
 import com.reader.bd_bank_info.data.model.Bank
 import com.reader.bd_bank_info.databinding.ActivityRoutingBankListBinding
 import com.reader.bd_bank_info.network.InternetConnectivity
 import com.reader.bd_bank_info.ui.adapters.BankVerticalItemAdapter
 import com.reader.bd_bank_info.ui.bank.BankCallBack
-import com.reader.bd_bank_info.utils.AppAnalytics
 import com.reader.bd_bank_info.utils.BANK_LIST_ITEM_VIEW_TYPE_ROUTING
 import com.reader.bd_bank_info.utils.BANK_NAME
 import com.reader.bd_bank_info.utils.BANK_ROUTING_TAPPED
@@ -31,7 +31,7 @@ class RoutingBankListActivity : AppCompatActivity(), BankCallBack {
 
     private lateinit var binding: ActivityRoutingBankListBinding
     private lateinit var viewModel: RoutingViewModel
-    private val appAnalytics = AppAnalytics(this)
+    private val appAnalytics = AppInjector.getAnalytics(this)
 
     private val bankItemAdapter = BankVerticalItemAdapter()
 

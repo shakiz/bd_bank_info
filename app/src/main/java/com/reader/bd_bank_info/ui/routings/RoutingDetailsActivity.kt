@@ -10,11 +10,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.intuit.sdp.R
+import com.reader.bd_bank_info.AppInjector
 import com.reader.bd_bank_info.data.model.Bank
 import com.reader.bd_bank_info.data.model.Routings
 import com.reader.bd_bank_info.databinding.ActivityRoutingDetailsBinding
 import com.reader.bd_bank_info.ui.adapters.RoutingItemAdapter
-import com.reader.bd_bank_info.utils.AppAnalytics
 import com.reader.bd_bank_info.utils.BANK_NAME
 import com.reader.bd_bank_info.utils.BANK_ROUTING_NO_COPIED
 import com.reader.bd_bank_info.utils.BANK_SEARCH_TAPPED
@@ -30,7 +30,7 @@ class RoutingDetailsActivity : AppCompatActivity(), RoutingItemAdapter.RoutingCo
 
     private lateinit var binding: ActivityRoutingDetailsBinding
     private lateinit var viewModel: RoutingViewModel
-    private val appAnalytics = AppAnalytics(this)
+    private val appAnalytics = AppInjector.getAnalytics(this)
 
     private val routingItemAdapter = RoutingItemAdapter()
     private var bank: Bank? = null
