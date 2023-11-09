@@ -1,6 +1,7 @@
 package com.reader.bd_bank_info.utils
 
 const val BANK_DETAILS_TAPPED = "bank_details_tapped"
+const val BANK_STOCK_MARKET_DETAILS_TAPPED = "bank_stock_market_details_tapped"
 const val BANK_HOTLINE_NO_TAPPED = "bank_hotline_no_tapped"
 const val BANK_HOTLINE_OVERSEAS_NO_TAPPED = "bank_hotline_overseas_no_tapped"
 const val BANK_MAIL_TAPPED = "bank_mail_tapped"
