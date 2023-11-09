@@ -28,6 +28,7 @@ class HomeActivity : AppCompatActivity(), BankCallBack, HomeMenuAdapter.NavRailC
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var viewModel: HomeViewModel
+    private val appAnalytics = AppAnalytics(this)
 
     private val homeMenuAdapter = HomeMenuAdapter()
     private val bankItemAdapter = BankItemAdapter()
@@ -61,14 +62,17 @@ class HomeActivity : AppCompatActivity(), BankCallBack, HomeMenuAdapter.NavRailC
 
     private fun initListeners(){
         binding.tvSeeAllBank.setOnClickListener {
+            appAnalytics.registerEvent(SEE_ALL_TAPPED, appAnalytics.setData(SEE_ALL_TAPPED, SEE_ALL_BANK))
             startActivity(Intent(this, BankListActivity::class.java))
         }
 
         binding.tvSeeAllSwiftCode.setOnClickListener {
+            appAnalytics.registerEvent(SEE_ALL_TAPPED, appAnalytics.setData(SEE_ALL_TAPPED, SEE_ALL_SWIFT_CODE))
             startActivity(Intent(this, SwiftCodeListActivity::class.java))
         }
 
         binding.tvSeeAllBankRouting.setOnClickListener {
+            appAnalytics.registerEvent(SEE_ALL_TAPPED, appAnalytics.setData(SEE_ALL_TAPPED, SEE_ALL_BANK_ROUTING))
             startActivity(Intent(this, RoutingBankListActivity::class.java))
         }
     }
@@ -117,18 +121,20 @@ class HomeActivity : AppCompatActivity(), BankCallBack, HomeMenuAdapter.NavRailC
     }
 
     override fun onItemClick(bank: Bank) {
+        appAnalytics.registerEvent(BANK_DETAILS_TAPPED, appAnalytics.setData(BANK_NAME, bank.bankName))
         startActivity(Intent(this, BankDetailsActivity::class.java).putExtra(ITEM_BANK, bank))
     }
 
-    override fun onMailClicked(email: String) {
+    override fun onMailClicked(bank: Bank) {
 
     }
 
-    override fun onHotlineNumberCalled(hotlineNo: Int) {
+    override fun onHotlineNumberCalled(bank: Bank) {
 
     }
 
     override fun onItemClick(navRail: MainMenuItem) {
+        appAnalytics.registerEvent(APP_MENU_ITEM_TAPPED, appAnalytics.setData(APP_MENU_ITEM_TAPPED, navRail.identifier))
         when(navRail.identifier){
             IDENTIFIER_SWIFT_CODE -> startActivity(Intent(this, SwiftCodeListActivity::class.java))
             IDENTIFIER_STOCK_MARKET -> startActivity(Intent(this, StockMarketListActivity::class.java))
