@@ -327,7 +327,7 @@ fun Window?.makeSystemBarsLight() {
                 WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
             )
     } else {
-        decorView?.systemUiVisibility =
+        decorView.systemUiVisibility =
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR or View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
             } else {
@@ -343,7 +343,7 @@ fun Window?.makeSystemBarsDark() {
         insetsController
             ?.setSystemBarsAppearance(0, WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS)
     } else {
-        decorView?.systemUiVisibility = 0
+        decorView.systemUiVisibility = 0
     }
 }
 

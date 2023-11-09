@@ -61,7 +61,7 @@ class BankDetailsActivity : AppCompatActivity() {
                 getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
             val clip: ClipData = ClipData.newPlainText(bank?.swiftCode, bank?.swiftCode)
             clipboard.setPrimaryClip(clip)
-            showLongToast(getString(com.reader.bd_bank_info.R.string.swift_code_copied))
+            showLongToast(getString(R.string.swift_code_copied))
         }
 
         binding.llStockCode.setOnClickListener {
