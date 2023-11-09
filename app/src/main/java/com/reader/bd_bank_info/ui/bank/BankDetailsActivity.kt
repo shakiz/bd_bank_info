@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
+import com.reader.bd_bank_info.AppInjector
 import com.reader.bd_bank_info.R
 import com.reader.bd_bank_info.data.model.Bank
 import com.reader.bd_bank_info.databinding.ActivityBankDetailsBinding
@@ -25,6 +26,7 @@ class BankDetailsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityBankDetailsBinding
     private lateinit var viewModel: BankViewModel
     private var bank: Bank? = null
+    private val appAnalytics = AppInjector.getAnalytics(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,6 +59,7 @@ class BankDetailsActivity : AppCompatActivity() {
         binding.toolbar.setNavigationOnClickListener { onBackPressed() }
 
         binding.llSwiftCode.setOnClickListener {
+            appAnalytics.registerEvent(SWIFT_CODE, appAnalytics.setData(BANK_NAME, bank?.bankName))
             val clipboard: ClipboardManager =
                 getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
             val clip: ClipData = ClipData.newPlainText(bank?.swiftCode, bank?.swiftCode)
@@ -65,19 +68,23 @@ class BankDetailsActivity : AppCompatActivity() {
         }
 
         binding.llStockCode.setOnClickListener {
+            appAnalytics.registerEvent(STOCK_CODE, appAnalytics.setData(BANK_NAME, bank?.bankName))
             val bundle = CommonWebViewActivity.createIntent(this, "$STOCK_MARKET_BASE_URL${bank?.stockCode}", bank?.bankName)
             startActivity(Intent(this, CommonWebViewActivity::class.java).putExtra(WEBVIEW_BUNDLE, bundle))
         }
 
         binding.llHotlineNumber.setOnClickListener {
+            appAnalytics.registerEvent(BANK_HOTLINE_NO_TAPPED, appAnalytics.setData(BANK_NAME, bank?.bankName))
             makeCall(bank?.hotlineNo.orZero())
         }
 
         binding.llOverseas.setOnClickListener {
+            appAnalytics.registerEvent(BANK_HOTLINE_OVERSEAS_NO_TAPPED, appAnalytics.setData(BANK_NAME, bank?.bankName))
             makeCall(bank?.hotlinePhoneNo?.toInt().orZero())
         }
 
         binding.llEmail.setOnClickListener {
+            appAnalytics.registerEvent(BANK_MAIL_TAPPED, appAnalytics.setData(BANK_NAME, bank?.bankName))
             val emailIntent = Intent(
                 Intent.ACTION_VIEW, Uri.fromParts(
                     "mailto", bank?.email, null
