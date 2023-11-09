@@ -6,17 +6,26 @@ import android.content.res.ColorStateList
 import android.os.Build
 import android.os.Bundle
 import android.view.View
-import android.webkit.*
+import android.webkit.CookieManager
+import android.webkit.WebChromeClient
+import android.webkit.WebResourceError
+import android.webkit.WebResourceRequest
+import android.webkit.WebSettings
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.reader.bd_bank_info.R
 import com.reader.bd_bank_info.databinding.ActivityCommonWebviewBinding
+import com.reader.bd_bank_info.utils.AppAnalytics
+import com.reader.bd_bank_info.utils.EXTERNAL_LINK
 import com.reader.bd_bank_info.utils.TOOLBAR_TITLE
 import com.reader.bd_bank_info.utils.WEBVIEW_BUNDLE
 import com.reader.bd_bank_info.utils.WEB_URL
 
 class CommonWebViewActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCommonWebviewBinding
+    private val appAnalytics = AppAnalytics(this)
 
     companion object {
         const val TAG = "CommonWebViewActivity"
@@ -47,6 +56,7 @@ class CommonWebViewActivity : AppCompatActivity() {
         val bundle = intent.getBundleExtra(WEBVIEW_BUNDLE)
         webUrl = bundle?.getString(WEB_URL)
         toolbarTitle = bundle?.getString(TOOLBAR_TITLE)
+        appAnalytics.registerEvent(EXTERNAL_LINK, appAnalytics.setData(toolbarTitle, webUrl))
     }
 
     private fun initView() {

@@ -16,3 +16,5 @@ const val SEE_ALL_BANK_ROUTING = "see_all_bank_routing_tapped"
 const val BANK_NAME = "bank_name"
 const val STOCK_CODE = "stock_code"
 const val SWIFT_CODE = "swift_code"
+
+const val EXTERNAL_LINK = "external_link"
