@@ -83,11 +83,11 @@ class BankVerticalItemAdapter : RecyclerView.Adapter<BankVerticalItemAdapter.Ban
             }
 
             binding.ibMailButton.setOnClickListener {
-                bankCallBack?.onMailClicked(bank.email.orEmpty())
+                bankCallBack?.onMailClicked(bank)
             }
 
             binding.ibCallButton.setOnClickListener {
-                bankCallBack?.onHotlineNumberCalled(bank.hotlineNo.orZero())
+                bankCallBack?.onHotlineNumberCalled(bank)
             }
 
             if(viewType == BANK_LIST_ITEM_VIEW_TYPE_ROUTING){

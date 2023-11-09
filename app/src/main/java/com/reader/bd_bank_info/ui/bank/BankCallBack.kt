@@ -4,6 +4,6 @@ import com.reader.bd_bank_info.data.model.Bank
 
 interface BankCallBack {
     fun onItemClick(bank: Bank)
-    fun onMailClicked(email: String)
-    fun onHotlineNumberCalled(hotlineNo: Int)
+    fun onMailClicked(bank: Bank)
+    fun onHotlineNumberCalled(bank: Bank)
 }

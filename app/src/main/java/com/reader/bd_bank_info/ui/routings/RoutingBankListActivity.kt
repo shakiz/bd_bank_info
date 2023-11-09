@@ -103,11 +103,11 @@ class RoutingBankListActivity : AppCompatActivity(), BankCallBack {
         dialog.show()
     }
 
-    override fun onMailClicked(email: String) {
+    override fun onMailClicked(bank: Bank) {
 
     }
 
-    override fun onHotlineNumberCalled(hotlineNo: Int) {
+    override fun onHotlineNumberCalled(bank: Bank) {
         
     }
 }

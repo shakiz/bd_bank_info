@@ -13,15 +13,22 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.intuit.sdp.R
+import com.reader.bd_bank_info.AppInjector
 import com.reader.bd_bank_info.data.model.Bank
 import com.reader.bd_bank_info.databinding.ActivityBankListBinding
 import com.reader.bd_bank_info.ui.adapters.BankVerticalItemAdapter
+import com.reader.bd_bank_info.utils.BANK_DETAILS_TAPPED
+import com.reader.bd_bank_info.utils.BANK_HOTLINE_NO_TAPPED
 import com.reader.bd_bank_info.utils.BANK_LIST_ITEM_VIEW_TYPE_BANK_LIST
+import com.reader.bd_bank_info.utils.BANK_MAIL_TAPPED
+import com.reader.bd_bank_info.utils.BANK_NAME
+import com.reader.bd_bank_info.utils.BANK_SEARCH_TAPPED
 import com.reader.bd_bank_info.utils.ITEM_BANK
 import com.reader.bd_bank_info.utils.REQUEST_CALL_CODE
 import com.reader.bd_bank_info.utils.SpaceItemDecoration
 import com.reader.bd_bank_info.utils.dimenSize
 import com.reader.bd_bank_info.utils.hideSoftKeyboard
+import com.reader.bd_bank_info.utils.orZero
 import com.reader.bd_bank_info.utils.showLongToast
 
 class BankListActivity : AppCompatActivity(), BankCallBack {
@@ -29,6 +36,7 @@ class BankListActivity : AppCompatActivity(), BankCallBack {
     private lateinit var binding: ActivityBankListBinding
     private lateinit var viewModel: BankViewModel
     private val bankItemAdapter = BankVerticalItemAdapter()
+    private val analytics = AppInjector.getAnalytics(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,6 +62,7 @@ class BankListActivity : AppCompatActivity(), BankCallBack {
         binding.toolbar.setNavigationOnClickListener { onBackPressed() }
 
         binding.searchLayout.ibSearchButton.setOnClickListener {
+            analytics.registerEvent(BANK_SEARCH_TAPPED, analytics.setData(BANK_NAME, binding.searchLayout.etSearchName.text.toString()))
             hideSoftKeyboard()
             viewModel.searchBankItem(binding.searchLayout.etSearchName.text.toString())
         }
@@ -82,21 +91,25 @@ class BankListActivity : AppCompatActivity(), BankCallBack {
     }
 
     override fun onItemClick(bank: Bank) {
+        analytics.registerEvent(BANK_DETAILS_TAPPED, analytics.setData(BANK_NAME, bank.bankName))
         startActivity(Intent(this, BankDetailsActivity::class.java).putExtra(ITEM_BANK, bank))
     }
 
-    override fun onMailClicked(email: String) {
+    override fun onMailClicked(bank: Bank) {
+        analytics.registerEvent(BANK_MAIL_TAPPED, analytics.setData(BANK_NAME, bank.bankName))
         val emailIntent = Intent(
             Intent.ACTION_VIEW, Uri.fromParts(
-                "mailto", email, null
+                "mailto", bank.email, null
             )
         )
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Write your subject here.")
         startActivity(Intent.createChooser(emailIntent, null))
     }
 
-    override fun onHotlineNumberCalled(hotlineNo: Int) {
-        if(hotlineNo <= 0){
+    override fun onHotlineNumberCalled(bank: Bank) {
+        analytics.registerEvent(BANK_HOTLINE_NO_TAPPED, analytics.setData(BANK_NAME, bank.bankName))
+
+        if(bank.hotlineNo.orZero() <= 0){
             return
         }
         if (ContextCompat.checkSelfPermission(
@@ -104,10 +117,10 @@ class BankListActivity : AppCompatActivity(), BankCallBack {
                 Manifest.permission.CALL_PHONE
             ) == PackageManager.PERMISSION_GRANTED
         ) {
-            val uri = "tel:$hotlineNo"
+            val uri = "tel:${bank.hotlineNo.orZero()}"
             val callIntent = Intent(Intent.ACTION_CALL)
             callIntent.data = Uri.parse(uri)
-            showLongToast(getString(com.reader.bd_bank_info.R.string.calling_x_hotline_number, hotlineNo))
+            showLongToast(getString(com.reader.bd_bank_info.R.string.calling_x_hotline_number, bank.hotlineNo.orZero()))
             startActivity(callIntent)
         } else {
             Toast.makeText(
