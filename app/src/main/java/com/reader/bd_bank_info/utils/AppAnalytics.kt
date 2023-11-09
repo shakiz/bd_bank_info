@@ -10,8 +10,8 @@ class AppAnalytics(context: Context) {
         firebaseAnalytics = FirebaseAnalytics.getInstance(context)
     }
 
-    fun registerEvent(eventName: String?, eventData: Bundle?) {
-        firebaseAnalytics.logEvent(eventName!!, eventData)
+    fun registerEvent(eventName: String, eventData: Bundle) {
+        firebaseAnalytics.logEvent(eventName, eventData)
     }
 
     fun setData(key1: String?, data1: String?, key2: String?, data2: Int): Bundle {

@@ -5,6 +5,7 @@ import com.google.firebase.FirebaseApp
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.reader.bd_bank_info.service.RetrofitService
+import com.reader.bd_bank_info.utils.AppAnalytics
 
 object AppInjector {
     fun getRestApiClient(baseUrl: String): RetrofitService {
@@ -21,5 +22,9 @@ object AppInjector {
 
     fun getRoutingTableData(pathName: String) : DatabaseReference {
         return getFirebaseDatabase().getReference(pathName)
+    }
+
+    fun getAnalytics(context: Context) : AppAnalytics{
+        return AppAnalytics(context)
     }
 }
