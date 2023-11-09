@@ -69,17 +69,17 @@ class BankSwiftCodeAdapter : RecyclerView.Adapter<BankSwiftCodeAdapter.BankSwift
                 binding.ivSlider.setImageResource(it)
             }
             binding.ivCopy.setOnClickListener {
-                swiftCodeCopyListener?.onSwiftCodeCopied(bank.swiftCode.orEmpty())
+                swiftCodeCopyListener?.onSwiftCodeCopied(bank)
             }
 
             binding.ivCall.setOnClickListener {
-                swiftCodeCopyListener?.onHotlineNumberCalled(bank.hotlineNo.orZero())
+                swiftCodeCopyListener?.onHotlineNumberCalled(bank)
             }
         }
     }
 
     interface SwiftCodeCopyListener{
-        fun onSwiftCodeCopied(swiftCode: String)
-        fun onHotlineNumberCalled(hotlineNo: Int)
+        fun onSwiftCodeCopied(bank: Bank)
+        fun onHotlineNumberCalled(bank: Bank)
     }
 }
