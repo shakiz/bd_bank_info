@@ -14,6 +14,10 @@ import com.reader.bd_bank_info.data.model.Bank
 import com.reader.bd_bank_info.data.model.Routings
 import com.reader.bd_bank_info.databinding.ActivityRoutingDetailsBinding
 import com.reader.bd_bank_info.ui.adapters.RoutingItemAdapter
+import com.reader.bd_bank_info.utils.AppAnalytics
+import com.reader.bd_bank_info.utils.BANK_NAME
+import com.reader.bd_bank_info.utils.BANK_ROUTING_NO_COPIED
+import com.reader.bd_bank_info.utils.BANK_SEARCH_TAPPED
 import com.reader.bd_bank_info.utils.ITEM_BANK
 import com.reader.bd_bank_info.utils.SpaceItemDecoration
 import com.reader.bd_bank_info.utils.dimenSize
@@ -26,6 +30,8 @@ class RoutingDetailsActivity : AppCompatActivity(), RoutingItemAdapter.RoutingCo
 
     private lateinit var binding: ActivityRoutingDetailsBinding
     private lateinit var viewModel: RoutingViewModel
+    private val appAnalytics = AppAnalytics(this)
+
     private val routingItemAdapter = RoutingItemAdapter()
     private var bank: Bank? = null
 
@@ -61,6 +67,7 @@ class RoutingDetailsActivity : AppCompatActivity(), RoutingItemAdapter.RoutingCo
         binding.toolbar.setNavigationOnClickListener { onBackPressed() }
 
         binding.searchLayout.ibSearchButton.setOnClickListener {
+            appAnalytics.registerEvent(BANK_SEARCH_TAPPED, appAnalytics.setData(BANK_NAME, binding.searchLayout.etSearchName.text.toString()))
             hideSoftKeyboard()
             viewModel.searchBankItemForRoutingByBranch(binding.searchLayout.etSearchName.text.toString())
         }
@@ -91,6 +98,7 @@ class RoutingDetailsActivity : AppCompatActivity(), RoutingItemAdapter.RoutingCo
     }
 
     override fun onItemClick(routings: Routings) {
+        appAnalytics.registerEvent(BANK_ROUTING_NO_COPIED, appAnalytics.setData(BANK_NAME, routings.branchName))
         val clipboard: ClipboardManager =
             getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
         val clip: ClipData = ClipData.newPlainText(routings.routingNo.toString(), routings.routingNo.toString())
@@ -98,10 +106,11 @@ class RoutingDetailsActivity : AppCompatActivity(), RoutingItemAdapter.RoutingCo
         showLongToast(getString(com.reader.bd_bank_info.R.string.routing_no_copied))
     }
 
-    override fun onCopyClicked(routingNo: Int) {
+    override fun onCopyClicked(routings: Routings) {
+        appAnalytics.registerEvent(BANK_ROUTING_NO_COPIED, appAnalytics.setData(BANK_NAME, routings.branchName))
         val clipboard: ClipboardManager =
             getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-        val clip: ClipData = ClipData.newPlainText(routingNo.toString(), routingNo.toString())
+        val clip: ClipData = ClipData.newPlainText(routings.routingNo.toString(), routings.routingNo.toString())
         clipboard.setPrimaryClip(clip)
         showLongToast(getString(com.reader.bd_bank_info.R.string.routing_no_copied))
     }

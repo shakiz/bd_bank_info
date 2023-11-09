@@ -3,10 +3,8 @@ package com.reader.bd_bank_info.ui.routings
 import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import android.view.Window
 import android.view.WindowManager
-import android.widget.Button
 import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -18,8 +16,13 @@ import com.reader.bd_bank_info.databinding.ActivityRoutingBankListBinding
 import com.reader.bd_bank_info.network.InternetConnectivity
 import com.reader.bd_bank_info.ui.adapters.BankVerticalItemAdapter
 import com.reader.bd_bank_info.ui.bank.BankCallBack
+import com.reader.bd_bank_info.utils.AppAnalytics
 import com.reader.bd_bank_info.utils.BANK_LIST_ITEM_VIEW_TYPE_ROUTING
+import com.reader.bd_bank_info.utils.BANK_NAME
+import com.reader.bd_bank_info.utils.BANK_ROUTING_TAPPED
+import com.reader.bd_bank_info.utils.BANK_SEARCH_TAPPED
 import com.reader.bd_bank_info.utils.ITEM_BANK
+import com.reader.bd_bank_info.utils.NO_INTERNET_DIALOG
 import com.reader.bd_bank_info.utils.SpaceItemDecoration
 import com.reader.bd_bank_info.utils.dimenSize
 import com.reader.bd_bank_info.utils.hideSoftKeyboard
@@ -28,6 +31,8 @@ class RoutingBankListActivity : AppCompatActivity(), BankCallBack {
 
     private lateinit var binding: ActivityRoutingBankListBinding
     private lateinit var viewModel: RoutingViewModel
+    private val appAnalytics = AppAnalytics(this)
+
     private val bankItemAdapter = BankVerticalItemAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,6 +59,7 @@ class RoutingBankListActivity : AppCompatActivity(), BankCallBack {
         binding.toolbar.setNavigationOnClickListener { onBackPressed() }
 
         binding.searchLayout.ibSearchButton.setOnClickListener {
+            appAnalytics.registerEvent(BANK_SEARCH_TAPPED, appAnalytics.setData(BANK_NAME, binding.searchLayout.etSearchName.text.toString()))
             hideSoftKeyboard()
             viewModel.searchBankItem(binding.searchLayout.etSearchName.text.toString())
         }
@@ -83,8 +89,10 @@ class RoutingBankListActivity : AppCompatActivity(), BankCallBack {
 
     override fun onItemClick(bank: Bank) {
         if(InternetConnectivity.checkConnectivity(this)){
+            appAnalytics.registerEvent(BANK_ROUTING_TAPPED, appAnalytics.setData(BANK_ROUTING_TAPPED, bank.bankName))
             startActivity(Intent(this, RoutingDetailsActivity::class.java).putExtra(ITEM_BANK, bank))
         } else {
+            appAnalytics.registerEvent(NO_INTERNET_DIALOG, appAnalytics.setData(NO_INTERNET_DIALOG, getString(com.reader.bd_bank_info.R.string.internet_connection_error)))
             showNoInternetDialog()
         }
     }

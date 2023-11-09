@@ -63,7 +63,7 @@ class RoutingItemAdapter : RecyclerView.Adapter<RoutingItemAdapter.BankViewHolde
             binding.tvBranchName.text = context.getString(R.string.branch_name_x, routings.branchName)
             binding.tvRoutingNo.text = context.getString(R.string.routing_no_x, routings.routingNo)
             binding.cvCopyRoutingNo.setOnClickListener {
-                copyClickListener?.onCopyClicked(routings.routingNo.orZero())
+                copyClickListener?.onCopyClicked(routings)
             }
             binding.root.setOnClickListener {
                 copyClickListener?.onItemClick(routings)
@@ -73,6 +73,6 @@ class RoutingItemAdapter : RecyclerView.Adapter<RoutingItemAdapter.BankViewHolde
 
     interface RoutingCopyClickListener{
         fun onItemClick(routings: Routings)
-        fun onCopyClicked(routingNo: Int)
+        fun onCopyClicked(routings: Routings)
     }
 }
