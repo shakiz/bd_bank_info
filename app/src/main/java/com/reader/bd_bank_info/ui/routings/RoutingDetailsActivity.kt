@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.intuit.sdp.R
 import com.reader.bd_bank_info.data.model.Bank
+import com.reader.bd_bank_info.data.model.Routings
 import com.reader.bd_bank_info.databinding.ActivityRoutingDetailsBinding
 import com.reader.bd_bank_info.ui.adapters.RoutingItemAdapter
 import com.reader.bd_bank_info.utils.ITEM_BANK
@@ -87,6 +88,14 @@ class RoutingDetailsActivity : AppCompatActivity(), RoutingItemAdapter.RoutingCo
         binding.rvRoutings.addItemDecoration(SpaceItemDecoration(this.dimenSize(R.dimen._8sdp)))
         binding.rvRoutings.adapter = routingItemAdapter
         routingItemAdapter.setCopyClickListener(this)
+    }
+
+    override fun onItemClick(routings: Routings) {
+        val clipboard: ClipboardManager =
+            getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+        val clip: ClipData = ClipData.newPlainText(routings.routingNo.toString(), routings.routingNo.toString())
+        clipboard.setPrimaryClip(clip)
+        showLongToast(getString(com.reader.bd_bank_info.R.string.routing_no_copied))
     }
 
     override fun onCopyClicked(routingNo: Int) {

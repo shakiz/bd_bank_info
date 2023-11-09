@@ -65,10 +65,14 @@ class RoutingItemAdapter : RecyclerView.Adapter<RoutingItemAdapter.BankViewHolde
             binding.cvCopyRoutingNo.setOnClickListener {
                 copyClickListener?.onCopyClicked(routings.routingNo.orZero())
             }
+            binding.root.setOnClickListener {
+                copyClickListener?.onItemClick(routings)
+            }
         }
     }
 
     interface RoutingCopyClickListener{
+        fun onItemClick(routings: Routings)
         fun onCopyClicked(routingNo: Int)
     }
 }
