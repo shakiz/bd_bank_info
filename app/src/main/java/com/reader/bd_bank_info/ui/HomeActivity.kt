@@ -25,7 +25,7 @@ import com.reader.bd_bank_info.ui.stockmarket.StockMarketListActivity
 import com.reader.bd_bank_info.ui.swiftcode.SwiftCodeListActivity
 import com.reader.bd_bank_info.utils.*
 
-class HomeActivity : AppCompatActivity(), BankCallBack, HomeMenuAdapter.NavRailClickListener {
+class HomeActivity : AppCompatActivity(), BankCallBack, HomeMenuAdapter.NavRailClickListener, BankHorizontalSwiftCodeAdapter.SwiftCodeItemClickListener {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var viewModel: HomeViewModel
@@ -112,6 +112,7 @@ class HomeActivity : AppCompatActivity(), BankCallBack, HomeMenuAdapter.NavRailC
         binding.rvSwiftCodeList.layoutManager = GridLayoutManager(this, 3, RecyclerView.VERTICAL,false)
         binding.rvSwiftCodeList.addItemDecoration(SpaceItemDecoration(this.dimenSize(com.intuit.sdp.R.dimen._8sdp), false))
         binding.rvSwiftCodeList.adapter = swiftCodeAdapter
+        swiftCodeAdapter.setItemClickListener(this)
     }
 
     private fun setupRoutingListView(){
@@ -146,5 +147,10 @@ class HomeActivity : AppCompatActivity(), BankCallBack, HomeMenuAdapter.NavRailC
             }
             IDENTIFIER_ROUTING_NO -> startActivity(Intent(this, RoutingBankListActivity::class.java))
         }
+    }
+
+    override fun onSwiftCodeItemClick(bank: Bank) {
+        appAnalytics.registerEvent(APP_MENU_ITEM_TAPPED, appAnalytics.setData(APP_MENU_ITEM_TAPPED, IDENTIFIER_SWIFT_CODE))
+        startActivity(Intent(this, SwiftCodeListActivity::class.java))
     }
 }

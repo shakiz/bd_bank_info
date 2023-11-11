@@ -11,6 +11,7 @@ import com.reader.bd_bank_info.utils.DiffUtilCallback
 
 class BankHorizontalSwiftCodeAdapter : RecyclerView.Adapter<BankHorizontalSwiftCodeAdapter.BankSwiftCodeViewHolder>() {
     private val items = ArrayList<Bank>()
+    private var swiftCodeItemClickListener: SwiftCodeItemClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BankSwiftCodeViewHolder {
         val binding = RecyclerItemSwiftCodeHomeBinding.inflate(
@@ -18,11 +19,15 @@ class BankHorizontalSwiftCodeAdapter : RecyclerView.Adapter<BankHorizontalSwiftC
             parent,
             false
         )
-        return BankSwiftCodeViewHolder(binding)
+        return BankSwiftCodeViewHolder(binding, swiftCodeItemClickListener)
     }
 
     override fun onBindViewHolder(holder: BankSwiftCodeViewHolder, position: Int) {
         holder.bindItem(items[position])
+    }
+
+    fun setItemClickListener(swiftCodeItemClickListener: SwiftCodeItemClickListener?){
+        this.swiftCodeItemClickListener = swiftCodeItemClickListener
     }
 
     override fun getItemCount() = items.size
@@ -47,7 +52,7 @@ class BankHorizontalSwiftCodeAdapter : RecyclerView.Adapter<BankHorizontalSwiftC
         diffResult.dispatchUpdatesTo(this)
     }
 
-    class BankSwiftCodeViewHolder(val binding: RecyclerItemSwiftCodeHomeBinding) :
+    class BankSwiftCodeViewHolder(val binding: RecyclerItemSwiftCodeHomeBinding, val  swiftCodeItemClickListener: SwiftCodeItemClickListener?) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bindItem(bank: Bank) {
@@ -55,6 +60,14 @@ class BankHorizontalSwiftCodeAdapter : RecyclerView.Adapter<BankHorizontalSwiftC
             bank.bankIconRes?.let {
                 binding.ivBankLogo.setImageResource(it)
             }
+
+            binding.root.setOnClickListener {
+                swiftCodeItemClickListener?.onSwiftCodeItemClick(bank)
+            }
         }
+    }
+
+    interface SwiftCodeItemClickListener{
+        fun onSwiftCodeItemClick(bank: Bank)
     }
 }

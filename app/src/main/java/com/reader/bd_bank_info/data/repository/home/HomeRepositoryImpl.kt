@@ -26,6 +26,12 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
                 icon = R.drawable.ic_swift_key
             ),
             MainMenuItem(
+                titleEn = "Routings",
+                titleBn = "Routings",
+                identifier = IDENTIFIER_ROUTING_NO,
+                icon = R.drawable.ic_routing_no
+            ),
+            MainMenuItem(
                 titleEn = "Stock Market",
                 titleBn = "Stock Market",
                 identifier = IDENTIFIER_STOCK_MARKET,
@@ -37,12 +43,6 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
                 identifier = IDENTIFIER_CURRENCY_RATES,
                 icon = R.drawable.ic_exchange_rate,
                 content = ExtraContent(url = "https://www.banksbd.org/exchange.html")
-            ),
-            MainMenuItem(
-                titleEn = "Routings",
-                titleBn = "Routings",
-                identifier = IDENTIFIER_ROUTING_NO,
-                icon = R.drawable.ic_routing_no
             ),
 //            MainMenuItem(
 //                titleEn = "Loan",
