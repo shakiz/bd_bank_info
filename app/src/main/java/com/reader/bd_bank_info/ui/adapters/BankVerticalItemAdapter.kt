@@ -79,7 +79,11 @@ class BankVerticalItemAdapter : RecyclerView.Adapter<BankVerticalItemAdapter.Ban
             }
 
             itemView.setOnClickListener {
-                bankCallBack?.onItemClick(bank)
+                if(viewType == BANK_LIST_ITEM_VIEW_TYPE_ROUTING){
+                    bankCallBack?.onRoutingItemClick(bank)
+                } else {
+                    bankCallBack?.onItemClick(bank)
+                }
             }
 
             binding.ibMailButton.setOnClickListener {

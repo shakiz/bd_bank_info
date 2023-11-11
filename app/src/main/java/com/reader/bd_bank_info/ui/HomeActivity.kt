@@ -21,6 +21,7 @@ import com.reader.bd_bank_info.ui.bank.BankCallBack
 import com.reader.bd_bank_info.ui.bank.BankListActivity
 import com.reader.bd_bank_info.ui.commonwebview.CommonWebViewActivity
 import com.reader.bd_bank_info.ui.routings.RoutingBankListActivity
+import com.reader.bd_bank_info.ui.routings.RoutingDetailsActivity
 import com.reader.bd_bank_info.ui.stockmarket.StockMarketListActivity
 import com.reader.bd_bank_info.ui.swiftcode.SwiftCodeListActivity
 import com.reader.bd_bank_info.utils.*
@@ -119,6 +120,7 @@ class HomeActivity : AppCompatActivity(), BankCallBack, HomeMenuAdapter.NavRailC
         binding.rvBankListRouting.layoutManager = PartiallyVisibleHorizontalLayoutManager(this, .45f)
         binding.rvBankListRouting.addItemDecoration(SpaceItemDecoration(this.dimenSize(com.intuit.sdp.R.dimen._8sdp), false))
         binding.rvBankListRouting.adapter = bankVerticalItemAdapter
+        bankVerticalItemAdapter.setItemClickListener(this)
         bankVerticalItemAdapter.setViewType(BANK_LIST_ITEM_VIEW_TYPE_ROUTING)
     }
 
@@ -128,11 +130,16 @@ class HomeActivity : AppCompatActivity(), BankCallBack, HomeMenuAdapter.NavRailC
     }
 
     override fun onMailClicked(bank: Bank) {
-
+        // empty implementation
     }
 
     override fun onHotlineNumberCalled(bank: Bank) {
+        // empty implementation
+    }
 
+    override fun onRoutingItemClick(bank: Bank) {
+        appAnalytics.registerEvent(BANK_ROUTING_TAPPED, appAnalytics.setData(BANK_ROUTING_TAPPED, bank.bankName))
+        startActivity(Intent(this, RoutingDetailsActivity::class.java).putExtra(ITEM_BANK, bank))
     }
 
     override fun onItemClick(navRail: MainMenuItem) {

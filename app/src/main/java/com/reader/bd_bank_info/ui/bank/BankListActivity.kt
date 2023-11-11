@@ -141,4 +141,8 @@ class BankListActivity : AppCompatActivity(), BankCallBack {
             }
         }
     }
+
+    override fun onRoutingItemClick(bank: Bank) {
+        // empty implementation
+    }
 }

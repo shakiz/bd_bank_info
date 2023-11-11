@@ -6,4 +6,5 @@ interface BankCallBack {
     fun onItemClick(bank: Bank)
     fun onMailClicked(bank: Bank)
     fun onHotlineNumberCalled(bank: Bank)
+    fun onRoutingItemClick(bank: Bank)
 }
