@@ -2,18 +2,16 @@ package com.reader.bd_bank_info.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.reader.bd_bank_info.data.model.Bank
 import com.reader.bd_bank_info.databinding.RecyclerItemSwiftCodeBinding
 import com.reader.bd_bank_info.utils.DiffUtilCallback
 import com.reader.bd_bank_info.utils.isNull
-import com.reader.bd_bank_info.utils.orZero
 
 class BankSwiftCodeAdapter : RecyclerView.Adapter<BankSwiftCodeAdapter.BankSwiftCodeViewHolder>() {
     private val items = ArrayList<Bank>()
-    private var swiftCodeCopyListener: SwiftCodeCopyListener? = null
+    private var swiftCodeCallBack: SwiftCodeCallBack? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BankSwiftCodeViewHolder {
         val binding = RecyclerItemSwiftCodeBinding.inflate(
@@ -21,7 +19,7 @@ class BankSwiftCodeAdapter : RecyclerView.Adapter<BankSwiftCodeAdapter.BankSwift
             parent,
             false
         )
-        return BankSwiftCodeViewHolder(binding, swiftCodeCopyListener)
+        return BankSwiftCodeViewHolder(binding, swiftCodeCallBack)
     }
 
     override fun onBindViewHolder(holder: BankSwiftCodeViewHolder, position: Int) {
@@ -30,8 +28,8 @@ class BankSwiftCodeAdapter : RecyclerView.Adapter<BankSwiftCodeAdapter.BankSwift
 
     override fun getItemCount() = items.size
 
-    fun setOnSwiftCodeCopyListener(swiftCodeCopyListener: SwiftCodeCopyListener){
-        this.swiftCodeCopyListener = swiftCodeCopyListener
+    fun setOnSwiftCodeCopyListener(swiftCodeCallBack: SwiftCodeCallBack){
+        this.swiftCodeCallBack = swiftCodeCallBack
     }
 
     fun addItems(navRails: List<Bank>) {
@@ -54,7 +52,7 @@ class BankSwiftCodeAdapter : RecyclerView.Adapter<BankSwiftCodeAdapter.BankSwift
         diffResult.dispatchUpdatesTo(this)
     }
 
-    class BankSwiftCodeViewHolder(val binding: RecyclerItemSwiftCodeBinding, private val swiftCodeCopyListener: SwiftCodeCopyListener?) :
+    class BankSwiftCodeViewHolder(val binding: RecyclerItemSwiftCodeBinding, private val swiftCodeCallBack: SwiftCodeCallBack?) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bindItem(bank: Bank) {
@@ -68,18 +66,23 @@ class BankSwiftCodeAdapter : RecyclerView.Adapter<BankSwiftCodeAdapter.BankSwift
             bank.bankIconRes?.let {
                 binding.ivSlider.setImageResource(it)
             }
+            binding.root.setOnClickListener {
+                swiftCodeCallBack?.onItemClicked(bank)
+            }
             binding.ivCopy.setOnClickListener {
-                swiftCodeCopyListener?.onSwiftCodeCopied(bank)
+                swiftCodeCallBack?.onSwiftCodeCopied(bank)
             }
 
             binding.ivCall.setOnClickListener {
-                swiftCodeCopyListener?.onHotlineNumberCalled(bank)
+                swiftCodeCallBack?.onHotlineNumberCalled(bank)
             }
         }
     }
 
-    interface SwiftCodeCopyListener{
+    interface SwiftCodeCallBack{
         fun onSwiftCodeCopied(bank: Bank)
         fun onHotlineNumberCalled(bank: Bank)
+
+        fun onItemClicked(bank: Bank)
     }
 }

@@ -32,7 +32,7 @@ import com.reader.bd_bank_info.utils.hideSoftKeyboard
 import com.reader.bd_bank_info.utils.orZero
 import com.reader.bd_bank_info.utils.showLongToast
 
-class SwiftCodeListActivity : AppCompatActivity(), BankSwiftCodeAdapter.SwiftCodeCopyListener {
+class SwiftCodeListActivity : AppCompatActivity(), BankSwiftCodeAdapter.SwiftCodeCallBack {
 
     private lateinit var binding: ActivitySwiftCodeListBinding
     private lateinit var viewModel: BankViewModel
@@ -134,5 +134,14 @@ class SwiftCodeListActivity : AppCompatActivity(), BankSwiftCodeAdapter.SwiftCod
                 )
             }
         }
+    }
+
+    override fun onItemClicked(bank: Bank) {
+        appAnalytics.registerEvent(BANK_SWIFT_CODE_COPIED, appAnalytics.setData(BANK_NAME, bank.bankName))
+        val clipboard: ClipboardManager =
+            getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+        val clip: ClipData = ClipData.newPlainText(bank.swiftCode, bank.swiftCode)
+        clipboard.setPrimaryClip(clip)
+        showLongToast(getString(com.reader.bd_bank_info.R.string.swift_code_copied))
     }
 }
