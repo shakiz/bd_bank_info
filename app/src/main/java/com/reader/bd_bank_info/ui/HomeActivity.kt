@@ -26,7 +26,8 @@ import com.reader.bd_bank_info.ui.stockmarket.StockMarketListActivity
 import com.reader.bd_bank_info.ui.swiftcode.SwiftCodeListActivity
 import com.reader.bd_bank_info.utils.*
 
-class HomeActivity : AppCompatActivity(), BankCallBack, HomeMenuAdapter.NavRailClickListener, BankHorizontalSwiftCodeAdapter.SwiftCodeItemClickListener {
+class HomeActivity : AppCompatActivity(), BankCallBack, HomeMenuAdapter.NavRailClickListener,
+    BankHorizontalSwiftCodeAdapter.SwiftCodeItemClickListener {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var viewModel: HomeViewModel
@@ -55,38 +56,47 @@ class HomeActivity : AppCompatActivity(), BankCallBack, HomeMenuAdapter.NavRailC
         viewModel.fetchBankList()
     }
 
-    private fun initView(){
+    private fun initView() {
         setUpNavRailListView()
         setUpBankListView()
         setupSwiftCodeListView()
         setupRoutingListView()
     }
 
-    private fun initListeners(){
+    private fun initListeners() {
         binding.tvSeeAllBank.setOnClickListener {
-            appAnalytics.registerEvent(SEE_ALL_TAPPED, appAnalytics.setData(SEE_ALL_TAPPED, SEE_ALL_BANK))
+            appAnalytics.registerEvent(
+                SEE_ALL_TAPPED,
+                appAnalytics.setData(SEE_ALL_TAPPED, SEE_ALL_BANK)
+            )
             startActivity(Intent(this, BankListActivity::class.java))
         }
 
         binding.tvSeeAllSwiftCode.setOnClickListener {
-            appAnalytics.registerEvent(SEE_ALL_TAPPED, appAnalytics.setData(SEE_ALL_TAPPED, SEE_ALL_SWIFT_CODE))
+            appAnalytics.registerEvent(
+                SEE_ALL_TAPPED,
+                appAnalytics.setData(SEE_ALL_TAPPED, SEE_ALL_SWIFT_CODE)
+            )
             startActivity(Intent(this, SwiftCodeListActivity::class.java))
         }
 
         binding.tvSeeAllBankRouting.setOnClickListener {
-            appAnalytics.registerEvent(SEE_ALL_TAPPED, appAnalytics.setData(SEE_ALL_TAPPED, SEE_ALL_BANK_ROUTING))
+            appAnalytics.registerEvent(
+                SEE_ALL_TAPPED,
+                appAnalytics.setData(SEE_ALL_TAPPED, SEE_ALL_BANK_ROUTING)
+            )
             startActivity(Intent(this, RoutingBankListActivity::class.java))
         }
     }
 
-    private fun initObservers(){
-        viewModel.onNavigationRailFetched().observe(this){ railItems ->
+    private fun initObservers() {
+        viewModel.onNavigationRailFetched().observe(this) { railItems ->
             railItems?.let {
                 homeMenuAdapter.addItems(it)
             }
         }
 
-        viewModel.onBankListFetched().observe(this){bankList ->
+        viewModel.onBankListFetched().observe(this) { bankList ->
             bankList?.let {
                 bankItemAdapter.addItems(it)
                 bankVerticalItemAdapter.addItems(it)
@@ -95,37 +105,57 @@ class HomeActivity : AppCompatActivity(), BankCallBack, HomeMenuAdapter.NavRailC
         }
     }
 
-    private fun setUpNavRailListView(){
+    private fun setUpNavRailListView() {
         binding.rvNavRail.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
         binding.rvNavRail.addItemDecoration(SpaceItemDecoration(this.dimenSize(com.intuit.sdp.R.dimen._8sdp)))
         binding.rvNavRail.adapter = homeMenuAdapter
         homeMenuAdapter.setItemClickListener(this)
     }
 
-    private fun setUpBankListView(){
+    private fun setUpBankListView() {
         binding.rvBankList.layoutManager = PartiallyVisibleHorizontalLayoutManager(this, .3f)
-        binding.rvBankList.addItemDecoration(SpaceItemDecoration(this.dimenSize(com.intuit.sdp.R.dimen._8sdp), false))
+        binding.rvBankList.addItemDecoration(
+            SpaceItemDecoration(
+                this.dimenSize(com.intuit.sdp.R.dimen._8sdp),
+                false
+            )
+        )
         binding.rvBankList.adapter = bankItemAdapter
         bankItemAdapter.setOnItemClickListener(this)
     }
 
-    private fun setupSwiftCodeListView(){
-        binding.rvSwiftCodeList.layoutManager = GridLayoutManager(this, 3, RecyclerView.VERTICAL,false)
-        binding.rvSwiftCodeList.addItemDecoration(SpaceItemDecoration(this.dimenSize(com.intuit.sdp.R.dimen._8sdp), false))
+    private fun setupSwiftCodeListView() {
+        binding.rvSwiftCodeList.layoutManager =
+            GridLayoutManager(this, 3, RecyclerView.VERTICAL, false)
+        binding.rvSwiftCodeList.addItemDecoration(
+            SpaceItemDecoration(
+                this.dimenSize(com.intuit.sdp.R.dimen._8sdp),
+                false
+            )
+        )
         binding.rvSwiftCodeList.adapter = swiftCodeAdapter
         swiftCodeAdapter.setItemClickListener(this)
     }
 
-    private fun setupRoutingListView(){
-        binding.rvBankListRouting.layoutManager = PartiallyVisibleHorizontalLayoutManager(this, .45f)
-        binding.rvBankListRouting.addItemDecoration(SpaceItemDecoration(this.dimenSize(com.intuit.sdp.R.dimen._8sdp), false))
+    private fun setupRoutingListView() {
+        binding.rvBankListRouting.layoutManager =
+            PartiallyVisibleHorizontalLayoutManager(this, .45f)
+        binding.rvBankListRouting.addItemDecoration(
+            SpaceItemDecoration(
+                this.dimenSize(com.intuit.sdp.R.dimen._8sdp),
+                false
+            )
+        )
         binding.rvBankListRouting.adapter = bankVerticalItemAdapter
         bankVerticalItemAdapter.setItemClickListener(this)
         bankVerticalItemAdapter.setViewType(BANK_LIST_ITEM_VIEW_TYPE_ROUTING)
     }
 
     override fun onItemClick(bank: Bank) {
-        appAnalytics.registerEvent(BANK_DETAILS_TAPPED, appAnalytics.setData(BANK_NAME, bank.bankName))
+        appAnalytics.registerEvent(
+            BANK_DETAILS_TAPPED,
+            appAnalytics.setData(BANK_NAME, bank.bankName)
+        )
         startActivity(Intent(this, BankDetailsActivity::class.java).putExtra(ITEM_BANK, bank))
     }
 
@@ -138,26 +168,56 @@ class HomeActivity : AppCompatActivity(), BankCallBack, HomeMenuAdapter.NavRailC
     }
 
     override fun onRoutingItemClick(bank: Bank) {
-        appAnalytics.registerEvent(BANK_ROUTING_TAPPED, appAnalytics.setData(BANK_ROUTING_TAPPED, bank.bankName))
+        appAnalytics.registerEvent(
+            BANK_ROUTING_TAPPED,
+            appAnalytics.setData(BANK_ROUTING_TAPPED, bank.bankName)
+        )
         startActivity(Intent(this, RoutingDetailsActivity::class.java).putExtra(ITEM_BANK, bank))
     }
 
     override fun onItemClick(navRail: MainMenuItem) {
-        appAnalytics.registerEvent(APP_MENU_ITEM_TAPPED, appAnalytics.setData(APP_MENU_ITEM_TAPPED, navRail.identifier))
-        when(navRail.identifier){
+        appAnalytics.registerEvent(
+            APP_MENU_ITEM_TAPPED,
+            appAnalytics.setData(APP_MENU_ITEM_TAPPED, navRail.identifier)
+        )
+        when (navRail.identifier) {
             IDENTIFIER_SWIFT_CODE -> startActivity(Intent(this, SwiftCodeListActivity::class.java))
-            IDENTIFIER_STOCK_MARKET -> startActivity(Intent(this, StockMarketListActivity::class.java))
+            IDENTIFIER_STOCK_MARKET -> startActivity(
+                Intent(
+                    this,
+                    StockMarketListActivity::class.java
+                )
+            )
+
             IDENTIFIER_BANK -> startActivity(Intent(this, BankListActivity::class.java))
-            IDENTIFIER_CURRENCY_RATES ->{
-                val bundle = CommonWebViewActivity.createIntent(this, navRail.content?.url, getString(R.string.currency_rates))
-                startActivity(Intent(this, CommonWebViewActivity::class.java).putExtra(WEBVIEW_BUNDLE, bundle))
+            IDENTIFIER_CURRENCY_RATES -> {
+                val bundle = CommonWebViewActivity.createIntent(
+                    this,
+                    navRail.content?.url,
+                    getString(R.string.currency_rates)
+                )
+                startActivity(
+                    Intent(this, CommonWebViewActivity::class.java).putExtra(
+                        WEBVIEW_BUNDLE,
+                        bundle
+                    )
+                )
             }
-            IDENTIFIER_ROUTING_NO -> startActivity(Intent(this, RoutingBankListActivity::class.java))
+
+            IDENTIFIER_ROUTING_NO -> startActivity(
+                Intent(
+                    this,
+                    RoutingBankListActivity::class.java
+                )
+            )
         }
     }
 
     override fun onSwiftCodeItemClick(bank: Bank) {
-        appAnalytics.registerEvent(APP_MENU_ITEM_TAPPED, appAnalytics.setData(APP_MENU_ITEM_TAPPED, IDENTIFIER_SWIFT_CODE))
+        appAnalytics.registerEvent(
+            APP_MENU_ITEM_TAPPED,
+            appAnalytics.setData(APP_MENU_ITEM_TAPPED, IDENTIFIER_SWIFT_CODE)
+        )
         startActivity(Intent(this, SwiftCodeListActivity::class.java))
     }
 }
