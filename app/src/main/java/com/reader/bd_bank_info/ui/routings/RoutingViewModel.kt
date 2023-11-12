@@ -62,16 +62,14 @@ class RoutingViewModel: ViewModel(){
 
             routingDbReference.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    if (snapshot.children != null) {
-                        for (dataSnapshot in snapshot.children) {
-                            val routing: Routings? = dataSnapshot.getValue(Routings::class.java)
-                            tempData.add(routing)
-                            Log.i(TAG, "" + routing?.branchName)
-                        }
-                        tempData.let {
-                            routingList.addAll(it as List<Routings>)
-                            filteredRoutingList.postValue(it as List<Routings>)
-                        }
+                    for (dataSnapshot in snapshot.children) {
+                        val routing: Routings? = dataSnapshot.getValue(Routings::class.java)
+                        tempData.add(routing)
+                        Log.i(TAG, "" + routing?.branchName)
+                    }
+                    tempData.let {
+                        routingList.addAll(it as List<Routings>)
+                        filteredRoutingList.postValue(it as List<Routings>)
                     }
                     isDataLoading.postValue(false)
                 }
