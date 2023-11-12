@@ -14,7 +14,7 @@ android {
         minSdk 21
         targetSdk 33
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -121,7 +121,7 @@ dependencies {
 
     //Firebase db
     implementation "com.google.firebase:firebase-core:11.6.2"
-    implementation 'com.google.firebase:firebase-database:19.7.0'
+    implementation 'com.google.firebase:firebase-database:20.3.0'
 
     //lottie animation loader
     implementation 'com.airbnb.android:lottie:3.4.2'
