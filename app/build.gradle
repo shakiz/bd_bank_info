@@ -28,6 +28,28 @@ android {
         }
     }
 
+    signingConfigs {
+        debug {
+
+        }
+        qa {
+            def props = new Properties()
+            props.load(new FileInputStream(rootProject.file("keystore/qa.properties")))
+            storeFile rootProject.file("keystore/" + props.keyStore)
+            storePassword props.keyStorePassword
+            keyAlias props.keyAlias
+            keyPassword props.keyPassword
+        }
+        release {
+            def props = new Properties()
+            props.load(new FileInputStream(rootProject.file("keystore/release.properties")))
+            storeFile rootProject.file("keystore/" + props.keyStore)
+            storePassword props.keyStorePassword
+            keyAlias props.keyAlias
+            keyPassword props.keyPassword
+        }
+    }
+
     flavorDimensions "env"
     productFlavors {
         dev {
@@ -45,6 +67,8 @@ android {
             buildConfigField "String", "BASE_URL", '""'
         }
         prod {
+            signingConfig signingConfigs.release
+
             dimension "env"
 
             buildConfigField "String", "BASE_URL", '""'
