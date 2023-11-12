@@ -62,8 +62,8 @@ class RoutingViewModel: ViewModel(){
 
             routingDbReference.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    for (dataSnapshot in snapshot.children) {
-                        val routing: Routings? = dataSnapshot.getValue(Routings::class.java)
+                    for (dsRouting in snapshot.children) {
+                        val routing: Routings? = dsRouting.getValue(Routings::class.java)
                         tempData.add(routing)
                         Log.i(TAG, "" + routing?.branchName)
                     }
@@ -75,7 +75,7 @@ class RoutingViewModel: ViewModel(){
                 }
 
                 override fun onCancelled(error: DatabaseError) {
-                    Log.i(TAG, "" + error.message)
+                    Log.i(TAG, error.message)
                     isDataLoading.postValue(false)
                 }
             })
