@@ -20,6 +20,12 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
                 icon = R.drawable.ic_bank_icon
             ),
             MainMenuItem(
+                titleEn = "Bank Loans",
+                titleBn = "Bank Loans",
+                identifier = IDENTIFIER_BANK_LOANS,
+                icon = R.drawable.ic_bank_loan
+            ),
+            MainMenuItem(
                 titleEn = "Swift Codes",
                 titleBn = "Swift Codes",
                 identifier = IDENTIFIER_SWIFT_CODE,
@@ -44,12 +50,6 @@ class HomeRepositoryImpl(private val homeApi: HomeApi) : HomeRepository {
                 icon = R.drawable.ic_exchange_rate,
                 content = ExtraContent(url = "https://www.banksbd.org/exchange.html")
             ),
-//            MainMenuItem(
-//                titleEn = "Loan",
-//                titleBn = "Loan",
-//                identifier = IDENTIFIER_LOAN,
-//                icon = R.drawable.ic_bank_loan
-//            ),
         )
     }
 }
