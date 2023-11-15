@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.intuit.sdp.R
 import com.reader.bd_bank_info.AppInjector
 import com.reader.bd_bank_info.data.model.Bank
-import com.reader.bd_bank_info.databinding.ActivityBankListBinding
 import com.reader.bd_bank_info.databinding.ActivityBankLoanTypeListBinding
 import com.reader.bd_bank_info.ui.adapters.BankVerticalItemAdapter
 import com.reader.bd_bank_info.ui.bank.BankCallBack
