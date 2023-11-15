@@ -46,6 +46,11 @@
             android:label="@string/stock_market_list"
             android:theme="@style/Theme.Bd_bank_info.NoActionBar" />
         <activity
+            android:name=".ui.loan.BankLoanTypeListActivity"
+            android:exported="false"
+            android:label="@string/bank_loan_types"
+            android:theme="@style/Theme.Bd_bank_info.NoActionBar" />
+        <activity
             android:name=".ui.commonwebview.CommonWebViewActivity"
             android:exported="false"
             android:label="@string/details"

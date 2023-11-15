@@ -41,5 +41,6 @@
     <string name="try_again">Try Again</string>
     <string name="oops">Whoops!</string>
     <string name="internet_connection_error">Slow or no internet connections.\nPlease check your internet settings.</string>
+    <string name="bank_loan_types">Bank Loan Type</string>
 
 </resources>

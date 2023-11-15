@@ -20,6 +20,7 @@ import com.reader.bd_bank_info.ui.bank.BankDetailsActivity
 import com.reader.bd_bank_info.ui.bank.BankCallBack
 import com.reader.bd_bank_info.ui.bank.BankListActivity
 import com.reader.bd_bank_info.ui.commonwebview.CommonWebViewActivity
+import com.reader.bd_bank_info.ui.loan.BankLoanTypeListActivity
 import com.reader.bd_bank_info.ui.routings.RoutingBankListActivity
 import com.reader.bd_bank_info.ui.routings.RoutingDetailsActivity
 import com.reader.bd_bank_info.ui.stockmarket.StockMarketListActivity
@@ -188,7 +189,7 @@ class HomeActivity : AppCompatActivity(), BankCallBack, HomeMenuAdapter.NavRailC
                     StockMarketListActivity::class.java
                 )
             )
-
+            IDENTIFIER_BANK_LOANS -> startActivity(Intent(this, BankLoanTypeListActivity::class.java))
             IDENTIFIER_BANK -> startActivity(Intent(this, BankListActivity::class.java))
             IDENTIFIER_CURRENCY_RATES -> {
                 val bundle = CommonWebViewActivity.createIntent(
