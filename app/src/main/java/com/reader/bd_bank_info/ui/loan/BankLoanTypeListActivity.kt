@@ -1,5 +1,6 @@
 package com.reader.bd_bank_info.ui.loan
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -10,9 +11,11 @@ import com.reader.bd_bank_info.AppInjector
 import com.reader.bd_bank_info.data.model.LoanType
 import com.reader.bd_bank_info.databinding.ActivityBankLoanTypeListBinding
 import com.reader.bd_bank_info.ui.adapters.BankLoanTypeItemAdapter
+import com.reader.bd_bank_info.ui.commonwebview.CommonWebViewActivity
 import com.reader.bd_bank_info.utils.BANK_LOAN_TYPE_TAPPED
 import com.reader.bd_bank_info.utils.IDENTIFIER_BANK_LOANS
 import com.reader.bd_bank_info.utils.SpaceItemDecoration
+import com.reader.bd_bank_info.utils.WEBVIEW_BUNDLE
 import com.reader.bd_bank_info.utils.dimenSize
 
 class BankLoanTypeListActivity : AppCompatActivity(), BankLoanTypeItemAdapter.BankLoanTypeCallBack {
@@ -70,5 +73,8 @@ class BankLoanTypeListActivity : AppCompatActivity(), BankLoanTypeItemAdapter.Ba
                 loanType.loanTypeName?.lowercase()?.replace(" ", "_")
             )
         )
+
+        val bundle = CommonWebViewActivity.createIntent(this, loanType.navigationUrl, loanType.loanTypeName)
+        startActivity(Intent(this, CommonWebViewActivity::class.java).putExtra(WEBVIEW_BUNDLE, bundle))
     }
 }
