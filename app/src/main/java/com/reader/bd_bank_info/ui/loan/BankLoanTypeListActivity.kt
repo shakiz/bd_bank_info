@@ -9,14 +9,13 @@ import com.intuit.sdp.R
 import com.reader.bd_bank_info.AppInjector
 import com.reader.bd_bank_info.databinding.ActivityBankLoanTypeListBinding
 import com.reader.bd_bank_info.ui.adapters.BankVerticalItemAdapter
-import com.reader.bd_bank_info.ui.bank.BankViewModel
 import com.reader.bd_bank_info.utils.SpaceItemDecoration
 import com.reader.bd_bank_info.utils.dimenSize
 
 class BankLoanTypeListActivity : AppCompatActivity(){
 
     private lateinit var binding: ActivityBankLoanTypeListBinding
-    private lateinit var viewModel: BankViewModel
+    private lateinit var viewModel: BankLoanViewModel
     private val bankItemAdapter = BankVerticalItemAdapter()
     private val analytics = AppInjector.getAnalytics(this)
 
@@ -26,7 +25,7 @@ class BankLoanTypeListActivity : AppCompatActivity(){
         setContentView(binding.root)
 
         viewModel =
-            ViewModelProvider(this)[BankViewModel::class.java]
+            ViewModelProvider(this)[BankLoanViewModel::class.java]
 
         initView()
         initListeners()
@@ -45,9 +44,9 @@ class BankLoanTypeListActivity : AppCompatActivity(){
     }
 
     private fun initObservers() {
-        viewModel.onBankListFetched().observe(this) { bankList ->
-            bankList?.let {
-                bankItemAdapter.addItems(bankList)
+        viewModel.onBankTypeListFetched().observe(this) { bankLoanTypeList ->
+            bankLoanTypeList?.let {
+
             }
         }
     }
