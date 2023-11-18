@@ -38,7 +38,7 @@
             android:overScrollMode="never"
             android:paddingHorizontal="@dimen/_4sdp"
             tools:itemCount="3"
-            tools:listitem="@layout/recycler_layout_loan_type" />
+            tools:listitem="@layout/recycler_item_loan_type" />
 
     </LinearLayout>
 
