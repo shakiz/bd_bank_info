@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.reader.bd_bank_info.data.model.LoanType
+import com.reader.bd_bank_info.data.model.loan.LoanType
 import com.reader.bd_bank_info.databinding.RecyclerItemLoanTypeBinding
 import com.reader.bd_bank_info.utils.DiffUtilCallback
 

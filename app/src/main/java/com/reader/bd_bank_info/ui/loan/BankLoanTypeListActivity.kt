@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.intuit.sdp.R
 import com.reader.bd_bank_info.AppInjector
-import com.reader.bd_bank_info.data.model.LoanType
+import com.reader.bd_bank_info.data.model.loan.LoanType
 import com.reader.bd_bank_info.databinding.ActivityBankLoanTypeListBinding
 import com.reader.bd_bank_info.ui.adapters.BankLoanTypeItemAdapter
 import com.reader.bd_bank_info.ui.commonwebview.CommonWebViewActivity

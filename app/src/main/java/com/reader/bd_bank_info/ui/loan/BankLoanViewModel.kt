@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.reader.bd_bank_info.AppInjector
 import com.reader.bd_bank_info.data.datasource.HomeApi
-import com.reader.bd_bank_info.data.model.LoanType
+import com.reader.bd_bank_info.data.model.loan.LoanType
 import com.reader.bd_bank_info.data.repository.loan.BankLoanRepositoryImpl
 import kotlinx.coroutines.launch
 

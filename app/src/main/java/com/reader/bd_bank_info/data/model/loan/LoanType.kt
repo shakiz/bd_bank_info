@@ -1,4 +1,4 @@
-package com.reader.bd_bank_info.data.model
+package com.reader.bd_bank_info.data.model.loan
 
 data class LoanType(
     val loanTypeName: String? = null,

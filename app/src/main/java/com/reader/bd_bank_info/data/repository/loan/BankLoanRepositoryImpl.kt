@@ -2,7 +2,7 @@ package com.reader.bd_bank_info.data.repository.loan
 
 import com.reader.bd_bank_info.R
 import com.reader.bd_bank_info.data.datasource.HomeApi
-import com.reader.bd_bank_info.data.model.LoanType
+import com.reader.bd_bank_info.data.model.loan.LoanType
 
 class BankLoanRepositoryImpl(private val homeApi: HomeApi) : BankLoanRepository {
 
