@@ -32,7 +32,14 @@ class BankLoanRepositoryImpl(private val homeApi: HomeApi) : BankLoanRepository 
         return listOf(
             PopularLoan(bankId = 15, bankName = "DBBL", loanName = "DBBL Jokhon Tokhon Personal Loan", navigationUrl = "https://www.banksbd.org/dbbl/dbbl-jokhon-tokhon-personal-loan.html"),
             PopularLoan(bankId = 31, bankName = "NCC Bank", loanName = "Education Loan by NCC Bank", navigationUrl = "https://www.banksbd.org/nccl/education-loan.html"),
-            PopularLoan(bankId = 31, bankName = "NCC Banl", loanName = "Personal Loan by NCC Bank", navigationUrl = "")
+            PopularLoan(bankId = 31, bankName = "NCC Bank", loanName = "Personal Loan by NCC Bank", navigationUrl = "https://www.banksbd.org/nccl/personal-loan.html"),
+            PopularLoan(bankId = 1, bankName = "AB Bank", loanName = "ABBL Sathi Loan", navigationUrl = "https://www.banksbd.org/abbl/abbl-sathi-loan.html"),
+            PopularLoan(bankId = 26, bankName = "Mercantile Bank Limited", loanName = "MBL Education Loan", navigationUrl = "https://www.banksbd.org/mblb/education-loan.html"),
+            PopularLoan(bankId = 33, bankName = "One Bank", loanName = "One Bank Student Loan", navigationUrl = "https://www.banksbd.org/obl/student-loan.html"),
+            PopularLoan(bankId = 1, bankName = "AB Bank", loanName = "ABBL Digun Loan", navigationUrl = "https://www.banksbd.org/abbl/abbl-digun-loan.html"),
+            PopularLoan(bankId = 1, bankName = "AB Bank", loanName = "ABBL Proshar Loan", navigationUrl = "https://www.banksbd.org/abbl/abbl-proshar-loan.html"),
+            PopularLoan(bankId = 15, bankName = "DBBL", loanName = "DBBL Thikana Home Loan", navigationUrl = "https://www.banksbd.org/dbbl/dbbl-thikana-home-loan.html"),
+            PopularLoan(bankId = 15, bankName = "DBBL", loanName = "DBBL Prottasha Car Loan", navigationUrl = "https://www.banksbd.org/dbbl/dbbl-prottasha-car-loan.html"),
         )
     }
 }
