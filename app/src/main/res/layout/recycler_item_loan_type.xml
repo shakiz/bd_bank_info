@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     app:cardUseCompatPadding="false"
     app:cardCornerRadius="@dimen/_8sdp"
+    app:cardElevation="0dp"
     app:cardBackgroundColor="@color/colorOnPrimary"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -17,8 +18,8 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iconView"
-            android:layout_width="@dimen/_24sdp"
-            android:layout_height="@dimen/_24sdp"
+            android:layout_width="@dimen/_32sdp"
+            android:layout_height="@dimen/_32sdp"
             tools:src="@drawable/ic_bank_loan" />
 
         <androidx.appcompat.widget.AppCompatTextView
