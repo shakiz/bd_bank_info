@@ -42,5 +42,6 @@
     <string name="oops">Whoops!</string>
     <string name="internet_connection_error">Slow or no internet connections.\nPlease check your internet settings.</string>
     <string name="bank_loan_types">Bank Loan Type</string>
+    <string name="popular_loans">Popular Loans</string>
 
 </resources>

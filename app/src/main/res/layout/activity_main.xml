@@ -50,6 +50,13 @@
             tools:itemCount="3"
             tools:listitem="@layout/recycler_item_home_menu"/>
 
+        <include
+            android:id="@+id/layoutPopularLoan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/rvNavRail"
+            layout="@layout/layout_item_popular_loan"/>
+
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvHeadingBankList"
             style="@style/BoldTextStyle"
@@ -61,7 +68,7 @@
             android:text="@string/bank_list"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/tvSeeAllBank"
-            app:layout_constraintTop_toBottomOf="@id/rvNavRail" />
+            app:layout_constraintTop_toBottomOf="@id/layoutPopularLoan" />
 
         <TextView
             android:id="@+id/tvSeeAllBank"
