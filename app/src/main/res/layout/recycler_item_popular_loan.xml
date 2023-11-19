@@ -18,40 +18,21 @@
         android:padding="@dimen/_8sdp"
         android:orientation="horizontal">
 
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="@dimen/_8sdp"
-            app:cardBackgroundColor="@color/colorPrimary">
-
-            <TextView
-                android:id="@+id/tvTitle"
-                style="@style/BoldTextStyle"
-                android:textColor="@color/colorOnPrimary"
-                android:layout_width="@dimen/_32sdp"
-                android:layout_height="@dimen/_32sdp"
-                android:gravity="center"
-                tools:text="A" />
-
-        </com.google.android.material.card.MaterialCardView>
-
         <androidx.appcompat.widget.AppCompatTextView
             style="@style/NormalTextStyle"
             android:id="@+id/titleView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_8sdp"
             android:layout_marginEnd="@dimen/_8sdp"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:textSize="@dimen/_12ssp"
+            android:textSize="@dimen/_10ssp"
             tools:text="Loan Type Name" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/ibDetails"
             android:layout_width="@dimen/_24sdp"
             android:layout_height="@dimen/_24sdp"
-            android:layout_marginEnd="@dimen/_8sdp"
             android:scaleType="center"
             app:shapeAppearance="@style/roundedImageViewGenericSliderStyle8"
             android:background="@color/colorPrimaryDark"

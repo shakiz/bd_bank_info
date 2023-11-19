@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/_8sdp"
     android:background="@drawable/rectangle_bg_color_primary"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
@@ -23,8 +24,8 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/ivFire"
-        android:layout_width="@dimen/_16sdp"
-        android:layout_height="@dimen/_16sdp"
+        android:layout_width="@dimen/_24sdp"
+        android:layout_height="@dimen/_20sdp"
         android:layout_marginStart="@dimen/_4sdp"
         app:layout_constraintStart_toEndOf="@id/tvHeadingPopularLoanList"
         app:layout_constraintTop_toTopOf="@id/tvHeadingPopularLoanList"
@@ -49,7 +50,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvPopularLoanList"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_152sdp"
+        android:layout_height="@dimen/_156sdp"
         android:layout_marginStart="@dimen/_8sdp"
         android:layout_marginEnd="@dimen/_8sdp"
         android:layout_marginTop="@dimen/_8sdp"
