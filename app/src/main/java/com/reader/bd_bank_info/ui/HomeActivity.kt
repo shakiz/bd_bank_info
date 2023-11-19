@@ -251,7 +251,20 @@ class HomeActivity : AppCompatActivity(), BankCallBack, HomeMenuAdapter.NavRailC
     }
 
     override fun onPopularLoanClick(popularLoan: PopularLoan) {
-        val bundle = CommonWebViewActivity.createIntent(this, popularLoan.navigationUrl, popularLoan.loanName)
-        startActivity(Intent(this, CommonWebViewActivity::class.java).putExtra(WEBVIEW_BUNDLE, bundle))
+        appAnalytics.registerEvent(
+            POPULAR_LOAN_ITEM_TAPPED,
+            appAnalytics.setData(POPULAR_LOAN_ITEM_TAPPED, popularLoan.loanName)
+        )
+        val bundle = CommonWebViewActivity.createIntent(
+            this,
+            popularLoan.navigationUrl,
+            popularLoan.loanName
+        )
+        startActivity(
+            Intent(this, CommonWebViewActivity::class.java).putExtra(
+                WEBVIEW_BUNDLE,
+                bundle
+            )
+        )
     }
 }

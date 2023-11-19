@@ -32,21 +32,6 @@
         app:layout_constraintBottom_toBottomOf="@id/tvHeadingPopularLoanList"
         app:srcCompat="@drawable/ic_fire"/>
 
-    <TextView
-        android:id="@+id/tvSeeAllPopularLoans"
-        style="@style/SemiBoldTextStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/_8sdp"
-        android:gravity="center"
-        android:text="@string/see_all"
-        android:textColor="@color/colorOnSecondary"
-        android:textSize="@dimen/_10ssp"
-        app:drawableEndCompat="@drawable/ic_arrow_forward"
-        app:layout_constraintBottom_toBottomOf="@id/tvHeadingPopularLoanList"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tvHeadingPopularLoanList" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvPopularLoanList"
         android:layout_width="match_parent"

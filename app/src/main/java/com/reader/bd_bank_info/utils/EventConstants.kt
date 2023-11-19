@@ -24,3 +24,4 @@ const val BANK_ROUTING_NO_COPIED = "bank_routing_no_copied"
 const val BANK_SWIFT_CODE_COPIED = "bank_swift_code_copied"
 
 const val BANK_LOAN_TYPE_TAPPED = "bank_loan_type_tapped"
+const val POPULAR_LOAN_ITEM_TAPPED = "popular_loan_item_tapped"
