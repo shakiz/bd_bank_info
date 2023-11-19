@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.Window
 import android.view.WindowManager
 import android.widget.RelativeLayout
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -103,6 +104,11 @@ class RoutingBankListActivity : AppCompatActivity(), BankCallBack {
         dialog.window!!.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
         dialog.window!!.setLayout(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT)
         dialog.show()
+
+        val tvTryAgain = dialog.findViewById<TextView>(com.reader.bd_bank_info.R.id.btnTryAgain)
+        tvTryAgain.setOnClickListener {
+            dialog.dismiss()
+        }
     }
 
     override fun onMailClicked(bank: Bank) {
