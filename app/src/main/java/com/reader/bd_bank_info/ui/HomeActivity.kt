@@ -11,16 +11,20 @@ import com.reader.bd_bank_info.AppInjector
 import com.reader.bd_bank_info.R
 import com.reader.bd_bank_info.data.model.Bank
 import com.reader.bd_bank_info.data.model.MainMenuItem
+import com.reader.bd_bank_info.data.model.loan.LoanType
+import com.reader.bd_bank_info.data.model.loan.PopularLoan
 import com.reader.bd_bank_info.databinding.ActivityMainBinding
 import com.reader.bd_bank_info.ui.adapters.BankHorizontalSwiftCodeAdapter
 import com.reader.bd_bank_info.ui.adapters.BankItemAdapter
 import com.reader.bd_bank_info.ui.adapters.BankVerticalItemAdapter
 import com.reader.bd_bank_info.ui.adapters.HomeMenuAdapter
+import com.reader.bd_bank_info.ui.adapters.PopularLoanItemAdapter
 import com.reader.bd_bank_info.ui.bank.BankDetailsActivity
 import com.reader.bd_bank_info.ui.bank.BankCallBack
 import com.reader.bd_bank_info.ui.bank.BankListActivity
 import com.reader.bd_bank_info.ui.commonwebview.CommonWebViewActivity
 import com.reader.bd_bank_info.ui.loan.BankLoanTypeListActivity
+import com.reader.bd_bank_info.ui.loan.LoanCallBack
 import com.reader.bd_bank_info.ui.routings.RoutingBankListActivity
 import com.reader.bd_bank_info.ui.routings.RoutingDetailsActivity
 import com.reader.bd_bank_info.ui.stockmarket.StockMarketListActivity
@@ -28,7 +32,7 @@ import com.reader.bd_bank_info.ui.swiftcode.SwiftCodeListActivity
 import com.reader.bd_bank_info.utils.*
 
 class HomeActivity : AppCompatActivity(), BankCallBack, HomeMenuAdapter.NavRailClickListener,
-    BankHorizontalSwiftCodeAdapter.SwiftCodeItemClickListener {
+    BankHorizontalSwiftCodeAdapter.SwiftCodeItemClickListener, LoanCallBack {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var viewModel: HomeViewModel
@@ -38,6 +42,7 @@ class HomeActivity : AppCompatActivity(), BankCallBack, HomeMenuAdapter.NavRailC
     private val bankItemAdapter = BankItemAdapter()
     private val bankVerticalItemAdapter = BankVerticalItemAdapter()
     private val swiftCodeAdapter = BankHorizontalSwiftCodeAdapter()
+    private val popularLoanItemAdapter = PopularLoanItemAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,6 +60,7 @@ class HomeActivity : AppCompatActivity(), BankCallBack, HomeMenuAdapter.NavRailC
 
         viewModel.fetchNavigationRailItems()
         viewModel.fetchBankList()
+        viewModel.fetchPopularLoanList()
     }
 
     private fun initView() {
@@ -62,6 +68,7 @@ class HomeActivity : AppCompatActivity(), BankCallBack, HomeMenuAdapter.NavRailC
         setUpBankListView()
         setupSwiftCodeListView()
         setupRoutingListView()
+        setUpPopularLoanListView()
     }
 
     private fun initListeners() {
@@ -88,6 +95,10 @@ class HomeActivity : AppCompatActivity(), BankCallBack, HomeMenuAdapter.NavRailC
             )
             startActivity(Intent(this, RoutingBankListActivity::class.java))
         }
+
+        binding.layoutPopularLoan.tvSeeAllPopularLoans.setOnClickListener {
+
+        }
     }
 
     private fun initObservers() {
@@ -102,6 +113,12 @@ class HomeActivity : AppCompatActivity(), BankCallBack, HomeMenuAdapter.NavRailC
                 bankItemAdapter.addItems(it)
                 bankVerticalItemAdapter.addItems(it)
                 swiftCodeAdapter.addItems(it.takeLast(3))
+            }
+        }
+
+        viewModel.onPopularLoanListFetched().observe(this){ popularLoans ->
+            popularLoans?.let {
+                popularLoanItemAdapter.addItems(it)
             }
         }
     }
@@ -150,6 +167,13 @@ class HomeActivity : AppCompatActivity(), BankCallBack, HomeMenuAdapter.NavRailC
         binding.rvBankListRouting.adapter = bankVerticalItemAdapter
         bankVerticalItemAdapter.setItemClickListener(this)
         bankVerticalItemAdapter.setViewType(BANK_LIST_ITEM_VIEW_TYPE_ROUTING)
+    }
+
+    private fun setUpPopularLoanListView() {
+        binding.layoutPopularLoan.rvPopularLoanList.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+        binding.layoutPopularLoan.rvPopularLoanList.addItemDecoration(SpaceItemDecoration(this.dimenSize(com.intuit.sdp.R.dimen._8sdp), false))
+        binding.layoutPopularLoan.rvPopularLoanList.adapter = popularLoanItemAdapter
+        popularLoanItemAdapter.setItemClickListener(this)
     }
 
     override fun onItemClick(bank: Bank) {
@@ -220,5 +244,13 @@ class HomeActivity : AppCompatActivity(), BankCallBack, HomeMenuAdapter.NavRailC
             appAnalytics.setData(APP_MENU_ITEM_TAPPED, IDENTIFIER_SWIFT_CODE)
         )
         startActivity(Intent(this, SwiftCodeListActivity::class.java))
+    }
+
+    override fun onLoanTypeClick(loanType: LoanType) {
+        // empty implementation
+    }
+
+    override fun onPopularLoanClick(popularLoan: PopularLoan) {
+
     }
 }
