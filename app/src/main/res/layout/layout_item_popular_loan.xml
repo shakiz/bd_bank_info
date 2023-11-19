@@ -50,7 +50,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvPopularLoanList"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_156sdp"
+        android:layout_height="@dimen/_130sdp"
         android:layout_marginStart="@dimen/_8sdp"
         android:layout_marginEnd="@dimen/_8sdp"
         android:layout_marginTop="@dimen/_8sdp"

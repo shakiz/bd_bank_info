@@ -22,189 +22,196 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/clMain"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvHeadingMenuList"
-            style="@style/BoldTextStyle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_8sdp"
-            android:layout_marginStart="@dimen/_8sdp"
-            android:layout_marginEnd="@dimen/_8sdp"
-            android:text="@string/all_menu"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvNavRail"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clMain"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/tvHeadingMenuList"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:orientation="horizontal"
-            tools:itemCount="3"
-            tools:listitem="@layout/recycler_item_home_menu"/>
+            android:layout_height="match_parent"
+            android:paddingBottom="@dimen/_12sdp">
 
-        <include
-            android:id="@+id/layoutPopularLoan"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_8sdp"
-            android:layout_marginStart="@dimen/_8sdp"
-            android:layout_marginEnd="@dimen/_8sdp"
-            app:layout_constraintTop_toBottomOf="@id/rvNavRail"
-            layout="@layout/layout_item_popular_loan"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvHeadingMenuList"
+                style="@style/BoldTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:text="@string/all_menu"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvHeadingBankList"
-            style="@style/BoldTextStyle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_8sdp"
-            android:layout_marginEnd="@dimen/_8sdp"
-            android:layout_marginTop="@dimen/_8sdp"
-            android:text="@string/bank_list"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/tvSeeAllBank"
-            app:layout_constraintTop_toBottomOf="@id/layoutPopularLoan" />
-
-        <TextView
-            android:id="@+id/tvSeeAllBank"
-            style="@style/SemiBoldTextStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/_8sdp"
-            android:gravity="center"
-            android:text="@string/see_all"
-            android:textColor="@color/colorOnSecondary"
-            android:textSize="@dimen/_10ssp"
-            app:drawableEndCompat="@drawable/ic_arrow_forward"
-            app:layout_constraintBottom_toBottomOf="@id/tvHeadingBankList"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tvHeadingBankList" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvBankList"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_8sdp"
-            android:layout_marginEnd="@dimen/_8sdp"
-            android:layout_marginTop="@dimen/_8sdp"
-            app:layout_constraintTop_toBottomOf="@id/tvHeadingBankList"
-            android:clipToPadding="false"
-            android:orientation="horizontal"
-            android:overScrollMode="never"
-            tools:itemCount="1"
-            tools:listitem="@layout/recycler_item_horizontal_bank_list" />
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cvSwiftCode"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="@dimen/_12sdp"
-            app:layout_constraintTop_toBottomOf="@id/rvBankList"
-            android:layout_marginTop="@dimen/_16sdp"
-            android:layout_marginStart="@dimen/_8sdp"
-            android:layout_marginEnd="@dimen/_8sdp"
-            app:cardBackgroundColor="@color/colorOnPrimary"
-            app:cardUseCompatPadding="false"
-            app:cardElevation="0dp">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvNavRail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_8sdp">
+                app:layout_constraintTop_toBottomOf="@id/tvHeadingMenuList"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:orientation="horizontal"
+                tools:itemCount="3"
+                tools:listitem="@layout/recycler_item_home_menu"/>
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvHeadingSwiftCode"
-                    style="@style/BoldTextStyle"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/swift_codes"
-                    app:layout_constraintEnd_toStartOf="@+id/tvSeeAllSwiftCode"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+            <include
+                android:id="@+id/layoutPopularLoan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
+                app:layout_constraintTop_toBottomOf="@id/rvNavRail"
+                layout="@layout/layout_item_popular_loan"/>
 
-                <TextView
-                    android:id="@+id/tvSeeAllSwiftCode"
-                    style="@style/SemiBoldTextStyle"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/see_all"
-                    android:textColor="@color/colorOnSecondary"
-                    android:textSize="@dimen/_10ssp"
-                    app:drawableEndCompat="@drawable/ic_arrow_forward"
-                    app:layout_constraintBottom_toBottomOf="@id/tvHeadingSwiftCode"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/tvHeadingSwiftCode" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvHeadingBankList"
+                style="@style/BoldTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:text="@string/bank_list"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tvSeeAllBank"
+                app:layout_constraintTop_toBottomOf="@id/layoutPopularLoan" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvSwiftCodeList"
+            <TextView
+                android:id="@+id/tvSeeAllBank"
+                style="@style/SemiBoldTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:gravity="center"
+                android:text="@string/see_all"
+                android:textColor="@color/colorOnSecondary"
+                android:textSize="@dimen/_10ssp"
+                app:drawableEndCompat="@drawable/ic_arrow_forward"
+                app:layout_constraintBottom_toBottomOf="@id/tvHeadingBankList"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tvHeadingBankList" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvBankList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                app:layout_constraintTop_toBottomOf="@id/tvHeadingBankList"
+                android:clipToPadding="false"
+                android:orientation="horizontal"
+                android:overScrollMode="never"
+                tools:itemCount="1"
+                tools:listitem="@layout/recycler_item_horizontal_bank_list" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cvSwiftCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/_12sdp"
+                app:layout_constraintTop_toBottomOf="@id/rvBankList"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
+                app:cardBackgroundColor="@color/colorOnPrimary"
+                app:cardUseCompatPadding="false"
+                app:cardElevation="0dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    app:layout_constraintTop_toBottomOf="@id/tvHeadingSwiftCode"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:background="@color/colorOnPrimary"
-                    tools:itemCount="6"
-                    tools:spanCount="4"
-                    tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    tools:listitem="@layout/recycler_item_swift_code_home"
-                    tools:orientation="horizontal" />
+                    android:padding="@dimen/_8sdp">
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvHeadingSwiftCode"
+                        style="@style/BoldTextStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/swift_codes"
+                        app:layout_constraintEnd_toStartOf="@+id/tvSeeAllSwiftCode"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-        </com.google.android.material.card.MaterialCardView>
+                    <TextView
+                        android:id="@+id/tvSeeAllSwiftCode"
+                        style="@style/SemiBoldTextStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/see_all"
+                        android:textColor="@color/colorOnSecondary"
+                        android:textSize="@dimen/_10ssp"
+                        app:drawableEndCompat="@drawable/ic_arrow_forward"
+                        app:layout_constraintBottom_toBottomOf="@id/tvHeadingSwiftCode"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/tvHeadingSwiftCode" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvHeadingRoutingBankList"
-            style="@style/BoldTextStyle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_16sdp"
-            android:layout_marginStart="@dimen/_8sdp"
-            android:layout_marginEnd="@dimen/_8sdp"
-            android:text="@string/routings"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/tvSeeAllBank"
-            app:layout_constraintTop_toBottomOf="@id/cvSwiftCode" />
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvSwiftCodeList"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        app:layout_constraintTop_toBottomOf="@id/tvHeadingSwiftCode"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:background="@color/colorOnPrimary"
+                        tools:itemCount="6"
+                        tools:spanCount="4"
+                        tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:listitem="@layout/recycler_item_swift_code_home"
+                        tools:orientation="horizontal" />
 
-        <TextView
-            android:id="@+id/tvSeeAllBankRouting"
-            style="@style/SemiBoldTextStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/_8sdp"
-            android:gravity="center"
-            android:text="@string/see_all"
-            android:textColor="@color/colorOnSecondary"
-            android:textSize="@dimen/_10ssp"
-            app:drawableEndCompat="@drawable/ic_arrow_forward"
-            app:layout_constraintBottom_toBottomOf="@id/tvHeadingRoutingBankList"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tvHeadingRoutingBankList" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvBankListRouting"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_8sdp"
-            android:layout_marginEnd="@dimen/_8sdp"
-            android:layout_marginTop="@dimen/_8sdp"
-            app:layout_constraintTop_toBottomOf="@id/tvHeadingRoutingBankList"
-            android:clipToPadding="false"
-            android:orientation="horizontal"
-            android:overScrollMode="never"
-            tools:itemCount="1"
-            tools:listitem="@layout/recycler_item_vertical_bank_list" />
+            </com.google.android.material.card.MaterialCardView>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvHeadingRoutingBankList"
+                style="@style/BoldTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:text="@string/routings"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tvSeeAllBank"
+                app:layout_constraintTop_toBottomOf="@id/cvSwiftCode" />
+
+            <TextView
+                android:id="@+id/tvSeeAllBankRouting"
+                style="@style/SemiBoldTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:gravity="center"
+                android:text="@string/see_all"
+                android:textColor="@color/colorOnSecondary"
+                android:textSize="@dimen/_10ssp"
+                app:drawableEndCompat="@drawable/ic_arrow_forward"
+                app:layout_constraintBottom_toBottomOf="@id/tvHeadingRoutingBankList"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tvHeadingRoutingBankList" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvBankListRouting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                app:layout_constraintTop_toBottomOf="@id/tvHeadingRoutingBankList"
+                android:clipToPadding="false"
+                android:orientation="horizontal"
+                android:overScrollMode="never"
+                tools:itemCount="1"
+                tools:listitem="@layout/recycler_item_vertical_bank_list" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
