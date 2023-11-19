@@ -1,7 +1,12 @@
 package com.reader.bd_bank_info.ui
 
+import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
+import android.view.Window
+import android.view.WindowManager
+import android.widget.RelativeLayout
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
@@ -14,6 +19,7 @@ import com.reader.bd_bank_info.data.model.MainMenuItem
 import com.reader.bd_bank_info.data.model.loan.LoanType
 import com.reader.bd_bank_info.data.model.loan.PopularLoan
 import com.reader.bd_bank_info.databinding.ActivityMainBinding
+import com.reader.bd_bank_info.network.InternetConnectivity
 import com.reader.bd_bank_info.ui.adapters.BankHorizontalSwiftCodeAdapter
 import com.reader.bd_bank_info.ui.adapters.BankItemAdapter
 import com.reader.bd_bank_info.ui.adapters.BankVerticalItemAdapter
@@ -94,10 +100,6 @@ class HomeActivity : AppCompatActivity(), BankCallBack, HomeMenuAdapter.NavRailC
                 appAnalytics.setData(SEE_ALL_TAPPED, SEE_ALL_BANK_ROUTING)
             )
             startActivity(Intent(this, RoutingBankListActivity::class.java))
-        }
-
-        binding.layoutPopularLoan.tvSeeAllPopularLoans.setOnClickListener {
-
         }
     }
 
@@ -251,20 +253,44 @@ class HomeActivity : AppCompatActivity(), BankCallBack, HomeMenuAdapter.NavRailC
     }
 
     override fun onPopularLoanClick(popularLoan: PopularLoan) {
-        appAnalytics.registerEvent(
-            POPULAR_LOAN_ITEM_TAPPED,
-            appAnalytics.setData(POPULAR_LOAN_ITEM_TAPPED, popularLoan.loanName)
-        )
-        val bundle = CommonWebViewActivity.createIntent(
-            this,
-            popularLoan.navigationUrl,
-            popularLoan.loanName
-        )
-        startActivity(
-            Intent(this, CommonWebViewActivity::class.java).putExtra(
-                WEBVIEW_BUNDLE,
-                bundle
+        if(InternetConnectivity.checkConnectivity(this)){
+            appAnalytics.registerEvent(
+                POPULAR_LOAN_ITEM_TAPPED,
+                appAnalytics.setData(POPULAR_LOAN_ITEM_TAPPED, popularLoan.loanName)
             )
-        )
+            val bundle = CommonWebViewActivity.createIntent(
+                this,
+                popularLoan.navigationUrl,
+                popularLoan.loanName
+            )
+            startActivity(
+                Intent(this, CommonWebViewActivity::class.java).putExtra(
+                    WEBVIEW_BUNDLE,
+                    bundle
+                )
+            )
+        } else {
+            appAnalytics.registerEvent(NO_INTERNET_DIALOG, appAnalytics.setData(NO_INTERNET_DIALOG, POPULAR_LOAN_ITEM_TAPPED))
+            showNoInternetDialog()
+        }
+    }
+
+    private fun showNoInternetDialog(){
+        val dialog = Dialog(this, android.R.style.Theme_Dialog)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setContentView(com.reader.bd_bank_info.R.layout.dialog_no_internet)
+        dialog.window!!.setBackgroundDrawableResource(android.R.color.transparent)
+        dialog.setCanceledOnTouchOutside(true)
+
+
+        dialog.setCanceledOnTouchOutside(true)
+        dialog.window!!.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
+        dialog.window!!.setLayout(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT)
+        dialog.show()
+
+        val tvTryAgain = dialog.findViewById<TextView>(R.id.btnTryAgain)
+        tvTryAgain.setOnClickListener {
+            dialog.dismiss()
+        }
     }
 }

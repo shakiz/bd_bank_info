@@ -118,7 +118,7 @@ class RoutingBankListActivity : AppCompatActivity(), BankCallBack {
             appAnalytics.registerEvent(BANK_ROUTING_TAPPED, appAnalytics.setData(BANK_ROUTING_TAPPED, bank.bankName))
             startActivity(Intent(this, RoutingDetailsActivity::class.java).putExtra(ITEM_BANK, bank))
         } else {
-            appAnalytics.registerEvent(NO_INTERNET_DIALOG, appAnalytics.setData(NO_INTERNET_DIALOG, getString(com.reader.bd_bank_info.R.string.internet_connection_error)))
+            appAnalytics.registerEvent(NO_INTERNET_DIALOG, appAnalytics.setData(NO_INTERNET_DIALOG, BANK_ROUTING_TAPPED))
             showNoInternetDialog()
         }
     }
