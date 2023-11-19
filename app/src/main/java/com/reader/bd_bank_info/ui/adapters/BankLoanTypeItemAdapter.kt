@@ -6,12 +6,13 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.reader.bd_bank_info.data.model.loan.LoanType
 import com.reader.bd_bank_info.databinding.RecyclerItemLoanTypeBinding
+import com.reader.bd_bank_info.ui.loan.LoanCallBack
 import com.reader.bd_bank_info.utils.DiffUtilCallback
 
 class BankLoanTypeItemAdapter :
     RecyclerView.Adapter<BankLoanTypeItemAdapter.BankVerticalViewHolder>() {
     private val items = ArrayList<LoanType>()
-    private var bankLoanTypeCallBack: BankLoanTypeCallBack? = null
+    private var loanCallBack: LoanCallBack? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BankVerticalViewHolder {
         val binding = RecyclerItemLoanTypeBinding.inflate(
@@ -19,7 +20,7 @@ class BankLoanTypeItemAdapter :
             parent,
             false
         )
-        return BankVerticalViewHolder(binding, bankLoanTypeCallBack)
+        return BankVerticalViewHolder(binding, loanCallBack)
     }
 
     override fun onBindViewHolder(holder: BankVerticalViewHolder, position: Int) {
@@ -28,8 +29,8 @@ class BankLoanTypeItemAdapter :
 
     override fun getItemCount() = items.size
 
-    fun setItemClickListener(bankLoanTypeCallBack: BankLoanTypeCallBack) {
-        this.bankLoanTypeCallBack = bankLoanTypeCallBack
+    fun setItemClickListener(loanCallBack: LoanCallBack) {
+        this.loanCallBack = loanCallBack
     }
 
     fun addItems(navRails: List<LoanType>) {
@@ -54,7 +55,7 @@ class BankLoanTypeItemAdapter :
 
     class BankVerticalViewHolder(
         val binding: RecyclerItemLoanTypeBinding,
-        private val bankLoanTypeCallBack: BankLoanTypeCallBack?
+        private val loanCallBack: LoanCallBack?
     ) :
         RecyclerView.ViewHolder(binding.root) {
 
@@ -65,16 +66,12 @@ class BankLoanTypeItemAdapter :
             }
 
             binding.ibDetails.setOnClickListener {
-                bankLoanTypeCallBack?.onLoanTypeClick(loanType)
+                loanCallBack?.onLoanTypeClick(loanType)
             }
 
             itemView.setOnClickListener {
-                bankLoanTypeCallBack?.onLoanTypeClick(loanType)
+                loanCallBack?.onLoanTypeClick(loanType)
             }
         }
-    }
-
-    interface BankLoanTypeCallBack {
-        fun onLoanTypeClick(loanType: LoanType)
     }
 }

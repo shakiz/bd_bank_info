@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.intuit.sdp.R
 import com.reader.bd_bank_info.AppInjector
 import com.reader.bd_bank_info.data.model.loan.LoanType
+import com.reader.bd_bank_info.data.model.loan.PopularLoan
 import com.reader.bd_bank_info.databinding.ActivityBankLoanTypeListBinding
 import com.reader.bd_bank_info.network.InternetConnectivity
 import com.reader.bd_bank_info.ui.adapters.BankLoanTypeItemAdapter
@@ -25,7 +26,7 @@ import com.reader.bd_bank_info.utils.SpaceItemDecoration
 import com.reader.bd_bank_info.utils.WEBVIEW_BUNDLE
 import com.reader.bd_bank_info.utils.dimenSize
 
-class BankLoanTypeListActivity : AppCompatActivity(), BankLoanTypeItemAdapter.BankLoanTypeCallBack {
+class BankLoanTypeListActivity : AppCompatActivity(), LoanCallBack {
 
     private lateinit var binding: ActivityBankLoanTypeListBinding
     private lateinit var viewModel: BankLoanViewModel
@@ -88,6 +89,10 @@ class BankLoanTypeListActivity : AppCompatActivity(), BankLoanTypeItemAdapter.Ba
             analytics.registerEvent(NO_INTERNET_DIALOG, analytics.setData(NO_INTERNET_DIALOG, BANK_LOAN_TYPE_TAPPED))
             showNoInternetDialog()
         }
+    }
+
+    override fun onPopularLoanClick(popularLoan: PopularLoan) {
+        // empty implementation
     }
 
     private fun showNoInternetDialog(){
