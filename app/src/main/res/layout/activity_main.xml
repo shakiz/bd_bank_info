@@ -54,6 +54,9 @@
             android:id="@+id/layoutPopularLoan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:layout_marginEnd="@dimen/_8sdp"
             app:layout_constraintTop_toBottomOf="@id/rvNavRail"
             layout="@layout/layout_item_popular_loan"/>
 
